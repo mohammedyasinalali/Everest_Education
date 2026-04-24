@@ -1,0 +1,396 @@
+import { useEffect, useState, useRef } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { specialtyService } from '../services/api';
+
+// Helper: auto-generate slug from name
+const generateSlug = (text: string): string => {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w\u0600-\u06FF-]/g, '')  // keep arabic + english + dashes
+    .replace(/--+/g, '-')
+    .replace(/^-|-$/g, '');
+};
+
+export const AdminSpecialtyForm = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const isEditing = Boolean(id);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const [formData, setFormData] = useState({
+    slug: '',
+    locale: 'ar',
+    name: '',
+    category: 'bachelor',
+    icon: 'fas fa-graduation-cap',
+    color: '#0859BC',
+    image: '',
+    duration: '',
+    language: '',
+    description: '',
+    tags: '',
+    published: true,
+  });
+
+  const [imageMode, setImageMode] = useState<'url' | 'upload'>('url');
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string>('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (isEditing) {
+      fetchSpecialty();
+    }
+  }, [id]);
+
+  const fetchSpecialty = async () => {
+    try {
+      setLoading(true);
+      const data = await specialtyService.getById(Number(id));
+      setFormData({ ...data });
+      if (data.image) {
+        if (data.image.startsWith('/uploads')) {
+          setImageMode('upload');
+          setImagePreview(`http://localhost:5000${data.image}`);
+        } else {
+          setImageMode('url');
+          setImagePreview(data.image);
+        }
+      }
+    } catch (err) {
+      setError('فشل في جلب التخصص');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const newVal = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    
+    setFormData(prev => {
+      const updated = { ...prev, [name]: newVal };
+      // Auto-generate slug from name (only when creating new, not editing)
+      if (name === 'name' && !isEditing) {
+        updated.slug = generateSlug(String(newVal));
+      }
+      return updated;
+    });
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      const dataToSend = { ...formData };
+      // If uploading a file, clear the image URL field so the server uses the file
+      if (imageMode === 'upload' && imageFile) {
+        dataToSend.image = '';
+      }
+
+      if (isEditing) {
+        await specialtyService.update(Number(id), dataToSend, imageFile || undefined);
+      } else {
+        await specialtyService.create(dataToSend, imageFile || undefined);
+      }
+      navigate('/admin/specialties');
+    } catch (err: any) {
+      setError(err.message || 'حدث خطأ أثناء الحفظ');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading && isEditing) return <div className="p-8 text-center">جاري التحميل...</div>;
+
+  return (
+    <div className="max-w-4xl mx-auto space-y-6">
+      <div className="flex items-center gap-4">
+        <button onClick={() => navigate(-1)} className="p-2 hover:bg-gray-100 rounded-lg">
+          <i className="fas fa-arrow-right"></i>
+        </button>
+        <h1 className="text-3xl font-bold font-['Tajawal'] text-gray-800">
+          {isEditing ? 'تعديل التخصص' : 'إضافة تخصص جديد'}
+        </h1>
+      </div>
+
+      {error && (
+        <div className="bg-red-50 text-red-600 p-4 rounded-lg font-['Tajawal'] border border-red-200">
+          {error}
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border p-6 space-y-6 font-['Tajawal']">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">لغة التخصص *</label>
+            <select
+              name="locale"
+              value={formData.locale}
+              onChange={handleChange}
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
+              disabled={isEditing}
+              required
+            >
+              <option value="ar">العربية</option>
+              <option value="en">English</option>
+              <option value="fa">فارسی</option>
+              <option value="ru">Русский</option>
+            </select>
+            {!isEditing && <p className="text-xs text-gray-500">ملاحظة: هذا التخصص سيظهر فقط في هذه اللغة.</p>}
+          </div>
+
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">اسم التخصص *</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="مثال: الطب البشري"
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">المعرّف في الرابط (Slug) *</label>
+            <input
+              type="text"
+              name="slug"
+              value={formData.slug}
+              onChange={handleChange}
+              placeholder="يتم توليده تلقائياً من اسم التخصص"
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
+              dir="ltr"
+              required
+            />
+            <p className="text-xs text-gray-500">
+              هذا هو الجزء الذي يظهر في رابط الصفحة. مثال: <span dir="ltr" className="text-blue-600">eversteducation.org/specialties/<strong>{formData.slug || 'medicine'}</strong></span>
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">الدرجة الأكاديمية *</label>
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
+              required
+            >
+              <option value="bachelor">بكالوريوس</option>
+              <option value="master">ماجستير</option>
+              <option value="phd">دكتوراه</option>
+              <option value="diploma">دبلوم</option>
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">المدة الدراسية</label>
+            <input
+              type="text"
+              name="duration"
+              value={formData.duration}
+              onChange={handleChange}
+              placeholder="مثال: 4 سنوات"
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">لغة الدراسة</label>
+            <input
+              type="text"
+              name="language"
+              value={formData.language}
+              onChange={handleChange}
+              placeholder="مثال: إنجليزي / تركي"
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">أيقونة (Font Awesome)</label>
+            <div className="flex gap-3 items-center">
+              <input
+                type="text"
+                name="icon"
+                value={formData.icon}
+                onChange={handleChange}
+                placeholder="fas fa-stethoscope"
+                className="flex-1 p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
+                dir="ltr"
+              />
+              <div 
+                className="w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl"
+                style={{ backgroundColor: formData.color }}
+              >
+                <i className={formData.icon}></i>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="font-bold text-gray-700">لون الأيقونة</label>
+            <input
+              type="color"
+              name="color"
+              value={formData.color}
+              onChange={handleChange}
+              className="w-full h-12 p-1 border rounded-lg cursor-pointer"
+            />
+          </div>
+        </div>
+
+        {/* ── Image Section ── */}
+        <div className="space-y-3 border-t pt-6">
+          <label className="font-bold text-gray-700 block">صورة الغلاف</label>
+          
+          {/* Toggle */}
+          <div className="flex gap-2 mb-4">
+            <button 
+              type="button"
+              onClick={() => setImageMode('upload')}
+              className={`px-5 py-2 rounded-lg font-bold text-sm transition-colors ${
+                imageMode === 'upload' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              <i className="fas fa-upload ml-2"></i>
+              رفع صورة من الجهاز
+            </button>
+            <button 
+              type="button"
+              onClick={() => setImageMode('url')}
+              className={`px-5 py-2 rounded-lg font-bold text-sm transition-colors ${
+                imageMode === 'url' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
+            >
+              <i className="fas fa-link ml-2"></i>
+              لصق رابط صورة
+            </button>
+          </div>
+
+          {imageMode === 'upload' ? (
+            <div>
+              <div 
+                onClick={() => fileInputRef.current?.click()}
+                className="border-2 border-dashed rounded-xl p-8 text-center cursor-pointer hover:border-blue-500 hover:bg-blue-50/50 transition-colors"
+              >
+                {imagePreview && imageMode === 'upload' ? (
+                  <img src={imagePreview} alt="preview" className="max-h-48 mx-auto rounded-lg mb-3" />
+                ) : (
+                  <div className="text-gray-400">
+                    <i className="fas fa-cloud-upload-alt text-4xl mb-3 block"></i>
+                    <p className="font-bold">اضغط هنا لاختيار صورة</p>
+                    <p className="text-xs mt-1">JPG, PNG, WEBP - حتى 5MB</p>
+                  </div>
+                )}
+              </div>
+              <input 
+                type="file" 
+                ref={fileInputRef}
+                accept="image/jpeg,image/png,image/webp,image/gif"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </div>
+          ) : (
+            <div>
+              <input
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={(e) => {
+                  handleChange(e);
+                  setImagePreview(e.target.value);
+                }}
+                placeholder="https://images.unsplash.com/photo-..."
+                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
+                dir="ltr"
+              />
+              {imagePreview && imageMode === 'url' && (
+                <img src={imagePreview} alt="preview" className="max-h-48 rounded-lg mt-3" onError={(e) => (e.currentTarget.style.display = 'none')} />
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <label className="font-bold text-gray-700">الوصف الترويجي القصير *</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            placeholder="وصف مختصر عن التخصص يظهر في بطاقة التخصص..."
+            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none min-h-[100px]"
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label className="font-bold text-gray-700">لماذا دراسة هذا التخصص؟ (المزايا)</label>
+          <textarea
+            name="advantages"
+            value={(formData as any).advantages || ''}
+            onChange={handleChange}
+            placeholder="اكتب كل ميزة في سطر منفصل (اضغط Enter للسطر الجديد)"
+            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none min-h-[120px]"
+          />
+          <p className="text-xs text-gray-500">هذه النقاط ستظهر كقائمة مزايا في صفحة تفاصيل التخصص.</p>
+        </div>
+
+        <div className="space-y-2">
+          <label className="font-bold text-gray-700">كلمات دلالية (Tags)</label>
+          <input
+            type="text"
+            name="tags"
+            value={formData.tags}
+            onChange={handleChange}
+            placeholder="مثال: medical,engineering  (افصل بين الكلمات بفاصلة)"
+            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
+            dir="ltr"
+          />
+          <p className="text-xs text-gray-500">تساعد في فلترة التخصصات (مثال: medical للتخصصات الطبية، engineering للهندسية)</p>
+        </div>
+
+        <div className="flex items-center gap-2 mt-4 p-4 bg-gray-50 rounded-lg">
+          <input
+            type="checkbox"
+            id="published"
+            name="published"
+            checked={formData.published}
+            onChange={handleChange}
+            className="w-5 h-5 text-blue-600 rounded"
+          />
+          <label htmlFor="published" className="font-bold text-gray-700 cursor-pointer">
+            نشر التخصص للمستخدمين
+          </label>
+        </div>
+
+        <div className="pt-4 border-t flex justify-end">
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-bold disabled:opacity-50"
+          >
+            {loading ? 'جاري الحفظ...' : isEditing ? 'حفظ التعديلات' : 'إضافة التخصص'}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};

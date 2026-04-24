@@ -1,0 +1,273 @@
+{
+  "header": {
+    "home": "Home",
+    "universities": "Our Universities",
+    "specialties": "Top Specialties",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About Us",
+    "about_us": "About Us",
+    "student_platform": "Student Platform",
+    "view_all_universities": "View All Universities"
+  },
+  "hero": {
+    "title_highlight": "Your Educational Advisor",
+    "title_main": "#1 for Studying in Turkey",
+    "subtitle": "The leading Arabic website specializing in studying in Turkey for international students",
+    "start_journey_title": "Start your educational journey in <br /> Turkey with Everest Education!",
+    "join_students_subtitle": "Join thousands of international students who chose Turkey as their study destination.",
+    "get_consultation": "Get a Consultation",
+    "top_specialties": "Top Specialties",
+    "search_placeholder": "Search for major or university...",
+    "search_button": "Search Now",
+    "stats": {
+      "years_experience": "Years Experience",
+      "private_universities": "Private Universities",
+      "academic_advisors": "Academic Advisors",
+      "university_admissions": "University Admissions"
+    }
+  },
+  "search_filter": {
+    "title": "Find Your University Major",
+    "search_title": "Search for the specialty you want",
+    "level": "Degree Level",
+    "language": "Language of Study",
+    "specialty": "University Major",
+    "search": "Search",
+    "select_level": "Select Degree",
+    "select_language": "Select Language",
+    "select_specialty": "Select Major",
+    "default_specialty_placeholder": "Choose the specialty you want",
+    "levels": {
+      "diploma_2_years": "2-Year Diploma",
+      "bachelor": "Bachelor",
+      "master_thesis": "Master's with Thesis",
+      "phd": "PhD",
+      "master_no_thesis": "Master's without Thesis",
+      "master_online": "Online Master's"
+    },
+    "languages": {
+      "english": "English",
+      "turkish": "Turkish",
+      "other": "Other Languages",
+      "russian": "Russian",
+      "french": "French",
+      "english_turkish": "English & Turkish",
+      "arabic": "Arabic",
+      "german": "German"
+    },
+    "specialties": {
+      "business_admin": "Business Administration",
+      "logistics": "Logistics Management",
+      "healthcare_man": "Healthcare Management",
+      "tourism": "Tourism Management",
+      "tourism_hotels": "Tourism & Hotel Management",
+      "health_man": "Health Management",
+      "crisis_man": "Emergency & Disaster Management",
+      "medicine": "Medicine",
+      "dentistry": "Dentistry",
+      "pharmacy": "Pharmacy",
+      "software_eng": "Software Engineering"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "success": "Success",
+    "read_more": "Read More",
+    "contact_us": "Contact Us",
+    "services": "Our Services"
+  },
+  "about": {
+    "badge": "About Us",
+    "title_prefix": "",
+    "title_highlight": "Everest",
+    "title_suffix": "Education",
+    "description": "Everest Education is one of the leading companies in enrolling international students in private universities and schools in Istanbul. We have a team of highly experienced and qualified academic advisors to provide you with specialized academic consultations.",
+    "features": {
+      "university_selection": "Choosing the right university/school",
+      "registration_support": "Facilitating registration and visa procedures",
+      "accommodation_support": "Accommodation arrangements and student support"
+    }
+  },
+  "services_section": {
+    "title": "How can we help you?",
+    "our_services": "Our Services",
+    "items": {
+      "admissions": "Free University Admissions",
+      "admissions_desc": "Students can send us copies of the required registration documents, and we will obtain admission to the appropriate university for free.",
+      "housing": "Student Housing",
+      "housing_desc": "Our specialized housing team communicates with admitted students to provide housing suggestions and complete reservations before arrival.",
+      "residence": "Student Residence Permit",
+      "residence_desc": "We help students prepare their residence permit file, book appointments, and accompany them to complete legal procedures with ease.",
+      "equivalency": "Certificate Equivalency",
+      "equivalency_desc": "We provide full support in the equivalency procedures for high school and university degrees in Turkey to ensure legal study continuation.",
+      "cta_button": "Contact Us"
+    }
+  },
+  "faq": {
+    "title_main": "Frequently Asked",
+    "title_highlight": "Questions",
+    "description": "If you don't find an answer to your question, do not hesitate to contact us via WhatsApp or call the numbers on the \"Contact Us\" page.",
+    "contact_button": "Call Now",
+    "q1": "What is the goal of Everest Education?",
+    "a1": "We aim to provide the best educational opportunities for international students in Turkey...",
+    "q2": "Who is the Everest Education team?",
+    "a2": "The Everest Education team consists of academics, medical and engineering students, and consultants specializing in university admissions.",
+    "q3": "Everest Education Vision?",
+    "a3": "Leadership in the field of educational services and student consulting...",
+    "q4": "Why Everest Education?",
+    "a4": "Because we provide integrated and completely free services to students...",
+    "q5": "What is the language of instruction in private universities in Turkey?",
+    "a5": "Study is available in both English and Turkish in most private universities.",
+    "q6": "How can I get a student visa for Turkey?",
+    "a6": "After obtaining university admission, you can apply to the Turkish embassy in your country with the required documents.",
+    "q7": "Can I work in Turkey after graduation?",
+    "a7": "Yes, Turkish law allows foreign graduates to obtain a work permit and work in Turkish companies.",
+    "q8": "Are student housing options available within the university?",
+    "a8": "Yes, most private universities provide excellent student housing inside or near the campus."
+  },
+  "contact": {
+    "address_title": "Address",
+    "phone_title": "Call Us",
+    "email_title": "Email",
+    "address_lines": [
+      "Mevlana Mah. Sultan Ahmet Cad. Delta",
+      "Plaza iş Merkezi A1 Blok Kat:07 Daire:16",
+      "Esenyurt/istanbul"
+    ]
+  },
+  "footer": {
+    "tagline": "Your educational journey starts here 🚀",
+    "rights_reserved": "All rights reserved",
+    "for_site": "",
+    "design_and_work": "Designed & Developed by",
+    "copyright": "All rights reserved 2026 • Designed & Developed by",
+    "designed_by": "YesTech"
+  },
+  "partners": {
+    "title": "Turkish Universities We Are Proud to Partner With...",
+    "blog_title": "Our Blog",
+    "blog_description": "We look for news of organizations and useful topics for you in your educational journey, as it is coordinated, always full of everything that is useful and beneficial to you in our fields."
+  },
+  "features_section": {
+    "quality": "Quality Education",
+    "affordability": "Reasonable Costs",
+    "culture": "Cultural Environment",
+    "support": "Student Support"
+  },
+  "consultation": {
+    "title_main": "Book a Free Consultation",
+    "title_sub": "100% Free",
+    "description": "Book your online consultation now with one of our educational advisors via WhatsApp or Zoom so we can help you choose the most suitable university for you.",
+    "badge": "Book Your Appointment Now",
+    "cta_button": "Book Your Free Consultation Now",
+    "student_count": "Successful Students",
+    "modal": {
+      "title": "Book Your Free Consultation",
+      "subtitle": "Choose your preferred contact method",
+      "cta_button": "Book Your Free Consultation Now"
+    },
+    "methods": {
+      "zoom": "Zoom",
+      "whatsapp": "WhatsApp",
+      "google_meet": "Google Meet"
+    }
+  },
+  "contact_form": {
+    "title": "Let us connect with you.",
+    "subtitle": "Just seek help from one of our team members to start your academic journey successfully. Whatever your inquiry, rest assured we will provide free consultation.",
+    "name": "Name",
+    "lastname": "Last Name",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "country": "Country",
+    "help_type": "How can we help?",
+    "phone": "Phone Number",
+    "submit": "Submit",
+    "success_message": "Message Sent Successfully!",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "countries": {
+      "turkey": "Turkey",
+      "saudi_arabia": "Saudi Arabia",
+      "uae": "UAE"
+    },
+    "help_types": {
+      "admission": "University Admission",
+      "consultation": "Educational Consultation"
+    }
+  },
+  "about_us": {
+    "about_everest_title": "About Everest Education",
+    "mission_title": "Everest Education Mission",
+    "mission_desc": "Professional educational consultants striving to provide the best services for international students and help them build their academic future.",
+    "vision_title": "Everest Education Vision",
+    "vision_desc": "To be the first and trusted choice for international students wishing to study in Turkey, by providing distinguished and comprehensive services.",
+    "why_us": {
+      "title": "Why Everest Education?",
+      "subtitle": "Your ideal partner for a successful educational journey in Turkey",
+      "features": {
+        "free": {
+          "title": "100% Free Services",
+          "desc": "We provide all our consulting and university admission services completely free of charge with no hidden fees"
+        },
+        "experience": {
+          "title": "Experience & Professionalism",
+          "desc": "A team of academic advisors with extensive experience in Turkish higher education"
+        },
+        "universities": {
+          "title": "Partners with 50+ Universities",
+          "desc": "Official agents for the best private universities in Turkey, ensuring your admission"
+        },
+        "support": {
+          "title": "Post-Arrival Support",
+          "desc": "Our mission doesn't end with admission; we welcome you at the airport and help with accommodation and residency"
+        }
+      }
+    },
+    "founded_in": "Founded In",
+    "served_students": "Students Served",
+    "our_team": "Our Team",
+    "our_team_desc": "We work to provide the best consulting services thanks to this team of experts and specialists in student affairs and educational fields."
+  },
+  "mega_menu": {
+    "bachelor_title": "Bachelor's Specialties",
+    "bachelor": {
+      "accounting": "Accounting & Financial Management",
+      "ai_engineering": "AI Engineering",
+      "architecture": "Architecture",
+      "new_media": "New Media",
+      "psychology": "Psychology",
+      "architectural_eng": "Architectural Engineering"
+    },
+    "master_title": "Master's Specialties",
+    "master": {
+      "industrial_eng": "Master in Industrial Engineering",
+      "english_literature": "Master in English Literature",
+      "biomedical_eng": "Master in Biomedical Engineering",
+      "it": "Master in Information Technology",
+      "renewable_energy": "Master in Renewable Energy Systems",
+      "ai_systems": "Master in AI Systems"
+    },
+    "phd_title": "PhD Specialties",
+    "phd": {
+      "dentistry": "PhD in Dentistry",
+      "business_admin": "PhD in Business Administration",
+      "aerospace_eng": "PhD in Aerospace Engineering",
+      "political_science": "PhD in Political Science",
+      "navigation_eng": "PhD in Navigation Engineering"
+    },
+    "diploma_title": "Diploma Programs (2 Years)",
+    "diploma": {
+      "anesthesia": "Anesthesia",
+      "pharmacy_services": "Pharmacy Services",
+      "culinary_arts": "Culinary Arts",
+      "optics": "Optics",
+      "clinical_labs": "Clinical Laboratories",
+      "computer_programming": "Computer Programming"
+    },
+    "view_all_specialties": "View All Specialties"
+  }
+}

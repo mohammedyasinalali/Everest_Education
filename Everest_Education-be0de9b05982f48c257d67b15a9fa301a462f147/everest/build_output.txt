@@ -1,0 +1,14 @@
+src/components/SEO.tsx(32,10): error TS2786: 'Helmet' cannot be used as a JSX component.
+  Its type 'typeof Helmet' is not a valid JSX element type.
+    Type 'typeof Helmet' is not assignable to type 'new (props: any, context: any) => Component<any, any, any>'.
+      Type 'Helmet' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, state
+src/components/StatsSection.tsx(2,10): error TS2305: Module '"../constants"' has no exported member 'aboutStatsData'.
+src/components/StatsSection.tsx(10,38): error TS7006: Parameter 'stat' implicitly has an 'any' type.
+src/components/StatsSection.tsx(10,44): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/components/ui/Container.tsx(1,10): error TS1484: 'ReactNode' is a type and must be imported using a type-only import when 'verbatimModuleSyntax' is enabled.
+src/main.tsx(33,6): error TS2786: 'HelmetProvider' cannot be used as a JSX component.
+  Its type 'typeof HelmetProvider' is not a valid JSX element type.
+    Types of construct signatures are incompatible.
+      Type 'new (props: PropsWithChildren<ProviderProps>) => HelmetProvider' is not assignable to type 'new (props: any, context: any) => Component<any, any, any>'.
+        Type 'HelmetProvider' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, props, state
+src/pages/Services.tsx(104,102): error TS2304: Cannot find name 'isRTL'.

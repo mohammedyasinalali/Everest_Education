@@ -1,0 +1,276 @@
+{
+  "header": {
+    "home": "Главная",
+    "universities": "Университеты",
+    "specialties": "Топ специальностей",
+    "services": "Услуги",
+    "blog": "Блог",
+    "about": "О нас",
+    "about_us": "О нас",
+    "student_platform": "Студенческая платформа",
+    "view_all_universities": "Все университеты"
+  },
+  "hero": {
+    "title_start": "Начните свой образовательный путь",
+    "title_middle": "в",
+    "title_highlight": "Турции с Everest Education",
+    "start_journey_title": "Начните свой образовательный путь в<br /> Турции с Everest Education!",
+    "subtitle": "Присоединяйтесь к тысячам иностранных студентов, выбравших Турцию для обучения",
+    "join_students_subtitle": "Присоединяйтесь к тысячам иностранных студентов, выбравших Турцию для обучения.",
+    "cta_specialties": "Топ специальностей",
+    "cta_consultation": "Получить консультацию",
+    "get_consultation": "Получить консультацию",
+    "top_specialties": "Популярные специальности",
+    "search_placeholder": "Поиск специальности или университета...",
+    "search_button": "Поиск",
+    "stats": {
+      "years_experience": "Лет опыта",
+      "private_universities": "Частных ВУЗов",
+      "academic_advisors": "Консультантов",
+      "university_admissions": "Поступлений"
+    }
+  },
+  "search_filter": {
+    "title": "Найдите специальность",
+    "level": "Степень",
+    "language": "Язык",
+    "specialty": "Специальность",
+    "search": "Найти",
+    "select_level": "Выберите степень",
+    "select_language": "Выберите язык",
+    "select_specialty": "Выберите специальность",
+    "search_title": "Найдите специальность, которую хотите",
+    "default_specialty_placeholder": "Выберите специальность",
+    "header_specialties": "Популярные специальности",
+    "levels": {
+      "diploma_2_years": "Диплом (2 года)",
+      "bachelor": "Бакалавр",
+      "master_thesis": "Магистратура (с тезисом)",
+      "phd": "Докторантура",
+      "master_no_thesis": "Магистратура (без тезиса)",
+      "master_online": "Онлайн Магистратура"
+    },
+    "languages": {
+      "english": "Английский",
+      "turkish": "Турецкий",
+      "other": "Другие",
+      "russian": "Русский",
+      "french": "Французский",
+      "english_turkish": "Английский и Турецкий",
+      "arabic": "Арабский",
+      "german": "Немецкий"
+    },
+    "specialties": {
+      "medicine": "Медицина",
+      "dentistry": "Стоматология",
+      "pharmacy": "Фармация",
+      "engineering": "Инженерия",
+      "business_admin": "Бизнес администрирование",
+      "software_eng": "Программная инженерия",
+      "logistics": "Логистика",
+      "healthcare_man": "Управление здравоохранением",
+      "tourism": "Туризм",
+      "tourism_hotels": "Туризм и гостиничное дело",
+      "health_man": "Менеджмент в здравоохранении",
+      "crisis_man": "Управление в кризисных ситуациях"
+    }
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Ошибка",
+    "success": "Успешно",
+    "read_more": "Подробнее",
+    "contact_us": "Связаться",
+    "services": "Наши услуги"
+  },
+  "features_section": {
+    "quality": "Качественное обучение",
+    "affordability": "Доступные цены",
+    "culture": "Культурная среда",
+    "support": "Поддержка студентов"
+  },
+  "about": {
+    "badge": "О нас",
+    "title_prefix": "",
+    "title_highlight": "Everest",
+    "title_suffix": "Education",
+    "description": "Everest Education - ведущая компания по зачислению иностранных студентов в университеты Стамбула. Наша команда экспертов поможет вам на каждом этапе.",
+    "features": {
+      "university_selection": "Подбор университета",
+      "registration_support": "Помощь с регистрацией",
+      "accommodation_support": "Поиск жилья"
+    }
+  },
+  "services_section": {
+    "title": "Наши услуги",
+    "our_services": "Наши услуги",
+    "items": {
+      "admissions": "Поступление в ВУЗы",
+      "admissions_desc": "Студенты могут отправить нам копии необходимых документов, и мы бесплатно получим приглашение в подходящий университет.",
+      "housing": "Студенческое жилье",
+      "housing_desc": "Наша команда по жилью связывается со студентами для предложений по общежитию и бронирования до прибытия.",
+      "residence": "ВНЖ и визы",
+      "residence_desc": "Мы помогаем студентам подготовить документы на ВНЖ, записаться на прием и сопровождаем их для завершения процедур.",
+      "equivalency": "Эквивалентность диплома",
+      "equivalency_desc": "Мы обеспечиваем полную поддержку в процедурах эквивалентности дипломов в Турции.",
+      "cta_button": "Связаться с нами"
+    }
+  },
+  "consultation": {
+    "title_main": "Бесплатная консультация",
+    "title_sub": "100% Бесплатно",
+    "description": "Запишитесь на онлайн-консультацию с экспертом через WhatsApp или Zoom, чтобы выбрать лучший университет для вас.",
+    "badge": "Записаться сейчас",
+    "cta_button": "Записаться на консультацию",
+    "student_count": "Успешных студентов",
+    "modal": {
+      "title": "Бесплатная консультация",
+      "subtitle": "Выберите способ связи",
+      "cta_button": "Записаться"
+    },
+    "methods": {
+      "zoom": "Zoom",
+      "whatsapp": "WhatsApp",
+      "google_meet": "Google Meet"
+    }
+  },
+  "partners": {
+    "title": "Наши партнеры",
+    "blog_title": "Блог",
+    "blog_description": "Новости и полезные статьи о поступлении и жизни в Турции."
+  },
+  "faq": {
+    "title_main": "Частые",
+    "title_highlight": "Вопросы",
+    "description": "Ответы на популярные вопросы о поступлении в Турцию.",
+    "cta_text": "Остались вопросы?",
+    "cta_button": "Связаться с нами",
+    "contact_button": "Связаться с нами",
+    "q1": "Какие документы нужны?",
+    "a1": "Паспорт, аттестат/диплом и фото.",
+    "q2": "Сколько стоит обучение?",
+    "a2": "Зависит от университета и программы.",
+    "q3": "Нужен ли экзамен?",
+    "a3": "В большинстве частных ВУЗов экзамены не требуются.",
+    "q4": "Почему Everest Education?",
+    "a4": "Мы предоставляем полный спектр бесплатных услуг для студентов.",
+    "q5": "На каком языке ведется обучение?",
+    "a5": "В большинстве университетов обучение доступно на английском и турецком языках.",
+    "q6": "Как получить студенческую визу?",
+    "a6": "После получения приглашения вы можете подать документы в посольство Турции.",
+    "q7": "Можно ли работать после окончания учебы?",
+    "a7": "Да, иностранные выпускники могут получить разрешение на работу.",
+    "q8": "Есть ли общежития при университетах?",
+    "a8": "Да, большинство университетов предоставляют отличные общежития."
+  },
+  "contact": {
+    "title": "Контакты",
+    "address_title": "Наш адрес",
+    "phone_title": "Телефон",
+    "email_title": "Электронная почта"
+  },
+  "footer": {
+    "tagline": "Ваш путь к знаниям начинается здесь 🚀",
+    "rights_reserved": "Все права защищены",
+    "for_site": "",
+    "design_and_work": "Разработка",
+    "copyright": "Все права защищены 2026 • Разработка",
+    "designed_by": "YesTech"
+  },
+  "contact_form": {
+    "title": "Свяжитесь с нами",
+    "subtitle": "Просто обратитесь к одному из членов нашей команды, чтобы успешно начать свой академический путь.",
+    "name": "Имя",
+    "lastname": "Фамилия",
+    "gender": "Пол",
+    "male": "Мужской",
+    "female": "Женский",
+    "country": "Страна",
+    "help_type": "Чем мы можем помочь?",
+    "phone": "Номер телефона",
+    "submit": "Отправить",
+    "success_message": "Сообщение отправлено!",
+    "email_label": "Электронная почта",
+    "phone_label": "Телефон",
+    "countries": {
+      "turkey": "Турция",
+      "saudi_arabia": "Саудовская Аравия",
+      "uae": "ОАЭ"
+    },
+    "help_types": {
+      "admission": "Поступление в ВУЗ",
+      "consultation": "Образовательная консультация"
+    }
+  },
+  "about_us": {
+    "about_everest_title": "About Everest Education",
+    "mission_title": "Everest Education Mission",
+    "mission_desc": "Professional educational consultants striving to provide the best services for international students and help them build their academic future.",
+    "vision_title": "Everest Education Vision",
+    "vision_desc": "To be the first and trusted choice for international students wishing to study in Turkey, by providing distinguished and comprehensive services.",
+    "why_us": {
+      "title": "Why Everest Education?",
+      "subtitle": "Your ideal partner for a successful educational journey in Turkey",
+      "features": {
+        "free": {
+          "title": "100% Free Services",
+          "desc": "We provide all our consulting and university admission services completely free of charge with no hidden fees"
+        },
+        "experience": {
+          "title": "Experience & Professionalism",
+          "desc": "A team of academic advisors with extensive experience in Turkish higher education"
+        },
+        "universities": {
+          "title": "Partners with 50+ Universities",
+          "desc": "Official agents for the best private universities in Turkey, ensuring your admission"
+        },
+        "support": {
+          "title": "Post-Arrival Support",
+          "desc": "Our mission doesn't end with admission; we welcome you at the airport and help with accommodation and residency"
+        }
+      }
+    },
+    "founded_in": "Founded In",
+    "served_students": "Students Served",
+    "our_team": "Our Team",
+    "our_team_desc": "We work to provide the best consulting services thanks to this team of experts and specialists in student affairs and educational fields."
+  },
+  "mega_menu": {
+    "bachelor_title": "Бакалавриат",
+    "bachelor": {
+      "accounting": "Бухгалтерский учёт и финансовый менеджмент",
+      "ai_engineering": "Инженерия искусственного интеллекта",
+      "architecture": "Архитектура",
+      "new_media": "Новые медиа",
+      "psychology": "Психология",
+      "architectural_eng": "Архитектурная инженерия"
+    },
+    "master_title": "Магистратура",
+    "master": {
+      "industrial_eng": "Магистр промышленной инженерии",
+      "english_literature": "Магистр английской литературы",
+      "biomedical_eng": "Магистр биомедицинской инженерии",
+      "it": "Магистр информационных технологий",
+      "renewable_energy": "Магистр возобновляемой энергетики",
+      "ai_systems": "Магистр систем ИИ"
+    },
+    "phd_title": "Докторантура",
+    "phd": {
+      "dentistry": "Докторантура по стоматологии",
+      "business_admin": "Докторантура по управлению бизнесом",
+      "aerospace_eng": "Докторантура по авиационной инженерии",
+      "political_science": "Докторантура по политологии",
+      "navigation_eng": "Докторантура по навигационной инженерии"
+    },
+    "diploma_title": "Дипломные программы (2 года)",
+    "diploma": {
+      "anesthesia": "Анестезиология",
+      "pharmacy_services": "Фармацевтические услуги",
+      "culinary_arts": "Кулинарное искусство",
+      "optics": "Оптика",
+      "clinical_labs": "Клинические лаборатории",
+      "computer_programming": "Программирование"
+    },
+    "view_all_specialties": "Все специальности"
+  }
+}

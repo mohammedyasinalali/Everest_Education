@@ -1,0 +1,58 @@
+{
+    "title": "How can we help you?",
+    "our_services": "Our Services",
+    "items": {
+        "admissions": "Free University Admissions",
+        "admissions_desc": "Students can send us copies of the required registration documents, and we will obtain admission to the appropriate university for free.",
+        "housing": "Student Housing",
+        "housing_desc": "Our specialized housing team communicates with admitted students to provide housing suggestions and complete reservations before arrival.",
+        "residence": "Student Residence Permit",
+        "residence_desc": "We help students prepare their residence permit file, book appointments, and accompany them to complete legal procedures with ease.",
+        "equivalency": "Certificate Equivalency",
+        "equivalency_desc": "We provide full support in the equivalency procedures for high school and university degrees in Turkey to ensure legal study continuation.",
+        "cta_button": "Contact Us"
+    },
+    "after_services_title": "Post-Admission Services",
+    "after_items": {
+        "equivalency": "Certificate Equivalency",
+        "equivalency_desc": "Our team handles the equivalency of high school and university degrees issued outside Turkey so that their holders can practice work within Turkey.",
+        "residence": "Student Residence",
+        "residence_desc": "Our specialized legal department ensures residence applications are submitted for all students, arranging the file completely before submission.",
+        "housing_secure": "Securing Student Housing",
+        "housing_secure_desc": "Our housing team contacts admitted students to suggest housing options and complete reservations before arrival.",
+        "transport_card": "Public Transport Card",
+        "transport_card_desc": "Our team extracts the transport card for the student and provides a map of public transport routes.",
+        "bank_account": "Student Bank Accounts",
+        "bank_account_desc": "After final registration, our team helps the student create a bank account according to their basic needs.",
+        "insurance": "Health Insurance",
+        "insurance_desc": "Obtaining health insurance during study years is essential, and students can obtain it by contacting our team.",
+        "pickup": "Airport Pickup & Transport",
+        "pickup_desc": "Everest Education is at the airport to receive students, with a specialized team accompanying you to the university for final registration.",
+        "sim_card": "Local SIM Card",
+        "sim_card_desc": "Upon arrival, students need a SIM card. We provide offers and guidance packages for students.",
+        "translation": "Sworn Translation",
+        "translation_desc": "Our team translates all official documents with notary certification, as all certificates must be translated into Turkish."
+    },
+    "excellence": {
+        "badge": "Excellence in Educational Services",
+        "title_part_1": "Everest Foundation provides services with",
+        "title_part_2": " high quality ",
+        "title_part_3": "and integrated professionalism",
+        "desc_1": "Everest Education is committed to providing the highest quality standards in all its services to students wishing to study in Turkish universities. Our team of over 70 qualified educational consultants accompanies the student at every step, from choosing the right specialty to final registration and settling in Turkey.",
+        "desc_2": "We are keen to provide an integrated experience including securing free university admissions, arranging student housing, residence permits, degree equivalency, health insurance, and airport pickup. All managed by a specialized team that prioritizes student comfort and academic success.",
+        "years_experience": "Years of Experience",
+        "students_registered": "Students Registered",
+        "cta": "Contact Us Now",
+        "features": {
+            "admissions": "Free University Admissions",
+            "team": "Specialized Advisory Team",
+            "followup": "Continuous Student Follow-up",
+            "comprehensive": "Comprehensive Services"
+        }
+    },
+    "packages": {
+        "badge": "Choose the right package for you",
+        "title": "Our Packages",
+        "desc": "The Everest team always strives for your comfort, providing a lot of planning and assistance before you arrive and starting registration steps until you begin your studies. Choose the package that meets your needs."
+    }
+}

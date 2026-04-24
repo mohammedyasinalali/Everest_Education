@@ -1,0 +1,107 @@
+{
+    "hero": {
+        "title_highlight": "Your Educational Advisor",
+        "title_main": "#1 for Studying in Turkey",
+        "subtitle": "The leading Arabic website specializing in studying in Turkey for international students",
+        "start_journey_title": "Start your educational journey in <br /> Turkey with Everest Education!",
+        "join_students_subtitle": "Join thousands of international students who chose Turkey as their study destination.",
+        "get_consultation": "Get a Consultation",
+        "top_specialties": "Top Specialties",
+        "search_placeholder": "Search for major or university...",
+        "search_button": "Search Now",
+        "stats": {
+            "years_experience": "Years Experience",
+            "private_universities": "Private Universities",
+            "academic_advisors": "Academic Advisors",
+            "university_admissions": "University Admissions"
+        }
+    },
+    "about_section": {
+        "badge": "About Us",
+        "title_prefix": "",
+        "title_highlight": "Everest",
+        "title_suffix": "Education",
+        "description": "Everest Education is one of the leading companies in enrolling international students in private universities and schools in Istanbul. We have a team of highly experienced and qualified academic advisors to provide you with specialized academic consultations.",
+        "features": {
+            "university_selection": "Choosing the right university/school",
+            "registration_support": "Facilitating registration and visa procedures",
+            "accommodation_support": "Accommodation arrangements and student support"
+        }
+    },
+    "features": {
+        "quality": "Quality Education",
+        "affordability": "Reasonable Costs",
+        "culture": "Cultural Environment",
+        "support": "Student Support"
+    },
+    "partners": {
+        "title": "Turkish Universities We Are Proud to Partner With...",
+        "blog_title": "Our Blog",
+        "blog_description": "We look for news of organizations and useful topics for you in your educational journey, as it is coordinated, always full of everything that is useful and beneficial to you in our fields."
+    },
+    "consultation": {
+        "title_main": "Book a Free Consultation",
+        "title_sub": "100% Free",
+        "description": "Book your online consultation now with one of our educational advisors via WhatsApp or Zoom so we can help you choose the most suitable university for you.",
+        "badge": "Book Your Appointment Now",
+        "cta_button": "Book Your Free Consultation Now",
+        "student_count": "Successful Students",
+        "modal": {
+            "title": "Book Your Free Consultation",
+            "subtitle": "Choose your preferred contact method",
+            "cta_button": "Book Your Free Consultation Now"
+        },
+        "methods": {
+            "zoom": "Zoom",
+            "whatsapp": "WhatsApp",
+            "google_meet": "Google Meet"
+        }
+    },
+    "faq": {
+        "title_main": "Frequently Asked",
+        "title_highlight": "Questions",
+        "description": "If you don't find an answer to your question, do not hesitate to contact us via WhatsApp or call the numbers on the \"Contact Us\" page.",
+        "contact_button": "Call Now",
+        "q1": "What is the goal of Everest Education?",
+        "a1": "We aim to provide the best educational opportunities for international students in Turkey...",
+        "q2": "Who is the Everest Education team?",
+        "a2": "The Everest Education team consists of academics, medical and engineering students, and consultants specializing in university admissions.",
+        "q3": "Everest Education Vision?",
+        "a3": "Leadership in the field of educational services and student consulting...",
+        "q4": "Why Everest Education?",
+        "a4": "Because we provide integrated and completely free services to students...",
+        "q5": "What is the language of instruction in private universities in Turkey?",
+        "a5": "Study is available in both English and Turkish in most private universities.",
+        "q6": "How can I get a student visa for Turkey?",
+        "a6": "After obtaining university admission, you can apply to the Turkish embassy in your country with the required documents.",
+        "q7": "Can I work in Turkey after graduation?",
+        "a7": "Yes, Turkish law allows foreign graduates to obtain a work permit and work in Turkish companies.",
+        "q8": "Are student housing options available within the university?",
+        "a8": "Yes, most private universities provide excellent student housing inside or near the campus."
+    },
+    "contact_form": {
+        "title": "Let us connect with you.",
+        "subtitle": "Just seek help from one of our team members to start your academic journey successfully. Whatever your inquiry, rest assured we will provide free consultation.",
+        "name": "Name",
+        "lastname": "Last Name",
+        "gender": "Gender",
+        "male": "Male",
+        "female": "Female",
+        "country": "Country",
+        "help_type": "How can we help?",
+        "phone": "Phone Number",
+        "submit": "Submit",
+        "success_message": "Message Sent Successfully!",
+        "email_label": "Email",
+        "phone_label": "Phone",
+        "countries": {
+            "turkey": "Turkey",
+            "saudi_arabia": "Saudi Arabia",
+            "uae": "UAE"
+        },
+        "help_types": {
+            "admission": "University Admission",
+            "consultation": "Educational Consultation"
+        }
+    }
+}

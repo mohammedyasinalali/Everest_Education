@@ -1,0 +1,276 @@
+{
+  "header": {
+    "home": "خانه",
+    "universities": "دانشگاه‌ها",
+    "specialties": "رشته‌های برتر",
+    "services": "خدمات",
+    "blog": "وبلاگ",
+    "about": "درباره ما",
+    "about_us": "درباره ما",
+    "student_platform": "پلتفرم دانشجویی",
+    "view_all_universities": "همه دانشگاه‌ها"
+  },
+  "hero": {
+    "title_start": "سفر تحصیلی خود را آغاز کنید",
+    "title_middle": "در",
+    "title_highlight": "ترکیه با اورست اجوکیشن",
+    "start_journey_title": "سفر تحصیلی خود را در <br /> ترکیه با اورست اجوکیشن آغاز کنید!",
+    "subtitle": "به هزاران دانشجوی بین‌المللی بپیوندید که ترکیه را برای تحصیل انتخاب کرده‌اند",
+    "join_students_subtitle": "به هزاران دانشجوی بین‌المللی بپیوندید که ترکیه را برای تحصیل انتخاب کرده‌اند.",
+    "cta_specialties": "رشته‌های برتر",
+    "cta_consultation": "دریافت مشاوره",
+    "get_consultation": "دریافت مشاوره",
+    "top_specialties": "رشته‌های محبوب",
+    "search_placeholder": "جستجو برای رشته یا دانشگاه...",
+    "search_button": "جستجو",
+    "stats": {
+      "years_experience": "سال تجربه",
+      "private_universities": "دانشگاه خصوصی",
+      "academic_advisors": "مشاور تحصیلی",
+      "university_admissions": "پذیرش"
+    }
+  },
+  "search_filter": {
+    "title": "رشته خود را پیدا کنید",
+    "level": "مقطع",
+    "language": "زبان",
+    "specialty": "رشته",
+    "search": "جستجو",
+    "select_level": "انتخاب مقطع",
+    "select_language": "انتخاب زبان",
+    "select_specialty": "انتخاب رشته",
+    "search_title": "رشته مورد نظر خود را جستجو کنید",
+    "default_specialty_placeholder": "رشته مورد نظر خود را انتخاب کنید",
+    "header_specialties": "رشته‌های محبوب",
+    "levels": {
+      "diploma_2_years": "کاردانی (۲ سال)",
+      "bachelor": "کارشناسی",
+      "master_thesis": "کارشناسی ارشد (با پایان‌نامه)",
+      "phd": "دکتری",
+      "master_no_thesis": "کارشناسی ارشد (بدون پایان‌نامه)",
+      "master_online": "کارشناسی ارشد آنلاین"
+    },
+    "languages": {
+      "english": "انگلیسی",
+      "turkish": "ترکی",
+      "other": "سایر زبان‌ها",
+      "russian": "روسی",
+      "french": "فرانسوی",
+      "english_turkish": "انگلیسی و ترکی",
+      "arabic": "عربی",
+      "german": "آلمانی"
+    },
+    "specialties": {
+      "medicine": "پزشکی",
+      "dentistry": "دندانپزشکی",
+      "pharmacy": "داروسازی",
+      "engineering": "مهندسی",
+      "business_admin": "مدیریت بازرگانی",
+      "software_eng": "مهندسی نرم‌افزار",
+      "logistics": "مدیریت لجستیک",
+      "healthcare_man": "مدیریت خدمات بهداشتی",
+      "tourism": "مدیریت گردشگری",
+      "tourism_hotels": "مدیریت گردشگری و هتلداری",
+      "health_man": "مدیریت سلامت",
+      "crisis_man": "مدیریت بحران"
+    }
+  },
+  "common": {
+    "loading": "در حال بارگذاری...",
+    "error": "خطا",
+    "success": "موفقیت",
+    "read_more": "بیشتر بخوانید",
+    "contact_us": "تماس با ما",
+    "services": "خدمات ما"
+  },
+  "features_section": {
+    "quality": "آموزش با کیفیت",
+    "affordability": "هزینه‌های مناسب",
+    "culture": "محیط فرهنگی",
+    "support": "پشتیبانی دانشجویی"
+  },
+  "about": {
+    "badge": "درباره ما",
+    "title_prefix": "",
+    "title_highlight": "Everest",
+    "title_suffix": "Education",
+    "description": "اورست اجوکیشن یکی از شرکت‌های پیشرو در زمینه ثبت نام دانشجویان بین‌المللی در دانشگاه‌های استانبول است. تیم متخصص ما در تمام مراحل همراه شماست.",
+    "features": {
+      "university_selection": "انتخاب دانشگاه",
+      "registration_support": "پشتیبانی ثبت نام",
+      "accommodation_support": "اسکان دانشجویی"
+    }
+  },
+  "services_section": {
+    "title": "خدمات ما",
+    "our_services": "خدمات ما",
+    "items": {
+      "admissions": "پذیرش دانشگاهی",
+      "admissions_desc": "دانشجویان می‌توانند مدارک خود را ارسال کنند و ما پذیرش دانشگاه مناسب را به صورت رایگان دریافت می‌کنیم.",
+      "housing": "خوابگاه دانشجویی",
+      "housing_desc": "تیم مسکن ما با دانشجویان پذیرفته شده تماس می‌گیرد تا پیشنهادات مسکن را ارائه دهد و قبل از ورود رزرو را انجام دهد.",
+      "residence": "اقامت و ویزا",
+      "residence_desc": "ما به دانشجویان در آماده‌سازی پرونده اقامت، رزرو نوبت و همراهی برای تکمیل مراحل قانونی کمک می‌کنیم.",
+      "equivalency": "معادل‌سازی مدارک",
+      "equivalency_desc": "ما پشتیبانی کامل در مراحل معادل‌سازی مدارک تحصیلی در ترکیه را ارائه می‌دهیم.",
+      "cta_button": "تماس با ما"
+    }
+  },
+  "consultation": {
+    "title_main": "مشاوره رایگان رزرو کنید",
+    "title_sub": "۱۰۰٪ رایگان",
+    "description": "برای انتخاب بهترین دانشگاه، همین حالا مشاوره آنلاین خود را از طریق واتس‌اپ یا زوم با کارشناسان ما رزرو کنید.",
+    "badge": "رزرو کنید",
+    "cta_button": "رزرو مشاوره رایگان",
+    "student_count": "دانشجوی موفق",
+    "modal": {
+      "title": "مشاوره رایگان",
+      "subtitle": "روش ارتباطی خود را انتخاب کنید",
+      "cta_button": "رزرو کنید"
+    },
+    "methods": {
+      "zoom": "Zoom",
+      "whatsapp": "WhatsApp",
+      "google_meet": "Google Meet"
+    }
+  },
+  "partners": {
+    "title": "دانشگاه‌های همکار ما",
+    "blog_title": "وبلاگ",
+    "blog_description": "اخبار و مقالات مفید درباره تحصیل و زندگی در ترکیه."
+  },
+  "faq": {
+    "title_main": "سوالات",
+    "title_highlight": "متداول",
+    "description": "پاسخ به سوالات رایج درباره تحصیل در ترکیه.",
+    "cta_text": "سوالی دارید؟",
+    "cta_button": "تماس بگیرید",
+    "contact_button": "تماس بگیرید",
+    "q1": "چه مدارکی نیاز است؟",
+    "a1": "پاسپورت، مدرک دیپلم و عکس.",
+    "q2": "هزینه تحصیل چقدر است؟",
+    "a2": "بستگی به دانشگاه و رشته دارد.",
+    "q3": "آیا آزمون ورودی دارد؟",
+    "a3": "بسیاری از دانشگاه‌های خصوصی بدون آزمون هستند.",
+    "q4": "چرا اورست اجوکیشن؟",
+    "a4": "ما خدمات کامل و کاملاً رایگان به دانشجویان ارائه می‌دهیم.",
+    "q5": "زبان تحصیل چیست؟",
+    "a5": "انگلیسی و ترکی در اکثر دانشگاه‌ها موجود است.",
+    "q6": "چگونه ویزای تحصیلی بگیرم؟",
+    "a6": "پس از دریافت پذیرش، می‌توانید به سفارت ترکیه مراجعه کنید.",
+    "q7": "آیا می‌توانم بعد از تحصیل کار کنم؟",
+    "a7": "بله، فارغ‌التحصیلان می‌توانند اجازه کار دریافت کنند.",
+    "q8": "آیا خوابگاه وجود دارد؟",
+    "a8": "بله، اکثر دانشگاه‌ها خوابگاه‌های باکیفیتی ارائه می‌دهند."
+  },
+  "contact": {
+    "title": "تماس با ما",
+    "address_title": "آدرس ما",
+    "phone_title": "تلفن",
+    "email_title": "ایمیل"
+  },
+  "footer": {
+    "tagline": "سفر تحصیلی شما از اینجا شروع می‌شود 🚀",
+    "rights_reserved": "تمامی حقوق محفوظ است",
+    "for_site": "برای سایت",
+    "design_and_work": "طراحی و توسعه",
+    "copyright": "تمامی حقوق محفوظ است 2026 • طراحی و توسعه",
+    "designed_by": "YesTech"
+  },
+  "contact_form": {
+    "title": "با ما در ارتباط باشید",
+    "subtitle": "کافیست از یکی از اعضای تیم ما کمک بگیرید تا سفر تحصیلی خود را با موفقیت آغاز کنید.",
+    "name": "نام",
+    "lastname": "نام خانوادگی",
+    "gender": "جنسیت",
+    "male": "مرد",
+    "female": "زن",
+    "country": "کشور",
+    "help_type": "چگونه می‌توانیم کمک کنیم؟",
+    "phone": "شماره تماس",
+    "submit": "ارسال",
+    "success_message": "پیام با موفقیت ارسال شد!",
+    "email_label": "ایمیل",
+    "phone_label": "تلفن",
+    "countries": {
+      "turkey": "ترکیه",
+      "saudi_arabia": "عربستان سعودی",
+      "uae": "امارات"
+    },
+    "help_types": {
+      "admission": "پذیرش دانشگاهی",
+      "consultation": "مشاوره تحصیلی"
+    }
+  },
+  "about_us": {
+    "about_everest_title": "About Everest Education",
+    "mission_title": "Everest Education Mission",
+    "mission_desc": "Professional educational consultants striving to provide the best services for international students and help them build their academic future.",
+    "vision_title": "Everest Education Vision",
+    "vision_desc": "To be the first and trusted choice for international students wishing to study in Turkey, by providing distinguished and comprehensive services.",
+    "why_us": {
+      "title": "Why Everest Education?",
+      "subtitle": "Your ideal partner for a successful educational journey in Turkey",
+      "features": {
+        "free": {
+          "title": "100% Free Services",
+          "desc": "We provide all our consulting and university admission services completely free of charge with no hidden fees"
+        },
+        "experience": {
+          "title": "Experience & Professionalism",
+          "desc": "A team of academic advisors with extensive experience in Turkish higher education"
+        },
+        "universities": {
+          "title": "Partners with 50+ Universities",
+          "desc": "Official agents for the best private universities in Turkey, ensuring your admission"
+        },
+        "support": {
+          "title": "Post-Arrival Support",
+          "desc": "Our mission doesn't end with admission; we welcome you at the airport and help with accommodation and residency"
+        }
+      }
+    },
+    "founded_in": "Founded In",
+    "served_students": "Students Served",
+    "our_team": "Our Team",
+    "our_team_desc": "We work to provide the best consulting services thanks to this team of experts and specialists in student affairs and educational fields."
+  },
+  "mega_menu": {
+    "bachelor_title": "رشته‌های کارشناسی",
+    "bachelor": {
+      "accounting": "حسابداری و مدیریت مالی",
+      "ai_engineering": "مهندسی هوش مصنوعی",
+      "architecture": "معماری",
+      "new_media": "رسانه‌های نوین",
+      "psychology": "روانشناسی",
+      "architectural_eng": "مهندسی معماری"
+    },
+    "master_title": "رشته‌های کارشناسی ارشد",
+    "master": {
+      "industrial_eng": "ارشد مهندسی صنایع",
+      "english_literature": "ارشد زبان و ادبیات انگلیسی",
+      "biomedical_eng": "ارشد مهندسی پزشکی",
+      "it": "ارشد فناوری اطلاعات",
+      "renewable_energy": "ارشد انرژی‌های تجدیدپذیر",
+      "ai_systems": "ارشد سیستم‌های هوش مصنوعی"
+    },
+    "phd_title": "رشته‌های دکتری",
+    "phd": {
+      "dentistry": "دکتری دندانپزشکی",
+      "business_admin": "دکتری مدیریت بازرگانی",
+      "aerospace_eng": "دکتری مهندسی هوافضا",
+      "political_science": "دکتری علوم سیاسی",
+      "navigation_eng": "دکتری مهندسی ناوبری"
+    },
+    "diploma_title": "دوره‌های دیپلم (۲ ساله)",
+    "diploma": {
+      "anesthesia": "بیهوشی",
+      "pharmacy_services": "خدمات داروسازی",
+      "culinary_arts": "هنرهای آشپزی",
+      "optics": "اپتیک",
+      "clinical_labs": "آزمایشگاه‌های بالینی",
+      "computer_programming": "برنامه‌نویسی کامپیوتر"
+    },
+    "view_all_specialties": "مشاهده همه رشته‌ها"
+  }
+}

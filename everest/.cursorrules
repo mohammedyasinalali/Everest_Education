@@ -1,0 +1,40 @@
+# Everest Education Project Rules
+
+You are an expert AI programming assistant. Follow these rules when working on the Everest Education project:
+
+## 1. Project Tech Stack
+- **Framework:** React 19
+- **Build Tool:** Vite
+- **Language:** TypeScript
+- **Styling:** TailwindCSS v4 (Use latest utility classes, no fallback to old complex configs if not needed)
+- **Routing:** React Router DOM v7
+- **i18n:** `react-i18next` & `i18next` (ar, en, fa, ru)
+- **Animations:** CSS Native + Swiper.js
+- **SEO:** `react-helmet-async`
+
+## 2. Project Architecture & Best Practices
+- **Component Structure:**
+  - `src/pages/`: Contains full page components.
+  - `src/components/ui/`: Contains reusable foundation components (e.g., Button, Card, Container).
+  - `src/components/`: Contains other standard components.
+- **Data Source:** No Backend. Data is strictly separated into `src/constants/` (e.g., `data.ts`, `specialties.ts`, `colors.ts`). Do NOT hardcode data inside components.
+- **Styling Best Practices:**
+  - Avoid hardcoding hex colors inside classes (e.g., `text-[#0859BC]`). Use standard Tailwind classes or reference central colors if needed.
+  - Prioritize standard Tailwind spacing, layout, and typographic utilities.
+
+## 3. Performance & Quality Rules
+- **Lazy Loading:** Use the custom `<Image />` component with `lazy={true}` for images below the fold to improve FCP.
+- **TypeScript:** Enforce strict typing. Define clear `interfaces` or `types` for all props and data structures. Avoid `any`.
+- **DRY Principle:** Before writing custom UI, check if an existing `ui` component (like `Button`, `Container`, `Card`) can be reused.
+
+## 4. Languages & Translation
+- Do NOT hardcode text in Arabic or English directly inside components.
+- Always use `useTranslation()` from `react-i18next`:
+  ```tsx
+  const { t } = useTranslation();
+  <p>{t('key.path')}</p>
+  ```
+- Store translations in `src/locales/{lang}/translation.json`.
+
+## 5. Development Workflow
+- **Comments/Documentation:** The project largely utilizes Arabic for documentation and inline explanation (e.g., `PROJECT_OVERVIEW.md`). Maintain this consistency if adding explanatory comments for Arabic-speaking maintainers, unless English is specifically requested.

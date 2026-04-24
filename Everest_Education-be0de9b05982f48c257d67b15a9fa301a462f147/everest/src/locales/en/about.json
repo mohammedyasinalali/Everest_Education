@@ -1,0 +1,36 @@
+{
+    "about_everest_title": "About Everest Education",
+    "about_everest_p1": "Everest Education was founded in 2019 as a leading company in the field of educational consulting, specializing in helping international students achieve their academic dreams at the best Turkish universities.",
+    "about_everest_p2": "Since its launch, Everest has successfully built bridges of communication between thousands of students from around the world and the finest educational institutions in Turkey, providing comprehensive services covering all stages of the student's educational journey.",
+    "about_everest_p3": "Thanks to our team of professional consultants and our strong partnerships with more than 50 Turkish universities, we continue to provide the best customized educational solutions for each student, contributing to building a brighter future for the next generations.",
+    "mission_title": "Everest Education Mission",
+    "mission_desc": "Professional educational consultants striving to provide the best services for international students and help them build their academic future.",
+    "vision_title": "Everest Education Vision",
+    "vision_desc": "To be the first and trusted choice for international students wishing to study in Turkey, by providing distinguished and comprehensive services.",
+    "why_us": {
+        "title": "Why Everest Education?",
+        "subtitle": "Your ideal partner for a successful educational journey in Turkey",
+        "features": {
+            "free": {
+                "title": "100% Free Services",
+                "desc": "We provide all our consulting and university admission services completely free of charge with no hidden fees"
+            },
+            "experience": {
+                "title": "Experience & Professionalism",
+                "desc": "A team of academic advisors with extensive experience in Turkish higher education"
+            },
+            "universities": {
+                "title": "Partners with 50+ Universities",
+                "desc": "Official agents for the best private universities in Turkey, ensuring your admission"
+            },
+            "support": {
+                "title": "Post-Arrival Support",
+                "desc": "Our mission doesn't end with admission; we welcome you at the airport and help with accommodation and residency"
+            }
+        }
+    },
+    "founded_in": "Founded In",
+    "served_students": "Students Served",
+    "our_team": "Our Team",
+    "our_team_desc": "We work to provide the best consulting services thanks to this team of experts and specialists in student affairs and educational fields."
+}

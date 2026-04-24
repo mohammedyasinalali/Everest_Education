@@ -1,0 +1,127 @@
+{
+    "title": "Find Your University Major",
+    "search_title": "Search for the specialty you want",
+    "level": "Degree Level",
+    "language": "Language of Study",
+    "specialty": "University Major",
+    "search": "Search",
+    "select_level": "Select Degree",
+    "select_language": "Select Language",
+    "select_specialty": "Select Major",
+    "default_specialty_placeholder": "Choose the specialty you want",
+    "levels": {
+        "diploma_2_years": "2-Year Diploma",
+        "bachelor": "Bachelor",
+        "master_thesis": "Master's with Thesis",
+        "phd": "PhD",
+        "master_no_thesis": "Master's without Thesis",
+        "master_online": "Online Master's"
+    },
+    "languages": {
+        "english": "English",
+        "turkish": "Turkish",
+        "other": "Other Languages",
+        "russian": "Russian",
+        "french": "French",
+        "english_turkish": "English & Turkish",
+        "arabic": "Arabic",
+        "german": "German"
+    },
+    "specialties": {
+        "business_admin": "Business Administration",
+        "logistics": "Logistics Management",
+        "healthcare_man": "Healthcare Management",
+        "tourism": "Tourism Management",
+        "tourism_hotels": "Tourism & Hotel Management",
+        "health_man": "Health Management",
+        "crisis_man": "Emergency & Disaster Management",
+        "medicine": "Medicine",
+        "dentistry": "Dentistry",
+        "pharmacy": "Pharmacy",
+        "software_eng": "Software Engineering"
+    },
+    "categories": {
+        "all": "All",
+        "bachelor": "Bachelor",
+        "master": "Master",
+        "phd": "PhD",
+        "diploma": "Diploma",
+        "medical": "Medical",
+        "engineering": "Engineering"
+    },
+    "search_placeholder": "Search for your major...",
+    "showing_results": "Showing",
+    "specialties_count": "specialties",
+    "view_details": "View Details",
+    "no_results": {
+        "title": "No results found",
+        "desc": "Try changing the search keywords or filters"
+    },
+    "why_turkey": {
+        "badge": "Why Turkey?",
+        "title": "Advantages of studying in Turkey",
+        "features": {
+            "quality": {
+                "title": "World-Class Quality",
+                "desc": "Internationally recognized Turkish universities ranked among the world's best"
+            },
+            "cost": {
+                "title": "Affordable Costs",
+                "desc": "Competitive tuition fees compared to European universities with the same quality"
+            },
+            "visa": {
+                "title": "Easy Visa",
+                "desc": "Facilitated procedures for obtaining a study visa and student residence"
+            },
+            "environment": {
+                "title": "Multicultural Environment",
+                "desc": "Coexistence with students from over 100 countries in a safe environment"
+            },
+            "labs": {
+                "title": "Modern Laboratories",
+                "desc": "Latest equipment, labs, and university facilities for a distinguished experience"
+            },
+            "jobs": {
+                "title": "Wide Job Opportunities",
+                "desc": "Possibility of working after graduation and building your career in an active market"
+            }
+        }
+    },
+    "cta": {
+        "not_found": "Didn't find your major?",
+        "desc": "The Everest team helps you choose the most suitable specialty for you. Contact us now for a free consultation!",
+        "whatsapp": "Contact via WhatsApp",
+        "consultation": "Book a Free Consultation"
+    },
+    "specialty_detail": {
+        "not_found": "Specialty not found",
+        "back": "Back to specialties list",
+        "register_now": "Register Now",
+        "about": "About the Specialty",
+        "about_desc": "The {name} specialty is one of the vital and in-demand specialties in the labor market. Turkish universities provide distinguished study programs in this field that combine theory and practical application.",
+        "why_study_here": "Why study {name} in Turkey?",
+        "advantages": [
+            "Advanced infrastructure and modern laboratories simulating the real work environment.",
+            "Experienced faculty members with high academic competence.",
+            "Opportunities for practical training and partnerships with major institutions.",
+            "Internationally accredited certificates opening wide horizons for work worldwide.",
+            "Suitable study and living costs compared to European countries."
+        ],
+        "quick_info": "Quick Info",
+        "degree": "Degree Level",
+        "duration": "Duration of Study",
+        "language_study": "Language of Study",
+        "have_question": "Do you have an inquiry about this specialty?",
+        "whatsapp_contact": "Contact via WhatsApp",
+        "start_journey": "Start your {name} journey now",
+        "journey_desc": "Don't hesitate to contact us to get your university admission for free and start your academic career.",
+        "apply_now": "Apply Now",
+        "talk_consultant": "Talk to a Consultant"
+    },
+    "stats": {
+        "specialties_available": "Specialties Available",
+        "partner_universities": "Partner Universities",
+        "guaranteed_admission": "Guaranteed Admission",
+        "continuous_support": "Continuous Support"
+    }
+}

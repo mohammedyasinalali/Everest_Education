@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Blog {
+  id           Int               @id @default(autoincrement())
+  slug         String            @unique
+  coverImage   String?
+  published    Boolean           @default(false)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  translations BlogTranslation[]
+}
+
+model BlogTranslation {
+  id      Int    @id @default(autoincrement())
+  blogId  Int
+  locale  String
+  title   String
+  content String
+  blog    Blog   @relation(fields: [blogId], references: [id], onDelete: Cascade)
+
+  @@unique([blogId, locale])
+}
+
+model University {
+  id           Int                     @id @default(autoincrement())
+  slug         String                  @unique
+  logoImage    String?
+  country      String?
+  city         String?
+  website      String?
+  published    Boolean                 @default(false)
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime                @updatedAt
+  translations UniversityTranslation[]
+}
+
+model UniversityTranslation {
+  id           Int        @id @default(autoincrement())
+  universityId Int
+  locale       String
+  name         String
+  description  String
+  university   University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+
+  @@unique([universityId, locale])
+}
+
+model StudentRequest {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  gender    String?
+  country   String?
+  phone     String
+  service   String?
+  status    String   @default("pending") // pending, contacted, closed
+  language  String   @default("ar")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Specialty {
+  id          Int      @id @default(autoincrement())
+  slug        String
+  locale      String   // ar, en, fa, ru
+  name        String
+  category    String   // bachelor, master, phd, diploma
+  icon        String?
+  color       String?
+  image       String?
+  duration    String?
+  language    String?
+  description String
+  advantages  String   @default("") // Newline separated bullet points
+  tags        String   // comma separated tags, e.g. "medical,engineering"
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([slug, locale])
+}
