@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { specialtyService } from '../services/api';
 
 interface Specialty {
@@ -13,6 +14,7 @@ interface Specialty {
 }
 
 export const AdminSpecialties = () => {
+  const { t, i18n } = useTranslation();
   const [specialties, setSpecialties] = useState<Specialty[]>([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -33,7 +35,6 @@ export const AdminSpecialties = () => {
       }
     } catch (error) {
       console.error(error);
-      alert('فشل في جلب التخصصات');
     } finally {
       setLoading(false);
     }
@@ -44,12 +45,12 @@ export const AdminSpecialties = () => {
   }, [page, langFilter, categoryFilter]);
 
   const handleDelete = async (id: number) => {
-    if (!window.confirm('هل أنت متأكد من حذف هذا التخصص؟')) return;
+    if (!window.confirm(t('admin.common.confirm_delete'))) return;
     try {
       await specialtyService.delete(id);
       fetchSpecialties();
     } catch (err) {
-      alert('فشل الحذف');
+      console.error(err);
     }
   };
 
@@ -58,8 +59,17 @@ export const AdminSpecialties = () => {
       await specialtyService.update(specialty.id, { ...specialty, published: !specialty.published });
       fetchSpecialties();
     } catch (err) {
-      alert('فشل في التحديث');
+      console.error(err);
     }
+  };
+
+  const isRTL = i18n.language === 'ar';
+
+  const categoryLabels: Record<string, string> = {
+    bachelor: t('admin.specialties.degrees.bachelor'),
+    master: t('admin.specialties.degrees.master'),
+    phd: t('admin.specialties.degrees.phd'),
+    diploma: t('admin.specialties.degrees.diploma'),
   };
 
   const langLabels: Record<string, string> = {
@@ -69,33 +79,29 @@ export const AdminSpecialties = () => {
     ru: 'Русский'
   };
 
-  const categoryLabels: Record<string, string> = {
-    bachelor: 'بكالوريوس',
-    master: 'ماجستير',
-    phd: 'دكتوراه',
-    diploma: 'دبلوم',
-  };
-
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold font-['Tajawal'] text-gray-800">إدارة التخصصات</h1>
+    <div className={`space-y-6 font-['Tajawal'] ${isRTL ? 'text-right' : 'text-left'}`}>
+      
+      {/* Header Area */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-[#203252]">{t('admin.specialties.title')}</h1>
         <Link 
           to="/admin/specialties/new" 
-          className="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-bold flex items-center gap-2"
+          className="bg-[#0859BC] text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-bold flex items-center gap-2"
         >
           <i className="fas fa-plus"></i>
-          إضافة تخصص
+          {t('admin.specialties.add_specialty')}
         </Link>
       </div>
 
+      {/* Filters */}
       <div className="flex gap-4 mb-4">
         <select 
           value={langFilter} 
           onChange={(e) => { setLangFilter(e.target.value); setPage(1); }}
-          className="border rounded-lg px-4 py-2 font-['Tajawal'] outline-none focus:ring-2 focus:ring-[#FF822E]"
+          className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
         >
-          <option value="">كل اللغات</option>
+          <option value="">{t('admin.common.all_languages')}</option>
           <option value="ar">العربية</option>
           <option value="en">English</option>
           <option value="fa">فارسی</option>
@@ -105,104 +111,116 @@ export const AdminSpecialties = () => {
         <select 
           value={categoryFilter} 
           onChange={(e) => { setCategoryFilter(e.target.value); setPage(1); }}
-          className="border rounded-lg px-4 py-2 font-['Tajawal'] outline-none focus:ring-2 focus:ring-[#FF822E]"
+          className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
         >
-          <option value="">كل الدرجات</option>
-          <option value="bachelor">بكالوريوس</option>
-          <option value="master">ماجستير</option>
-          <option value="phd">دكتوراه</option>
-          <option value="diploma">دبلوم</option>
+          <option value="">{t('admin.specialties.all_degrees')}</option>
+          <option value="bachelor">{t('admin.specialties.degrees.bachelor')}</option>
+          <option value="master">{t('admin.specialties.degrees.master')}</option>
+          <option value="phd">{t('admin.specialties.degrees.phd')}</option>
+          <option value="diploma">{t('admin.specialties.degrees.diploma')}</option>
         </select>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
-        {loading ? (
-          <div className="p-10 text-center text-gray-500 font-['Tajawal']">جاري التحميل...</div>
-        ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-right font-['Tajawal']">
-              <thead className="bg-gray-50 border-b">
+      {/* Modern Data Table */}
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mt-8">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-[#f8fafc] border-b border-gray-100">
+              <tr>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.specialties.table.name')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.specialties.table.slug')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.specialties.table.degree')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.specialties.table.language')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.specialties.table.status')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.specialties.table.actions')}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {loading ? (
                 <tr>
-                  <th className="px-6 py-4 text-sm font-bold text-gray-600">اسم التخصص</th>
-                  <th className="px-6 py-4 text-sm font-bold text-gray-600">الرابط (Slug)</th>
-                  <th className="px-6 py-4 text-sm font-bold text-gray-600">الدرجة</th>
-                  <th className="px-6 py-4 text-sm font-bold text-gray-600">اللغة</th>
-                  <th className="px-6 py-4 text-sm font-bold text-gray-600">الحالة</th>
-                  <th className="px-6 py-4 text-sm font-bold text-gray-600">إجراءات</th>
+                  <td colSpan={6} className="p-8 text-center text-gray-500 font-bold">{t('admin.common.loading')}</td>
                 </tr>
-              </thead>
-              <tbody className="divide-y">
-                {specialties.length === 0 ? (
-                  <tr>
-                    <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
-                      لا يوجد تخصصات مضافة
+              ) : specialties.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="p-8 text-center text-gray-500 font-bold">{t('admin.common.no_data')}</td>
+                </tr>
+              ) : (
+                specialties.map((item) => (
+                  <tr key={item.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                         <div className="w-10 h-10 rounded-full bg-blue-50 overflow-hidden flex items-center justify-center text-blue-500">
+                           <i className="fas fa-graduation-cap"></i>
+                         </div>
+                         <span className="font-bold text-[#203252]">{item.name}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-gray-500 font-medium font-sans">
+                      <span className="bg-gray-100 px-2 py-1 rounded text-xs">{item.slug}</span>
+                    </td>
+                    <td className="px-6 py-4 text-gray-600 font-bold">
+                      {categoryLabels[item.category] || item.category}
+                    </td>
+                    <td className="px-6 py-4">
+                      <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-bold">
+                        {langLabels[item.locale] || item.locale}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <button 
+                        onClick={() => togglePublish(item)}
+                        className={`text-xs px-3 py-1 rounded-md font-bold transition-colors ${
+                          item.published 
+                            ? 'bg-[#f0fdf4] text-[#22c55e] hover:bg-green-100' 
+                            : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                        }`}
+                      >
+                        {item.published ? t('admin.common.published') : t('admin.common.draft')}
+                      </button>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                        <Link 
+                          to={`/admin/specialties/edit/${item.id}`}
+                          className="text-gray-400 hover:text-green-500 transition-colors"
+                          title={t('admin.common.edit')}
+                        >
+                          <i className="fas fa-pencil-alt"></i>
+                        </Link>
+                        <button 
+                          onClick={() => handleDelete(item.id)}
+                          className="text-gray-400 hover:text-red-500 transition-colors"
+                          title={t('admin.common.delete')}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+                      </div>
                     </td>
                   </tr>
-                ) : (
-                  specialties.map((item) => (
-                    <tr key={item.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm font-semibold">{item.name}</td>
-                      <td className="px-6 py-4 text-sm text-gray-500" dir="ltr">{item.slug}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
-                        {categoryLabels[item.category] || item.category}
-                      </td>
-                      <td className="px-6 py-4 text-sm font-medium text-gray-600">
-                        {langLabels[item.locale] || item.locale}
-                      </td>
-                      <td className="px-6 py-4">
-                        <button 
-                          onClick={() => togglePublish(item)}
-                          className={`text-xs px-3 py-1 rounded-full font-bold transition-colors ${
-                            item.published 
-                              ? 'bg-green-100 text-green-800 hover:bg-green-200' 
-                              : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-                          }`}
-                        >
-                          {item.published ? 'منشور' : 'مسودة'}
-                        </button>
-                      </td>
-                      <td className="px-6 py-4">
-                        <div className="flex gap-2">
-                          <Link 
-                            to={`/admin/specialties/edit/${item.id}`}
-                            className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
-                          >
-                            <i className="fas fa-edit"></i>
-                          </Link>
-                          <button 
-                            onClick={() => handleDelete(item.id)}
-                            className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                          >
-                            <i className="fas fa-trash"></i>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        )}
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
         
         {/* Pagination */}
         {total > 15 && (
-          <div className="px-6 py-4 border-t flex justify-between items-center bg-gray-50">
-            <span className="text-sm text-gray-600 font-['Tajawal']">إجمالي: {total}</span>
+          <div className="px-6 py-4 border-t border-gray-100 flex justify-between items-center bg-[#f8fafc]">
+            <span className="text-sm text-gray-600 font-bold">إجمالي: {total}</span>
             <div className="flex gap-2">
               <button 
                 onClick={() => setPage(p => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 disabled:opacity-50"
+                className="px-4 py-2 bg-white border border-gray-200 rounded-lg font-bold hover:bg-gray-50 disabled:opacity-50"
               >
-                السابق
+                {isRTL ? 'السابق' : 'Prev'}
               </button>
               <button 
                 onClick={() => setPage(p => p + 1)}
                 disabled={page * 15 >= total}
-                className="px-4 py-2 bg-white border rounded-lg hover:bg-gray-50 disabled:opacity-50"
+                className="px-4 py-2 bg-white border border-gray-200 rounded-lg font-bold hover:bg-gray-50 disabled:opacity-50"
               >
-                التالي
+                {isRTL ? 'التالي' : 'Next'}
               </button>
             </div>
           </div>

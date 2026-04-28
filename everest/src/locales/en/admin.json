@@ -30,8 +30,78 @@
     },
     "status": {
       "pending": "Pending",
-      "contacted": "Accepted",
+      "contacted": "Contacted",
       "closed": "Closed"
+    }
+  },
+  "common": {
+    "add_new": "Add New",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm_delete": "Are you sure you want to delete this? This action cannot be undone.",
+    "loading": "Loading...",
+    "no_data": "No data available yet",
+    "published": "Published",
+    "draft": "Draft",
+    "all_languages": "All Languages"
+  },
+  "specialties": {
+    "title": "Specialties Management",
+    "add_specialty": "Add Specialty",
+    "all_degrees": "All Degrees",
+    "table": {
+      "name": "Specialty Name",
+      "slug": "Slug",
+      "degree": "Degree",
+      "language": "Language",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "degrees": {
+      "bachelor": "Bachelor",
+      "master": "Master",
+      "phd": "PhD",
+      "diploma": "Diploma"
+    }
+  },
+  "universities": {
+    "title": "Universities Management",
+    "add_university": "Add University",
+    "total_universities": "total universities",
+    "table": {
+      "university": "University",
+      "location": "Location",
+      "languages": "Available Languages",
+      "status": "Status",
+      "actions": "Actions"
+    }
+  },
+  "blogs": {
+    "title": "Blogs Management",
+    "add_blog": "New Article",
+    "total_blogs": "total articles",
+    "table": {
+      "article": "Article",
+      "author": "Author",
+      "date": "Publish Date",
+      "status": "Status",
+      "actions": "Actions"
+    }
+  },
+  "requests_page": {
+    "title": "Consultation Requests",
+    "all_statuses": "All Statuses",
+    "table": {
+      "name": "Name",
+      "phone": "Phone Number",
+      "country": "Country",
+      "service": "Requested Service",
+      "date": "Request Date",
+      "language": "Language",
+      "status": "Status",
+      "actions": "Actions"
     }
   }
 }

@@ -30,8 +30,78 @@
     },
     "status": {
       "pending": "معلق",
-      "contacted": "مقبول",
+      "contacted": "تم التواصل",
       "closed": "مغلق"
+    }
+  },
+  "common": {
+    "add_new": "إضافة جديد",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "confirm_delete": "هل أنت متأكد من الحذف؟ لا يمكن التراجع عن هذا الإجراء.",
+    "loading": "جاري التحميل...",
+    "no_data": "لا يوجد بيانات حتى الآن",
+    "published": "منشور",
+    "draft": "مسودة",
+    "all_languages": "كل اللغات"
+  },
+  "specialties": {
+    "title": "إدارة التخصصات",
+    "add_specialty": "إضافة تخصص",
+    "all_degrees": "كل الدرجات",
+    "table": {
+      "name": "اسم التخصص",
+      "slug": "الرابط (Slug)",
+      "degree": "الدرجة",
+      "language": "اللغة",
+      "status": "الحالة",
+      "actions": "إجراءات"
+    },
+    "degrees": {
+      "bachelor": "بكالوريوس",
+      "master": "ماجستير",
+      "phd": "دكتوراه",
+      "diploma": "دبلوم"
+    }
+  },
+  "universities": {
+    "title": "إدارة الجامعات",
+    "add_university": "إضافة جامعة",
+    "total_universities": "جامعة إجمالاً",
+    "table": {
+      "university": "الجامعة",
+      "location": "الموقع",
+      "languages": "اللغات المتوفرة",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    }
+  },
+  "blogs": {
+    "title": "إدارة المدونات",
+    "add_blog": "مقال جديد",
+    "total_blogs": "مقال إجمالاً",
+    "table": {
+      "article": "المقال",
+      "author": "الكاتب",
+      "date": "تاريخ النشر",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    }
+  },
+  "requests_page": {
+    "title": "طلبات الاستشارة",
+    "all_statuses": "كل الحالات",
+    "table": {
+      "name": "الاسم",
+      "phone": "رقم الهاتف",
+      "country": "الدولة",
+      "service": "الخدمة المطلوبة",
+      "date": "تاريخ الطلب",
+      "language": "اللغة",
+      "status": "الحالة",
+      "actions": "إجراءات"
     }
   }
 }
