@@ -39,7 +39,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Mobile Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 flex items-center justify-between px-4 bg-[#203252] text-white z-50">
         <div className="flex items-center gap-2">
-           <img src="/logo.png" alt="Everest Logo" className="h-8 w-auto bg-white rounded-full p-1" />
+           <img src="/images/logo.png" alt="Everest Logo" className="h-8 w-auto bg-white rounded-full p-1" />
            <span className="text-xl font-bold tracking-tight">{t('admin.sidebar.title')}</span>
         </div>
         <button
@@ -59,7 +59,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="flex flex-col h-full text-white">
           <div className="p-6">
             <div className="flex flex-col items-center gap-3 mb-8 pb-6 border-b border-[#2a4066]">
-              <img src="/logo.png" alt="Everest Logo" className="h-20 w-20 bg-white rounded-full p-2 shadow-lg" />
+              <img src="/images/logo.png" alt="Everest Logo" className="h-20 w-20 bg-white rounded-full p-2 shadow-lg" />
             </div>
             <nav className="space-y-2">
               {navItems.map((item) => {

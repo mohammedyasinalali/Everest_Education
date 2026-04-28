@@ -21,12 +21,13 @@ export const AdminRequests = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [statusFilter, setStatusFilter] = useState('');
+  const [langFilter, setLangFilter] = useState('');
   const [loading, setLoading] = useState(false);
 
   const fetchRequests = async () => {
     setLoading(true);
     try {
-      const data = await requestService.getAll(page, 15, statusFilter, '');
+      const data = await requestService.getAll(page, 15, statusFilter, langFilter);
       if (data.requests) {
         setRequests(data.requests);
         setTotal(data.total || 0);
@@ -43,7 +44,7 @@ export const AdminRequests = () => {
 
   useEffect(() => {
     fetchRequests();
-  }, [page, statusFilter]);
+  }, [page, statusFilter, langFilter]);
 
   const handleStatusChange = async (id: number, newStatus: string) => {
     try {
@@ -91,9 +92,9 @@ export const AdminRequests = () => {
         onChange={(e) => handleStatusChange(req.id, e.target.value)}
         className={`${SelectClass} ${colorClass}`}
       >
-        <option value="pending">{t('admin.status.pending')}</option>
-        <option value="contacted">{t('admin.status.contacted')}</option>
-        <option value="closed">{t('admin.status.closed')}</option>
+        <option value="pending">{t('admin.dashboard.status.pending')}</option>
+        <option value="contacted">{t('admin.dashboard.status.contacted')}</option>
+        <option value="closed">{t('admin.dashboard.status.closed')}</option>
       </select>
     );
   };
@@ -111,14 +112,25 @@ export const AdminRequests = () => {
         <h1 className="text-3xl font-bold text-[#203252]">{t('admin.requests_page.title')}</h1>
         <div className="flex gap-4">
           <select 
+            value={langFilter} 
+            onChange={(e) => { setLangFilter(e.target.value); setPage(1); }}
+            className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
+          >
+            <option value="">{t('admin.common.all_languages')}</option>
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="fa">فارسی</option>
+            <option value="ru">Русский</option>
+          </select>
+          <select 
             value={statusFilter} 
             onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
             className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
           >
             <option value="">{t('admin.requests_page.all_statuses')}</option>
-            <option value="pending">{t('admin.status.pending')}</option>
-            <option value="contacted">{t('admin.status.contacted')}</option>
-            <option value="closed">{t('admin.status.closed')}</option>
+            <option value="pending">{t('admin.dashboard.status.pending')}</option>
+            <option value="contacted">{t('admin.dashboard.status.contacted')}</option>
+            <option value="closed">{t('admin.dashboard.status.closed')}</option>
           </select>
         </div>
       </div>

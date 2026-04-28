@@ -18,6 +18,7 @@ export default function AdminBlogs() {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<number | null>(null);
+  const [langFilter, setLangFilter] = useState('');
 
   const fetchBlogs = async () => {
     setLoading(true);
@@ -56,6 +57,10 @@ export default function AdminBlogs() {
 
   const isRTL = i18n.language === 'ar';
 
+  const filteredBlogs = langFilter 
+    ? blogs.filter(b => b.translations.some(t => t.locale === langFilter))
+    : blogs;
+
   return (
     <div className={`space-y-6 font-['Tajawal'] ${isRTL ? 'text-right' : 'text-left'}`}>
       <div className="flex items-center justify-between">
@@ -63,12 +68,25 @@ export default function AdminBlogs() {
           <h1 className="text-3xl font-bold text-[#203252]">{t('admin.blogs.title')}</h1>
           <p className="text-gray-500 text-sm mt-1 font-bold">{total} {t('admin.blogs.total_blogs')}</p>
         </div>
-        <Link
-          to="/admin/blogs/new"
-          className="bg-[#0859BC] text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-bold flex items-center gap-2"
-        >
-          <i className="fas fa-plus"></i> {t('admin.blogs.add_blog')}
-        </Link>
+        <div className="flex gap-4">
+          <select 
+            value={langFilter} 
+            onChange={(e) => setLangFilter(e.target.value)}
+            className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
+          >
+            <option value="">{t('admin.common.all_languages')}</option>
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="fa">فارسی</option>
+            <option value="ru">Русский</option>
+          </select>
+          <Link
+            to="/admin/blogs/new"
+            className="bg-[#0859BC] text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-bold flex items-center gap-2"
+          >
+            <i className="fas fa-plus"></i> {t('admin.blogs.add_blog')}
+          </Link>
+        </div>
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -99,7 +117,7 @@ export default function AdminBlogs() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {blogs.map((blog) => (
+                {filteredBlogs.map((blog) => (
                   <tr key={blog.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
