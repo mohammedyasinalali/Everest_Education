@@ -1,0 +1,37 @@
+{
+  "sidebar": {
+    "title": "إيفرست أدمن",
+    "dashboard": "الرئيسية",
+    "universities": "الجامعات",
+    "specialties": "التخصصات",
+    "blogs": "المدونات",
+    "requests": "طلبات الطلاب",
+    "logout": "تسجيل الخروج"
+  },
+  "header": {
+    "search": "ابحث...",
+    "admin": "مسؤول النظام",
+    "language": "اللغة"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "total_students": "إجمالي الطلاب",
+    "universities": "الجامعات",
+    "active_specialties": "التخصصات النشطة",
+    "pending_requests": "الطلبات المعلقة",
+    "recent_requests": "أحدث طلبات الطلاب",
+    "table": {
+      "student_name": "اسم الطالب",
+      "university": "الجامعة",
+      "specialty": "التخصص",
+      "date": "التاريخ",
+      "status": "الحالة",
+      "actions": "إجراءات"
+    },
+    "status": {
+      "pending": "معلق",
+      "contacted": "مقبول",
+      "closed": "مغلق"
+    }
+  }
+}

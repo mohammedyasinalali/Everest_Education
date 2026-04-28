@@ -6,6 +6,7 @@ import homeTranslations from './home.json';
 import aboutTranslations from './about.json';
 import servicesTranslations from './services.json';
 import searchTranslations from './search.json';
+import adminTranslations from './admin.json';
 
 // Export in the EXACT same structure as the old translation.json
 export default {
@@ -67,5 +68,6 @@ export default {
             computer_programming: "Computer Programming"
         },
         view_all_specialties: "View All Specialties"
-    }
+    },
+    admin: adminTranslations
 };

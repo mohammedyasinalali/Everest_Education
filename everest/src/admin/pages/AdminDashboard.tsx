@@ -1,129 +1,189 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { blogService, universityService } from '../services/api';
+import { useTranslation } from 'react-i18next';
+import { blogService, universityService, specialtyService, requestService } from '../services/api';
 
 interface Stats {
   totalBlogs: number;
-  publishedBlogs: number;
   totalUniversities: number;
-  publishedUniversities: number;
+  totalSpecialties: number;
+  totalRequests: number;
 }
 
 export default function AdminDashboard() {
+  const { t, i18n } = useTranslation();
   const [stats, setStats] = useState<Stats | null>(null);
+  const [requests, setRequests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const user = JSON.parse(localStorage.getItem('adminUser') || '{}');
 
   useEffect(() => {
-    const fetchStats = async () => {
+    const fetchData = async () => {
       try {
-        const [blogsData, univData] = await Promise.all([
-          blogService.getAll(1, 1000),
-          universityService.getAll(1, 1000),
+        const [blogsData, univData, specData, reqData] = await Promise.all([
+          blogService.getAll(1, 1),
+          universityService.getAll(1, 1),
+          specialtyService.getAll(1, 1),
+          requestService.getAll(1, 5) // Fetch recent 5 requests
         ]);
+
         setStats({
           totalBlogs: blogsData.total || 0,
-          publishedBlogs: (blogsData.blogs || []).filter((b: any) => b.published).length,
           totalUniversities: univData.total || 0,
-          publishedUniversities: (univData.universities || []).filter((u: any) => u.published).length,
+          totalSpecialties: specData.total || 0,
+          totalRequests: reqData.total || 0,
         });
-      } catch {
-        setStats({ totalBlogs: 0, publishedBlogs: 0, totalUniversities: 0, publishedUniversities: 0 });
+
+        setRequests(reqData.requests || []);
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+        setStats({ totalBlogs: 0, totalUniversities: 0, totalSpecialties: 0, totalRequests: 0 });
       } finally {
         setLoading(false);
       }
     };
-    fetchStats();
+    fetchData();
   }, []);
+
+  const isRTL = i18n.language === 'ar';
 
   const cards = [
     {
-      label: 'إجمالي المدونات',
-      value: stats?.totalBlogs ?? 0,
-      sub: `${stats?.publishedBlogs ?? 0} منشور`,
-      icon: '📝',
-      color: 'from-blue-600 to-blue-700',
-      link: '/admin/blogs',
+      label: t('admin.dashboard.total_students'),
+      value: stats?.totalRequests ?? 0,
+      icon: '👥',
+      bgClass: 'bg-[#eef2ff]', // Light Blue
+      textClass: 'text-[#3b82f6]',
     },
     {
-      label: 'الجامعات',
+      label: t('admin.dashboard.universities'),
       value: stats?.totalUniversities ?? 0,
-      sub: `${stats?.publishedUniversities ?? 0} جامعة منشورة`,
       icon: '🏛️',
-      color: 'from-indigo-600 to-indigo-700',
-      link: '/admin/universities',
+      bgClass: 'bg-[#fff7ed]', // Light Orange
+      textClass: 'text-[#f97316]',
+    },
+    {
+      label: t('admin.dashboard.active_specialties'),
+      value: stats?.totalSpecialties ?? 0,
+      icon: '📗',
+      bgClass: 'bg-[#f0fdf4]', // Light Green
+      textClass: 'text-[#22c55e]',
+    },
+    {
+      label: t('admin.dashboard.pending_requests'),
+      value: requests.filter(r => r.status === 'pending').length ?? 0,
+      icon: '🕒',
+      bgClass: 'bg-[#fef2f2]', // Light Red/Pink
+      textClass: 'text-[#ef4444]',
     },
   ];
 
+  const getStatusBadge = (status: string) => {
+    switch(status) {
+      case 'pending':
+        return <span className="bg-[#fff7ed] text-[#f97316] px-3 py-1 rounded-md text-xs font-bold">{t('admin.dashboard.status.pending')}</span>;
+      case 'contacted':
+        return <span className="bg-[#f0fdf4] text-[#22c55e] px-3 py-1 rounded-md text-xs font-bold">{t('admin.dashboard.status.contacted')}</span>;
+      case 'closed':
+        return <span className="bg-[#fef2f2] text-[#ef4444] px-3 py-1 rounded-md text-xs font-bold">{t('admin.dashboard.status.closed')}</span>;
+      default:
+        return <span className="bg-gray-100 text-gray-600 px-3 py-1 rounded-md text-xs font-bold">{status}</span>;
+    }
+  };
+
   return (
-    <div className="space-y-8" dir="rtl">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-white">
-          أهلاً بك مجدداً 👋
-        </h1>
-        <p className="text-gray-400 mt-1">
-          تم تسجيل الدخول كـ <span className="text-blue-400" dir="ltr">{user.email}</span>
-        </p>
+    <div className={`space-y-8 font-['Tajawal'] ${isRTL ? 'text-right' : 'text-left'}`}>
+      
+      {/* Page Title */}
+      <div className="flex justify-between items-center mb-6">
+         <h1 className="text-3xl font-bold text-[#203252]">
+           {t('admin.dashboard.title')}
+         </h1>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {loading
-          ? Array.from({ length: 2 }).map((_, i) => (
-              <div key={i} className="bg-gray-900 rounded-2xl border border-gray-800 p-6 animate-pulse">
-                <div className="h-4 bg-gray-800 rounded w-1/3 mb-3"></div>
-                <div className="h-10 bg-gray-800 rounded w-1/4"></div>
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="bg-white rounded-2xl p-6 shadow-sm animate-pulse border border-gray-100">
+                <div className="h-4 bg-gray-200 rounded w-1/3 mb-4"></div>
+                <div className="h-10 bg-gray-200 rounded w-1/4"></div>
               </div>
             ))
-          : cards.map(({ label, value, sub, icon, color, link }) => (
-              <Link
-                key={label}
-                to={link}
-                className="group bg-gray-900 rounded-2xl border border-gray-800 p-6 hover:border-gray-700 transition-all duration-200 hover:-translate-y-1"
+          : cards.map((card, idx) => (
+              <div
+                key={idx}
+                className={`${card.bgClass} rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden`}
               >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <p className="text-sm text-gray-400 font-medium">{label}</p>
-                    <p className="text-4xl font-bold text-white mt-2">{value}</p>
-                    <p className="text-xs text-gray-500 mt-1">{sub}</p>
-                  </div>
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center text-xl shadow-lg`}>
-                    {icon}
-                  </div>
+                <div className={`absolute top-6 ${isRTL ? 'left-6' : 'right-6'} text-2xl opacity-80`}>
+                   {card.icon}
                 </div>
-              </Link>
+                <p className={`text-sm font-bold mb-2 ${card.textClass}`}>{card.label}</p>
+                <p className="text-4xl font-black text-[#203252]">{card.value}</p>
+              </div>
             ))}
       </div>
 
-      {/* Quick Actions */}
-      <div>
-        <h2 className="text-lg font-semibold text-white mb-4">إجراءات سريعة</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link
-            to="/admin/blogs/new"
-            className="flex items-center gap-4 p-5 bg-gray-900 border border-gray-800 rounded-xl hover:border-blue-600/50 hover:bg-blue-600/5 transition-all duration-200 group"
-          >
-            <div className="w-10 h-10 rounded-lg bg-blue-600/20 flex items-center justify-center text-blue-400 group-hover:bg-blue-600/30 transition-colors">
-              ✏️
-            </div>
-            <div>
-              <p className="font-medium text-white text-sm">مقال جديد</p>
-              <p className="text-xs text-gray-500">إنشاء مقال بجميع اللغات المدعومة</p>
-            </div>
-          </Link>
-          <Link
-            to="/admin/universities/new"
-            className="flex items-center gap-4 p-5 bg-gray-900 border border-gray-800 rounded-xl hover:border-indigo-600/50 hover:bg-indigo-600/5 transition-all duration-200 group"
-          >
-            <div className="w-10 h-10 rounded-lg bg-indigo-600/20 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600/30 transition-colors">
-              🏛️
-            </div>
-            <div>
-              <p className="font-medium text-white text-sm">إضافة جامعة</p>
-              <p className="text-xs text-gray-500">إضافة ملف جامعة جديد</p>
-            </div>
-          </Link>
+      {/* Recent Requests Table */}
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mt-8">
+        <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-[#f8fafc]">
+           <h2 className="text-xl font-bold text-[#203252]">{t('admin.dashboard.recent_requests')}</h2>
+           <Link to="/admin/requests" className="bg-[#0859BC] text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors flex items-center gap-2">
+              <span className="text-lg">👥</span> {t('admin.sidebar.requests')}
+           </Link>
+        </div>
+        
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-white">
+              <tr>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.dashboard.table.student_name')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.dashboard.table.university')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.dashboard.table.specialty')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.dashboard.table.date')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.dashboard.table.status')}</th>
+                <th className={`px-6 py-4 font-bold text-[#203252] ${isRTL ? 'text-right' : 'text-left'}`}>{t('admin.dashboard.table.actions')}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
+              {loading ? (
+                <tr>
+                  <td colSpan={6} className="p-8 text-center text-gray-500">جاري التحميل...</td>
+                </tr>
+              ) : requests.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="p-8 text-center text-gray-500">لا يوجد طلبات حديثة</td>
+                </tr>
+              ) : (
+                requests.map((req, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                         <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                           <img src={`https://ui-avatars.com/api/?name=${req.firstName}+${req.lastName}&background=random`} alt="User" />
+                         </div>
+                         <span className="font-bold text-[#203252]">{req.firstName} {req.lastName}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-gray-600 font-medium">{req.university || '-'}</td>
+                    <td className="px-6 py-4 text-gray-600 font-medium">{req.service || '-'}</td>
+                    <td className="px-6 py-4 text-gray-500 text-sm">
+                       {new Date(req.createdAt).toLocaleDateString(isRTL ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </td>
+                    <td className="px-6 py-4">
+                       {getStatusBadge(req.status)}
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3">
+                         <button className="text-gray-400 hover:text-[#0859BC] transition-colors"><i className="fas fa-eye"></i></button>
+                         <button className="text-gray-400 hover:text-green-500 transition-colors"><i className="fas fa-pencil-alt"></i></button>
+                         <button className="text-gray-400 hover:text-red-500 transition-colors"><i className="fas fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

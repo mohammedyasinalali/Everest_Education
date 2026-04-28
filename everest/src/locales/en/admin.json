@@ -1,0 +1,37 @@
+{
+  "sidebar": {
+    "title": "Everest Admin",
+    "dashboard": "Dashboard",
+    "universities": "Universities",
+    "specialties": "Specialties",
+    "blogs": "Blogs",
+    "requests": "Student Requests",
+    "logout": "Logout"
+  },
+  "header": {
+    "search": "Search...",
+    "admin": "System Admin",
+    "language": "Language"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "total_students": "Total Students",
+    "universities": "Universities",
+    "active_specialties": "Active Specialties",
+    "pending_requests": "Pending Requests",
+    "recent_requests": "Recent Student Requests",
+    "table": {
+      "student_name": "Student Name",
+      "university": "University",
+      "specialty": "Specialty",
+      "date": "Date",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "pending": "Pending",
+      "contacted": "Accepted",
+      "closed": "Closed"
+    }
+  }
+}
