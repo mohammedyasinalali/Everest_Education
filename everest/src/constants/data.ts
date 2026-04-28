@@ -176,7 +176,6 @@ export const socialLinks: SocialLink[] = [
     { icon: 'fab fa-instagram', href: '#', label: 'Instagram' },
     { icon: 'fab fa-whatsapp', href: 'https://wa.me/905451365495', label: 'WhatsApp' },
 ];
-<<<<<<< HEAD
 
 export interface TeamMember {
     name: string;
@@ -188,16 +187,16 @@ export interface TeamMember {
 
 export const leadershipData: TeamMember[] = [
     {
-        name: 'ÚãÑ ÇáÍÓíäí',
+        name: 'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Omar Al-Husseini',
-        position: 'ÇáãÏíÑ ÇáÚÇã',
+        position: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'General Manager',
         image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'íÇÓÑ ÇáãäÕæÑ',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Yasser Al-Mansour',
-        position: 'ÇáãÏíÑ ÇáÊäÝíÐí',
+        position: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Executive Director',
         image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop'
     }
@@ -205,58 +204,58 @@ export const leadershipData: TeamMember[] = [
 
 export const teamData: TeamMember[] = [
     {
-        name: 'ØÇÑÞ ÇáÔãÑí',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Tariq Al-Shamri',
-        position: 'ãÏíÑ ÔÄæä ÇáØáÇÈ',
+        position: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Student Affairs Manager',
         image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'ÝíÕá ÇáÑÇÔÏ',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Faisal Al-Rashed',
-        position: 'ãÏíÑ ÇáãæÇÑÏ ÇáÈÔÑíÉ',
+        position: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'HR Manager',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'ÓÇãÑ ÇáÎØíÈ',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Samer Al-Khatib',
-        position: 'ãÏíÑ ÇáÊÓæíÞ',
+        position: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Marketing Manager',
         image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'äÇÏÑ ÇáÚÊíÈí',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Nader Al-Otaibi',
-        position: 'ãÏíÑ ÇáÚáÇÞÇÊ ÇáÚÇãÉ',
+        position: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Public Relations Manager',
         image: 'https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'ÒíÇÏ ÇáßÑÏí',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Ziad Al-Kurdi',
-        position: 'ãÏíÑ ÇáãÔÇÑíÚ',
+        position: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Project Manager',
         image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'ÈÇÓá ÇáÌÇÈÑí',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Basel Al-Jabri',
-        position: 'ãÓÊÔÇÑ ÊÞäí',
+        position: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Technical Consultant',
         image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'åíËã ÇáÓÇáã',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Haitham Al-Salem',
-        position: 'ãÓÊÔÇÑ ØáÇÈí',
+        position: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Student Consultant',
         image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=600&auto=format&fit=crop'
     },
     {
-        name: 'ÑÇãí ÇáÈíØÇÑ',
+        name: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         nameEn: 'Rami Al-Baytar',
-        position: 'ãÓÊÔÇÑ ÃßÇÏíãí',
+        position: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½',
         positionEn: 'Academic Consultant',
         image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?q=80&w=600&auto=format&fit=crop'
     }
@@ -275,5 +274,3 @@ export const reasonsData: Reason[] = [
     { icon: 'fas fa-plane-arrival', key: 'support', color: 'from-secondary to-secondary' }
 ];
 
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147

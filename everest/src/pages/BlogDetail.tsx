@@ -1,40 +1,26 @@
-<<<<<<< HEAD
 import { useEffect, useState } from 'react';
-=======
-import { useEffect } from 'react';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container } from '../components/ui';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
-<<<<<<< HEAD
 import { blogCategories } from '../constants/blogs';
 import type { BlogPost } from '../constants/blogs';
 import { publicApi } from '../services/publicApi';
-=======
-import { getPostBySlug, getRelatedPosts, blogCategories } from '../constants/blogs';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
 const BlogDetail = () => {
     const { slug } = useParams();
     const { t, i18n } = useTranslation();
     const currentLang = i18n.language;
 
-<<<<<<< HEAD
     const [post, setPost] = useState<BlogPost | null>(null);
     const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
 
-=======
-    const post = getPostBySlug(slug || '');
-    const relatedPosts = post ? getRelatedPosts(post) : [];
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
     const categories = blogCategories[currentLang] || blogCategories['ar'];
 
     useEffect(() => {
         window.scrollTo(0, 0);
-<<<<<<< HEAD
         const fetchData = async () => {
             setLoading(true);
             const data = await publicApi.getBlogBySlug(slug || '', currentLang);
@@ -50,9 +36,6 @@ const BlogDetail = () => {
         };
         fetchData();
     }, [slug, currentLang]);
-=======
-    }, [slug]);
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
     const formatDate = (dateStr: string) => {
         const date = new Date(dateStr);
@@ -63,7 +46,6 @@ const BlogDetail = () => {
         });
     };
 
-<<<<<<< HEAD
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -72,8 +54,6 @@ const BlogDetail = () => {
         );
     }
 
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
     if (!post) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -256,11 +236,7 @@ const BlogDetail = () => {
                                     {currentLang === 'ar' ? 'تواصل معنا الآن واحصل على استشارة مجانية' : 'Contact us now for a free consultation'}
                                 </p>
                                 <a
-<<<<<<< HEAD
                                     href="https://wa.me/905451365495"
-=======
-                                    href="https://wa.me/905555555555"
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                                     target="_blank"
                                     rel="noreferrer"
                                     className="w-full bg-[#FF822E] hover:bg-[#e0701f] text-white py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl font-['Tajawal'] flex items-center justify-center gap-2"

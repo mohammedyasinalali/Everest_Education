@@ -3,7 +3,6 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
-<<<<<<< HEAD
     "lib": [
       "ES2022",
       "DOM",
@@ -16,13 +15,6 @@
       "@testing-library/jest-dom"
     ],
     "skipLibCheck": true,
-=======
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "types": ["vite/client"],
-    "skipLibCheck": true,
-
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -30,10 +22,6 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-<<<<<<< HEAD
-=======
-
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -42,12 +30,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-<<<<<<< HEAD
   "include": [
     "src"
   ]
 }
-=======
-  "include": ["src"]
-}
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147

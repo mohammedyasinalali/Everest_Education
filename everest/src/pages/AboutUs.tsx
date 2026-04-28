@@ -3,10 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Container } from '../components/ui';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
-<<<<<<< HEAD
 import { leadershipData, teamData, reasonsData } from '../constants/data';
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
 const AboutUs = () => {
     const { t, i18n } = useTranslation();
@@ -152,32 +149,7 @@ const AboutUs = () => {
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-<<<<<<< HEAD
                             {reasonsData.map((item, index) => (
-=======
-                            {[
-                                {
-                                    icon: 'fas fa-hand-holding-usd',
-                                    key: 'free',
-                                    color: 'from-primary to-navy'
-                                },
-                                {
-                                    icon: 'fas fa-user-tie',
-                                    key: 'experience',
-                                    color: 'from-secondary to-secondary'
-                                },
-                                {
-                                    icon: 'fas fa-university',
-                                    key: 'universities',
-                                    color: 'from-primary to-navy'
-                                },
-                                {
-                                    icon: 'fas fa-plane-arrival',
-                                    key: 'support',
-                                    color: 'from-secondary to-secondary'
-                                }
-                            ].map((item, index) => (
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                                 <div key={index} className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-gray-100">
                                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-6 text-white text-2xl group-hover:scale-110 transition-transform duration-300`}>
                                         <i className={item.icon}></i>
@@ -211,26 +183,7 @@ const AboutUs = () => {
 
                     {/* Leadership Row */}
                     <div className="grid md:grid-cols-2 gap-12 max-w-3xl mx-auto mb-16">
-<<<<<<< HEAD
                         {leadershipData.map((member, index) => (
-=======
-                        {[
-                            {
-                                name: 'عمر الحسيني',
-                                nameEn: 'Omar Al-Husseini',
-                                position: 'المدير العام',
-                                positionEn: 'General Manager',
-                                image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'ياسر المنصور',
-                                nameEn: 'Yasser Al-Mansour',
-                                position: 'المدير التنفيذي',
-                                positionEn: 'Executive Director',
-                                image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600&auto=format&fit=crop'
-                            }
-                        ].map((member, index) => (
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                             <div key={index} className="flex flex-col items-center group">
                                 {/* Circular Image Container */}
                                 <div className="relative mb-6">
@@ -259,68 +212,7 @@ const AboutUs = () => {
 
                     {/* Team Grid */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-<<<<<<< HEAD
                         {teamData.map((member, index) => (
-=======
-                        {[
-                            {
-                                name: 'طارق الشمري',
-                                nameEn: 'Tariq Al-Shamri',
-                                position: 'مدير شؤون الطلاب',
-                                positionEn: 'Student Affairs Manager',
-                                image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'فيصل الراشد',
-                                nameEn: 'Faisal Al-Rashed',
-                                position: 'مدير الموارد البشرية',
-                                positionEn: 'HR Manager',
-                                image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'سامر الخطيب',
-                                nameEn: 'Samer Al-Khatib',
-                                position: 'مدير التسويق',
-                                positionEn: 'Marketing Manager',
-                                image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'نادر العتيبي',
-                                nameEn: 'Nader Al-Otaibi',
-                                position: 'مدير العلاقات العامة',
-                                positionEn: 'Public Relations Manager',
-                                image: 'https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'زياد الكردي',
-                                nameEn: 'Ziad Al-Kurdi',
-                                position: 'مدير المشاريع',
-                                positionEn: 'Project Manager',
-                                image: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'باسل الجابري',
-                                nameEn: 'Basel Al-Jabri',
-                                position: 'مستشار تقني',
-                                positionEn: 'Technical Consultant',
-                                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'هيثم السالم',
-                                nameEn: 'Haitham Al-Salem',
-                                position: 'مستشار طلابي',
-                                positionEn: 'Student Consultant',
-                                image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=600&auto=format&fit=crop'
-                            },
-                            {
-                                name: 'رامي البيطار',
-                                nameEn: 'Rami Al-Baytar',
-                                position: 'مستشار أكاديمي',
-                                positionEn: 'Academic Consultant',
-                                image: 'https://images.unsplash.com/photo-1463453091185-61582044d556?q=80&w=600&auto=format&fit=crop'
-                            }
-                        ].map((member, index) => (
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                             <div key={index} className="flex flex-col items-center group">
                                 {/* Circular Image Container */}
                                 <div className="relative mb-4">

@@ -4,14 +4,9 @@ import { Link } from 'react-router-dom';
 import { Container } from '../components/ui';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
-<<<<<<< HEAD
 import { blogCategories } from '../constants/blogs';
 import type { BlogPost } from '../constants/blogs';
 import { publicApi } from '../services/publicApi';
-=======
-import { getPostsByLang, blogCategories } from '../constants/blogs';
-import type { BlogPost } from '../constants/blogs';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
 const POSTS_PER_PAGE = 6;
 
@@ -22,7 +17,6 @@ const Blog = () => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const currentLang = i18n.language;
-<<<<<<< HEAD
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -36,9 +30,6 @@ const Blog = () => {
         fetchPosts();
     }, [currentLang]);
 
-=======
-    const posts = getPostsByLang(currentLang);
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
     const categories = blogCategories[currentLang] || blogCategories['ar'];
 
     const filteredPosts = posts.filter(post => {
@@ -157,14 +148,11 @@ const Blog = () => {
                     </div>
 
                     {/* Blog Grid */}
-<<<<<<< HEAD
                     {loading ? (
                         <div className="flex justify-center items-center py-20">
                             <div className="animate-spin w-10 h-10 border-4 border-[#0859BC] border-t-transparent rounded-full"></div>
                         </div>
                     ) : (
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {paginatedPosts.map((post: BlogPost) => (
                             <Link
@@ -211,10 +199,7 @@ const Blog = () => {
                             </Link>
                         ))}
                     </div>
-<<<<<<< HEAD
                     )}
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
                     {/* No Results */}
                     {filteredPosts.length === 0 && (

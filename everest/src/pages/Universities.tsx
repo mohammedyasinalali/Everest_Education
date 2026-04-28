@@ -1,21 +1,12 @@
-<<<<<<< HEAD
 import { useState, useEffect } from 'react';
-=======
-import { useState } from 'react';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { Container } from '../components/ui';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
-<<<<<<< HEAD
 import { countries } from '../constants/universities';
 import type { University } from '../constants/universities';
 import { publicApi } from '../services/publicApi';
-=======
-import { universities, countries, getUniversitiesByCountry } from '../constants/universities';
-import type { University } from '../constants/universities';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
 const Universities = () => {
     const { t, i18n } = useTranslation();
@@ -23,7 +14,6 @@ const Universities = () => {
     const [searchQuery, setSearchQuery] = useState('');
 
     const currentLang = i18n.language || 'ar';
-<<<<<<< HEAD
     const [universities, setUniversities] = useState<University[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -40,9 +30,6 @@ const Universities = () => {
     const filteredByCountry = activeCountry === 'all' 
         ? universities 
         : universities.filter(u => u.country === activeCountry);
-=======
-    const filteredByCountry = getUniversitiesByCountry(activeCountry);
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
     const filteredUniversities = filteredByCountry.filter(uni => {
         const name = uni.name[currentLang] || uni.name['en'] || '';
@@ -167,14 +154,11 @@ const Universities = () => {
                     </div>
 
                     {/* University Grid */}
-<<<<<<< HEAD
                     {loading ? (
                         <div className="flex justify-center items-center py-20">
                             <div className="animate-spin w-10 h-10 border-4 border-[#0859BC] border-t-transparent rounded-full"></div>
                         </div>
                     ) : (
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {filteredUniversities.map((uni: University) => {
                             const countryObj = countries.find(c => c.id === uni.country);
@@ -289,11 +273,7 @@ const Universities = () => {
                                                 </a>
                                             )}
                                             <a
-<<<<<<< HEAD
                                                 href={`https://wa.me/905451365495?text=${encodeURIComponent(currentLang === 'ar' ? `أرغب بالاستفسار عن جامعة ${getLocalizedText(uni.name)}` : `I want to inquire about ${getLocalizedText(uni.name)}`)}`}
-=======
-                                                href={`https://wa.me/905555555555?text=${encodeURIComponent(currentLang === 'ar' ? `أرغب بالاستفسار عن جامعة ${getLocalizedText(uni.name)}` : `I want to inquire about ${getLocalizedText(uni.name)}`)}`}
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                                                 target="_blank"
                                                 rel="noreferrer"
                                                 className="bg-[#FF822E] hover:bg-[#e0701f] text-white text-sm px-5 py-2.5 rounded-xl font-bold font-['Tajawal'] transition-all hover:shadow-md flex items-center gap-2"
@@ -307,10 +287,7 @@ const Universities = () => {
                             );
                         })}
                     </div>
-<<<<<<< HEAD
                     )}
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
                     {/* No Results */}
                     {filteredUniversities.length === 0 && (

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 {
-=======
- {
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
   "name": "everest",
   "private": true,
   "version": "0.0.0",
@@ -11,15 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-<<<<<<< HEAD
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage",
     "prepare": "husky"
-=======
-    "preview": "vite preview"
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -27,10 +19,7 @@
     "i18next-browser-languagedetector": "^8.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-<<<<<<< HEAD
     "react-helmet-async": "^2.0.5",
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
     "react-i18next": "^16.5.3",
     "react-router-dom": "^7.13.0",
     "swiper": "^12.0.3",
@@ -38,12 +27,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-<<<<<<< HEAD
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
-=======
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
@@ -52,7 +38,6 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-<<<<<<< HEAD
     "husky": "^9.1.7",
     "jsdom": "^28.1.0",
     "lint-staged": "^16.2.7",
@@ -73,13 +58,5 @@
     "*.{json,css,md}": [
       "prettier --write"
     ]
-=======
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.46.4",
-    "vite": "npm:rolldown-vite@7.2.5"
-  },
-  "overrides": {
-    "vite": "npm:rolldown-vite@7.2.5"
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
   }
 }

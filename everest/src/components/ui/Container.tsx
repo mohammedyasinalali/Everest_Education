@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import type { ReactNode } from 'react';
-=======
-import { ReactNode } from 'react';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
 interface ContainerProps {
     children: ReactNode;

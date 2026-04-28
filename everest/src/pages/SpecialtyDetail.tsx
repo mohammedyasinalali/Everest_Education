@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import { useEffect, useState } from 'react';
-=======
-import { useEffect } from 'react';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container } from '../components/ui';
 import ContactForm from '../components/ContactForm';
-<<<<<<< HEAD
 import SEO from '../components/SEO';
 
 const API_URL = 'http://localhost:5000/api';
@@ -52,20 +47,6 @@ const SpecialtyDetail = () => {
             </div>
         );
     }
-=======
-import { allSpecialties } from '../constants/specialties';
-import SEO from '../components/SEO';
-
-const SpecialtyDetail = () => {
-    const { id } = useParams();
-    const { t } = useTranslation();
-
-    const specialty = allSpecialties.find(spec => spec.id === id);
-
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [id]);
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
     if (!specialty) {
         return (
@@ -85,11 +66,7 @@ const SpecialtyDetail = () => {
             <SEO
                 title={`${t('header.specialties')} | ${specialty.name}`}
                 description={specialty.description}
-<<<<<<< HEAD
                 keywords={[specialty.name, specialty.name, t('header.home'), specialty.category]}
-=======
-                keywords={[specialty.name, specialty.nameEn, t('header.home'), specialty.category]}
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                 image={specialty.image}
             />
             {/* Hero Section */}
@@ -124,11 +101,7 @@ const SpecialtyDetail = () => {
                                             specialty.category === 'phd' ? t('search_filter.categories.phd') : t('search_filter.categories.diploma')}
                                 </span>
                                 <span className="text-white/60 text-sm font-['Montserrat'] font-medium tracking-wide">
-<<<<<<< HEAD
                                     {specialty.slug}
-=======
-                                    {specialty.nameEn}
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                                 </span>
                             </div>
                             <h1 className="text-4xl md:text-6xl font-black font-['Tajawal'] mb-4 leading-tight">
@@ -168,7 +141,6 @@ const SpecialtyDetail = () => {
                             {/* Overview */}
                             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
                                 <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4">
-<<<<<<< HEAD
                                     نبذة عن التخصص
                                 </h3>
                                 <div 
@@ -195,33 +167,6 @@ const SpecialtyDetail = () => {
                                     </ul>
                                 </div>
                             )}
-=======
-                                    {t('search_filter.specialty_detail.about')}
-                                </h3>
-                                <p className="text-gray-600 leading-loose font-['Tajawal'] text-lg">
-                                    {specialty.description}
-                                    <br /><br />
-                                    {t('search_filter.specialty_detail.about_desc', { name: specialty.name })}
-                                </p>
-                            </div>
-
-                            {/* Why Study This */}
-                            <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
-                                <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4">
-                                    {t('search_filter.specialty_detail.why_study_here', { name: specialty.name })}
-                                </h3>
-                                <ul className="space-y-4 font-['Tajawal']">
-                                    {(t('search_filter.specialty_detail.advantages', { returnObjects: true }) as string[]).map((item, idx) => (
-                                        <li key={idx} className="flex items-start gap-4">
-                                            <div className="min-w-[24px] h-6 rounded-full bg-[#EBF5FF] flex items-center justify-center mt-1">
-                                                <i className="fas fa-check text-[#0859BC] text-xs"></i>
-                                            </div>
-                                            <span className="text-gray-600 leading-relaxed">{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                         </div>
 
                         {/* Sidebar */}
@@ -269,11 +214,7 @@ const SpecialtyDetail = () => {
                                 <div className="mt-8 pt-8 border-t border-gray-100 text-center">
                                     <p className="text-gray-500 text-sm mb-4 font-['Tajawal']">{t('search_filter.specialty_detail.have_question')}</p>
                                     <a
-<<<<<<< HEAD
                                         href="https://wa.me/905451365495"
-=======
-                                        href="https://wa.me/905555555555"
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                                         target="_blank"
                                         rel="noreferrer"
                                         className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl font-['Tajawal'] flex items-center justify-center gap-2 group"
@@ -297,11 +238,7 @@ const SpecialtyDetail = () => {
                         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#FF822E]/20 rounded-full -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
 
                         <h2 className="text-3xl md:text-5xl font-black mb-6 font-['Tajawal'] relative z-10">
-<<<<<<< HEAD
                             {t('search_filter.specialty_detail.start_journey', { name: specialty.name }).replace('{name}', specialty.name).replace('{{name}}', specialty.name)}
-=======
-                            {t('search_filter.specialty_detail.start_journey', { name: specialty.name })}
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                         </h2>
                         <p className="text-lg text-blue-100 max-w-2xl mx-auto mb-10 leading-relaxed font-['Tajawal'] relative z-10">
                             {t('search_filter.specialty_detail.journey_desc')}
@@ -326,8 +263,4 @@ const SpecialtyDetail = () => {
     );
 };
 
-<<<<<<< HEAD
 export default SpecialtyDetail;
-=======
-export default SpecialtyDetail;
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147

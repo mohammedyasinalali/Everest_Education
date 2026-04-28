@@ -9,12 +9,8 @@ import PricingPackages from '../components/PricingPackages';
 import SEO from '../components/SEO';
 
 const Services = () => {
-<<<<<<< HEAD
     const { t, i18n } = useTranslation();
     const isRTL = i18n.dir() === 'rtl';
-=======
-    const { t } = useTranslation();
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
     const premiumImageRef = useRef<HTMLDivElement>(null);
     const isPremiumImageInView = useInView(premiumImageRef as any, { threshold: 0.2, triggerOnce: true });

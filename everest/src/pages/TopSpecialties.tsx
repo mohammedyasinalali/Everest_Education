@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { useState, useEffect } from 'react';
-=======
-import { useState } from 'react';
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 import { useTranslation } from 'react-i18next';
 import { Container } from '../components/ui';
 import ContactForm from '../components/ContactForm';
@@ -10,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 // Categories for filter tabs (moved inside component to use translation)
 
-<<<<<<< HEAD
 import { publicApi } from '../services/publicApi';
 import SEO from '../components/SEO';
 
@@ -31,15 +26,6 @@ const TopSpecialties = () => {
         };
         fetchSpecialties();
     }, [currentLang]);
-=======
-import { allSpecialties } from '../constants/specialties';
-import SEO from '../components/SEO';
-
-const TopSpecialties = () => {
-    const { t } = useTranslation();
-    const [activeFilter, setActiveFilter] = useState('all');
-    const [searchQuery, setSearchQuery] = useState('');
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
     const categories = [
         { id: 'all', label: t('search_filter.categories.all'), icon: 'fas fa-th-large' },
@@ -51,21 +37,13 @@ const TopSpecialties = () => {
         { id: 'engineering', label: t('search_filter.categories.engineering'), icon: 'fas fa-cogs' },
     ];
 
-<<<<<<< HEAD
     const filteredSpecialties = specialties.filter(spec => {
-=======
-    const filteredSpecialties = allSpecialties.filter(spec => {
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
         const matchesCategory = activeFilter === 'all'
             || spec.category === activeFilter
             || (activeFilter === 'medical' && spec.tags.includes('medical'))
             || (activeFilter === 'engineering' && spec.tags.includes('engineering'));
-<<<<<<< HEAD
         const searchTarget = spec.name || spec.nameEn || '';
         const matchesSearch = searchTarget.toLowerCase().includes(searchQuery.toLowerCase());
-=======
-        const matchesSearch = spec.name.includes(searchQuery) || spec.nameEn.toLowerCase().includes(searchQuery.toLowerCase());
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
         return matchesCategory && matchesSearch;
     });
 
@@ -173,7 +151,6 @@ const TopSpecialties = () => {
                     </div>
 
                     {/* Specialties Grid */}
-<<<<<<< HEAD
                     {loading ? (
                         <div className="flex justify-center py-20">
                             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#0859BC]"></div>
@@ -181,10 +158,6 @@ const TopSpecialties = () => {
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                             {filteredSpecialties.map((spec) => (
-=======
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {filteredSpecialties.map((spec) => (
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
                             <div
                                 key={spec.id}
                                 className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative flex flex-col h-full"
@@ -253,14 +226,9 @@ const TopSpecialties = () => {
                                     </Link>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             ))}
                         </div>
                     )}
-=======
-                        ))}
-                    </div>
->>>>>>> be0de9b05982f48c257d67b15a9fa301a462f147
 
                     {/* No Results */}
                     {filteredSpecialties.length === 0 && (
