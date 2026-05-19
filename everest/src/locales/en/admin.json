@@ -6,6 +6,7 @@
     "specialties": "Specialties",
     "blogs": "Blogs",
     "requests": "Student Requests",
+    "users": "Admins & Permissions",
     "logout": "Logout"
   },
   "header": {
@@ -103,5 +104,80 @@
       "status": "Status",
       "actions": "Actions"
     }
+  },
+  "forms": {
+    "back": "Back",
+    "edit": "Edit",
+    "add_new": "Add New",
+    "save_changes": "Save Changes",
+    "saving": "Saving...",
+    "publish_status": "Publish Status",
+    "draft": "Draft",
+    "published": "Published",
+    "slug_label": "URL Slug",
+    "slug_placeholder": "Auto-generated from name",
+    "slug_note": "This is the part that appears in the URL. Example:",
+    "cover_image": "Cover Image",
+    "upload_image": "Upload Image",
+    "paste_url": "Paste Image URL",
+    "click_to_upload": "Click to choose an image",
+    "image_format": "JPG, PNG, WEBP - Up to 5MB",
+    "specialty": {
+      "language_label": "Specialty Language *",
+      "language_note": "Note: This specialty will only appear in this language.",
+      "name_label": "Specialty Name *",
+      "name_placeholder": "Example: Human Medicine",
+      "degree_label": "Academic Degree *",
+      "duration_label": "Study Duration",
+      "duration_placeholder": "Example: 4 years",
+      "study_language_label": "Study Language",
+      "study_language_placeholder": "Example: English / Turkish",
+      "icon_label": "Icon (Font Awesome)",
+      "icon_color_label": "Icon Color",
+      "short_desc_label": "Short Promotional Description *",
+      "short_desc_placeholder": "Brief description shown in the specialty card...",
+      "advantages_label": "Why study this specialty? (Advantages)",
+      "advantages_placeholder": "Write each advantage on a new line (Press Enter for a new line)",
+      "advantages_note": "These points will appear as an advantages list on the specialty details page.",
+      "tags_label": "Tags",
+      "tags_placeholder": "Example: medical,engineering (comma separated)",
+      "tags_note": "Helps in filtering specialties",
+      "publish_label": "Publish specialty to users"
+    },
+    "university": {
+      "name_label": "University Name *",
+      "name_placeholder": "Example: Istanbul Technical University",
+      "desc_label": "Description",
+      "desc_placeholder": "Write university description here...",
+      "logo_label": "University Logo",
+      "info_title": "General Information",
+      "city_label": "City",
+      "country_label": "Country",
+      "website_label": "Website"
+    },
+    "blog": {
+      "title_label": "Article Title",
+      "title_placeholder": "Article title in selected language",
+      "content_label": "Content",
+      "content_placeholder": "Write article content here...",
+      "publish_btn": "Publish Article"
+    }
+  },
+  "users": {
+    "title": "Admins & Permissions",
+    "add_admin": "Add Admin",
+    "edit_admin": "Edit Admin",
+    "save_admin": "Save Admin",
+    "email": "Email Address",
+    "password": "Password",
+    "password_note": "(Leave blank to keep unchanged)",
+    "role": "Role",
+    "role_super": "Super Admin (Full Access)",
+    "role_sub": "Sub Admin (Custom Permissions)",
+    "allowed_modules": "Allowed Modules:",
+    "allowed_languages": "Allowed Languages:",
+    "all_modules": "All Modules",
+    "all_languages": "All Languages",
+    "none": "None"
   }
 }

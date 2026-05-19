@@ -2,6 +2,7 @@ import { useEffect, useState, FormEvent, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { universityService } from '../services/api';
 import { LOCALES } from '../constants';
+import { useTranslation } from 'react-i18next';
 
 interface Translation {
   locale: string;
@@ -17,6 +18,7 @@ export default function AdminUniversityForm() {
   const isEdit = !!id;
   const navigate = useNavigate();
   const fileRef = useRef<HTMLInputElement>(null);
+  const { t, i18n } = useTranslation();
 
   const [slug, setSlug] = useState('');
   const [country, setCountry] = useState('');
@@ -48,7 +50,7 @@ export default function AdminUniversityForm() {
         });
         setTranslations(merged);
       } catch {
-        setError('فشل في جلب بيانات الجامعة');
+        setError(t('admin.common.no_data')); // fallback
       } finally {
         setFetching(false);
       }
@@ -80,7 +82,7 @@ export default function AdminUniversityForm() {
     const filledTranslations = translations.filter((t) => t.name.trim() || t.description.trim());
 
     if (!slug) {
-      setError('الرابط (Slug) مطلوب.');
+      setError('Slug is required');
       setLoading(false);
       return;
     }
@@ -102,7 +104,7 @@ export default function AdminUniversityForm() {
       }
       navigate('/admin/universities');
     } catch (err: any) {
-      setError(err.message || 'حدث خطأ غير متوقع');
+      setError(err.message || 'Error saving');
     } finally {
       setLoading(false);
     }
@@ -125,10 +127,10 @@ export default function AdminUniversityForm() {
           onClick={() => navigate('/admin/universities')}
           className="p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
         >
-          → عودة
+          {i18n.language === 'ar' ? '→' : '←'} {t('admin.forms.back')}
         </button>
         <h1 className="text-2xl font-bold text-white">
-          {isEdit ? 'تعديل بيانات الجامعة' : 'إضافة جامعة جديدة'}
+          {isEdit ? t('admin.forms.edit') : t('admin.universities.add_university')}
         </h1>
       </div>
 
@@ -162,7 +164,7 @@ export default function AdminUniversityForm() {
               <div className="p-6 space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    اسم الجامعة <span className="text-gray-500">({activeLocale})</span>
+                    {t('admin.forms.university.name_label')} <span className="text-gray-500">({activeLocale})</span>
                   </label>
                   <input
                     type="text"
@@ -171,21 +173,21 @@ export default function AdminUniversityForm() {
                       updateTranslation(activeLocale, 'name', e.target.value);
                       if (!isEdit && activeLocale === 'en') setSlug(autoSlug(e.target.value));
                     }}
-                    placeholder="مثال: جامعة إسطنبول التقنية"
+                    placeholder={t('admin.forms.university.name_placeholder')}
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
                     dir={['ar', 'fa'].includes(activeLocale) ? 'rtl' : 'ltr'}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    الوصف <span className="text-gray-500">({activeLocale})</span>
+                    {t('admin.forms.university.desc_label')} <span className="text-gray-500">({activeLocale})</span>
                   </label>
                   <textarea
                     value={activeTrans.description}
                     onChange={(e) => updateTranslation(activeLocale, 'description', e.target.value)}
                     rows={8}
                     dir={['ar', 'fa'].includes(activeLocale) ? 'rtl' : 'ltr'}
-                    placeholder="اكتب وصف الجامعة هنا..."
+                    placeholder={t('admin.forms.university.desc_placeholder')}
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors resize-none text-sm"
                   />
                 </div>
@@ -194,18 +196,18 @@ export default function AdminUniversityForm() {
 
             {/* General Info */}
             <div className="bg-gray-900 rounded-2xl border border-gray-800 p-6">
-              <h3 className="text-sm font-semibold text-white mb-4">معلومات عامة</h3>
+              <h3 className="text-sm font-semibold text-white mb-4">{t('admin.forms.university.info_title')}</h3>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">الدولة</label>
-                  <input type="text" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="تركيا" className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors" />
+                  <label className="block text-sm text-gray-400 mb-2">{t('admin.forms.university.country_label')}</label>
+                  <input type="text" value={country} onChange={(e) => setCountry(e.target.value)} className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">المدينة</label>
-                  <input type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder="إسطنبول" className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors" />
+                  <label className="block text-sm text-gray-400 mb-2">{t('admin.forms.university.city_label')}</label>
+                  <input type="text" value={city} onChange={(e) => setCity(e.target.value)} className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors" />
                 </div>
                 <div className="col-span-2">
-                  <label className="block text-sm text-gray-400 mb-2">الموقع الإلكتروني</label>
+                  <label className="block text-sm text-gray-400 mb-2">{t('admin.forms.university.website_label')}</label>
                   <input type="url" value={website} onChange={(e) => setWebsite(e.target.value)} dir="ltr" placeholder="https://university.edu" className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors text-left" />
                 </div>
               </div>
@@ -216,7 +218,7 @@ export default function AdminUniversityForm() {
           <div className="space-y-5">
             {/* Publish */}
             <div className="bg-gray-900 rounded-2xl border border-gray-800 p-5">
-              <h3 className="text-sm font-semibold text-white mb-4">حالة النشر</h3>
+              <h3 className="text-sm font-semibold text-white mb-4">{t('admin.forms.publish_status')}</h3>
               <label className="flex items-center gap-3 cursor-pointer">
                 <div className="relative">
                   <input type="checkbox" checked={published} onChange={(e) => setPublished(e.target.checked)} className="sr-only" />
@@ -224,20 +226,20 @@ export default function AdminUniversityForm() {
                     <div className={`absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-white transition-transform ${published ? '-translate-x-5' : 'translate-x-0'}`}></div>
                   </div>
                 </div>
-                <span className="text-sm text-gray-300">{published ? 'منشورة' : 'مسودة'}</span>
+                <span className="text-sm text-gray-300">{published ? t('admin.forms.published') : t('admin.forms.draft')}</span>
               </label>
             </div>
 
             {/* Slug */}
             <div className="bg-gray-900 rounded-2xl border border-gray-800 p-5">
-              <label className="block text-sm font-semibold text-white mb-3">رابط الجامعة (Slug)</label>
+              <label className="block text-sm font-semibold text-white mb-3">{t('admin.forms.slug_label')}</label>
               <input type="text" value={slug} onChange={(e) => setSlug(e.target.value)} required dir="ltr" placeholder="university-name" className="w-full px-3 py-2.5 bg-gray-800 border border-gray-700 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors text-left" />
               <p className="text-xs text-gray-500 mt-2 text-left" dir="ltr">/universities/{slug || 'slug'}</p>
             </div>
 
             {/* Logo */}
             <div className="bg-gray-900 rounded-2xl border border-gray-800 p-5">
-              <h3 className="text-sm font-semibold text-white mb-3">شعار الجامعة</h3>
+              <h3 className="text-sm font-semibold text-white mb-3">{t('admin.forms.university.logo_label')}</h3>
               {logoPreview ? (
                 <div className="relative group">
                   <img src={logoPreview} alt="" className="w-full h-32 object-contain rounded-xl bg-white p-2" />
@@ -246,7 +248,7 @@ export default function AdminUniversityForm() {
               ) : (
                 <button type="button" onClick={() => fileRef.current?.click()} className="flex flex-col items-center justify-center w-full h-28 border-2 border-dashed border-gray-700 rounded-xl hover:border-indigo-500 hover:bg-indigo-600/5 transition-all">
                   <span className="text-2xl mb-1">🏛️</span>
-                  <span className="text-xs text-gray-400">اضغط لرفع الشعار</span>
+                  <span className="text-xs text-gray-400">{t('admin.forms.click_to_upload')}</span>
                 </button>
               )}
               <input ref={fileRef} type="file" accept="image/*" onChange={handleLogoChange} className="hidden" />
@@ -257,7 +259,7 @@ export default function AdminUniversityForm() {
             )}
 
             <button type="submit" disabled={loading} className="w-full py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:opacity-50 text-white font-semibold rounded-xl transition-all shadow-lg shadow-indigo-600/20">
-              {loading ? 'جاري الحفظ...' : isEdit ? 'حفظ التعديلات' : 'إضافة الجامعة'}
+              {loading ? t('admin.forms.saving') : isEdit ? t('admin.forms.save_changes') : t('admin.universities.add_university')}
             </button>
           </div>
         </div>

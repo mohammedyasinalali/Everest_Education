@@ -4,8 +4,9 @@
     "dashboard": "الرئيسية",
     "universities": "الجامعات",
     "specialties": "التخصصات",
-    "blogs": "المدونات",
-    "requests": "طلبات الطلاب",
+    "blogs": "المدونات والمقالات",
+    "requests": "طلبات التسجيل",
+    "users": "المشرفون والصلاحيات",
     "logout": "تسجيل الخروج"
   },
   "header": {
@@ -103,5 +104,80 @@
       "status": "الحالة",
       "actions": "إجراءات"
     }
+  },
+  "forms": {
+    "back": "عودة",
+    "edit": "تعديل",
+    "add_new": "إضافة جديدة",
+    "save_changes": "حفظ التعديلات",
+    "saving": "جاري الحفظ...",
+    "publish_status": "حالة النشر",
+    "draft": "مسودة",
+    "published": "منشور",
+    "slug_label": "الرابط (Slug)",
+    "slug_placeholder": "يتم توليده تلقائياً من الاسم",
+    "slug_note": "هذا هو الجزء الذي يظهر في رابط الصفحة. مثال:",
+    "cover_image": "صورة الغلاف",
+    "upload_image": "رفع صورة من الجهاز",
+    "paste_url": "لصق رابط صورة",
+    "click_to_upload": "اضغط هنا لاختيار صورة",
+    "image_format": "JPG, PNG, WEBP - حتى 5MB",
+    "specialty": {
+      "language_label": "لغة التخصص *",
+      "language_note": "ملاحظة: هذا التخصص سيظهر فقط في هذه اللغة.",
+      "name_label": "اسم التخصص *",
+      "name_placeholder": "مثال: الطب البشري",
+      "degree_label": "الدرجة الأكاديمية *",
+      "duration_label": "المدة الدراسية",
+      "duration_placeholder": "مثال: 4 سنوات",
+      "study_language_label": "لغة الدراسة",
+      "study_language_placeholder": "مثال: إنجليزي / تركي",
+      "icon_label": "أيقونة (Font Awesome)",
+      "icon_color_label": "لون الأيقونة",
+      "short_desc_label": "الوصف الترويجي القصير *",
+      "short_desc_placeholder": "وصف مختصر عن التخصص يظهر في بطاقة التخصص...",
+      "advantages_label": "لماذا دراسة هذا التخصص؟ (المزايا)",
+      "advantages_placeholder": "اكتب كل ميزة في سطر منفصل (اضغط Enter للسطر الجديد)",
+      "advantages_note": "هذه النقاط ستظهر كقائمة مزايا في صفحة تفاصيل التخصص.",
+      "tags_label": "كلمات دلالية (Tags)",
+      "tags_placeholder": "مثال: medical,engineering (افصل بين الكلمات بفاصلة)",
+      "tags_note": "تساعد في فلترة التخصصات (مثال: medical للتخصصات الطبية)",
+      "publish_label": "نشر التخصص للمستخدمين"
+    },
+    "university": {
+      "name_label": "اسم الجامعة *",
+      "name_placeholder": "مثال: جامعة إسطنبول التقنية",
+      "desc_label": "الوصف",
+      "desc_placeholder": "اكتب وصف الجامعة هنا...",
+      "logo_label": "شعار الجامعة",
+      "info_title": "معلومات عامة",
+      "city_label": "المدينة",
+      "country_label": "الدولة",
+      "website_label": "الموقع الإلكتروني"
+    },
+    "blog": {
+      "title_label": "العنوان",
+      "title_placeholder": "عنوان المقال باللغة المختارة",
+      "content_label": "المحتوى",
+      "content_placeholder": "اكتب محتوى المقال هنا...",
+      "publish_btn": "نشر المقال"
+    }
+  },
+  "users": {
+    "title": "إدارة المشرفين والصلاحيات",
+    "add_admin": "إضافة مشرف",
+    "edit_admin": "تعديل المشرف",
+    "save_admin": "حفظ المشرف",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "password_note": "(اتركها فارغة لعدم التغيير)",
+    "role": "الدور (Role)",
+    "role_super": "أدمن أساسي (صلاحيات كاملة)",
+    "role_sub": "أدمن فرعي (صلاحيات مخصصة)",
+    "allowed_modules": "الأقسام المسموحة:",
+    "allowed_languages": "اللغات المسموحة:",
+    "all_modules": "كل الأقسام",
+    "all_languages": "كل اللغات",
+    "none": "لا يوجد"
   }
 }

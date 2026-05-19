@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { blogService, universityService, specialtyService, requestService } from '../services/api';
+import { blogService, universityService, specialtyService, requestService, authService } from '../services/api';
 
 interface Stats {
   totalBlogs: number;
@@ -46,36 +46,52 @@ export default function AdminDashboard() {
 
   const isRTL = i18n.language === 'ar';
 
-  const cards = [
+  const adminUser = authService.getCurrentAdmin();
+  const isAdminSuper = adminUser?.role === 'SUPER_ADMIN';
+  const allowedModules = adminUser?.permissions ? adminUser.permissions.split(',') : [];
+
+  const hasAccess = (module: string) => isAdminSuper || allowedModules.includes(module);
+
+  const allCards = [
     {
+      id: 'requests_total',
       label: t('admin.dashboard.total_students'),
       value: stats?.totalRequests ?? 0,
       icon: '👥',
       bgClass: 'bg-[#eef2ff]', // Light Blue
       textClass: 'text-[#3b82f6]',
+      module: 'requests'
     },
     {
+      id: 'universities',
       label: t('admin.dashboard.universities'),
       value: stats?.totalUniversities ?? 0,
       icon: '🏛️',
       bgClass: 'bg-[#fff7ed]', // Light Orange
       textClass: 'text-[#f97316]',
+      module: 'universities'
     },
     {
+      id: 'specialties',
       label: t('admin.dashboard.active_specialties'),
       value: stats?.totalSpecialties ?? 0,
       icon: '📗',
       bgClass: 'bg-[#f0fdf4]', // Light Green
       textClass: 'text-[#22c55e]',
+      module: 'specialties'
     },
     {
+      id: 'requests_pending',
       label: t('admin.dashboard.pending_requests'),
       value: requests.filter(r => r.status === 'pending').length ?? 0,
       icon: '🕒',
       bgClass: 'bg-[#fef2f2]', // Light Red/Pink
       textClass: 'text-[#ef4444]',
+      module: 'requests'
     },
   ];
+
+  const cards = allCards.filter(card => hasAccess(card.module));
 
   const getStatusBadge = (status: string) => {
     switch(status) {
@@ -109,9 +125,9 @@ export default function AdminDashboard() {
                 <div className="h-10 bg-gray-200 rounded w-1/4"></div>
               </div>
             ))
-          : cards.map((card, idx) => (
+          : cards.map((card) => (
               <div
-                key={idx}
+                key={card.id}
                 className={`${card.bgClass} rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden`}
               >
                 <div className={`absolute top-6 ${isRTL ? 'left-6' : 'right-6'} text-2xl opacity-80`}>
@@ -124,8 +140,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Recent Requests Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mt-8">
-        <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-[#f8fafc]">
+      {hasAccess('requests') && (
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mt-8">
+          <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-[#f8fafc]">
            <h2 className="text-xl font-bold text-[#203252]">{t('admin.dashboard.recent_requests')}</h2>
            <Link to="/admin/requests" className="bg-[#0859BC] text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors flex items-center gap-2">
               <span className="text-lg">👥</span> {t('admin.sidebar.requests')}
@@ -186,6 +203,7 @@ export default function AdminDashboard() {
           </table>
         </div>
       </div>
+      )}
     </div>
   );
 }

@@ -22,13 +22,25 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     navigate('/admin/login');
   };
 
-  const navItems = [
-    { label: t('admin.sidebar.dashboard'), path: '/admin', icon: '📊' },
-    { label: t('admin.sidebar.universities'), path: '/admin/universities', icon: '🏛️' },
-    { label: t('admin.sidebar.specialties'), path: '/admin/specialties', icon: '🎓' },
-    { label: t('admin.sidebar.blogs'), path: '/admin/blogs', icon: '📝' },
-    { label: t('admin.sidebar.requests'), path: '/admin/requests', icon: '✉️' },
+  const adminUser = authService.getCurrentAdmin();
+  const isAdminSuper = adminUser?.role === 'SUPER_ADMIN';
+  const allowedModules = adminUser?.permissions ? adminUser.permissions.split(',') : [];
+
+  const allNavItems = [
+    { label: t('admin.sidebar.dashboard'), path: '/admin', icon: '📊', id: 'dashboard' },
+    { label: t('admin.sidebar.universities'), path: '/admin/universities', icon: '🏛️', id: 'universities' },
+    { label: t('admin.sidebar.specialties'), path: '/admin/specialties', icon: '🎓', id: 'specialties' },
+    { label: t('admin.sidebar.blogs'), path: '/admin/blogs', icon: '📝', id: 'blogs' },
+    { label: t('admin.sidebar.requests'), path: '/admin/requests', icon: '✉️', id: 'requests' },
   ];
+
+  const navItems = isAdminSuper 
+    ? allNavItems 
+    : allNavItems.filter(item => allowedModules.includes(item.id) || item.id === 'dashboard');
+
+  if (isAdminSuper) {
+    navItems.push({ label: t('admin.sidebar.users'), path: '/admin/users', icon: '🔐', id: 'users' });
+  }
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);

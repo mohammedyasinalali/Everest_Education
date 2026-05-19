@@ -2,6 +2,7 @@ import { useEffect, useState, FormEvent, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { blogService } from '../services/api';
 import { LOCALES } from '../constants';
+import { useTranslation } from 'react-i18next';
 
 interface Translation {
   locale: string;
@@ -17,6 +18,7 @@ export default function AdminBlogForm() {
   const isEdit = !!id;
   const navigate = useNavigate();
   const fileRef = useRef<HTMLInputElement>(null);
+  const { t, i18n } = useTranslation();
 
   const [slug, setSlug] = useState('');
   const [published, setPublished] = useState(false);
@@ -42,7 +44,7 @@ export default function AdminBlogForm() {
         });
         setTranslations(merged);
       } catch {
-        setError('فشل في جلب بيانات المقال');
+        setError(t('admin.common.no_data'));
       } finally {
         setFetching(false);
       }
@@ -79,7 +81,7 @@ export default function AdminBlogForm() {
     const filledTranslations = translations.filter((t) => t.title.trim() || t.content.trim());
 
     if (!slug) {
-      setError('الرابط (Slug) مطلوب.');
+      setError('Slug is required.');
       setLoading(false);
       return;
     }
@@ -98,7 +100,7 @@ export default function AdminBlogForm() {
       }
       navigate('/admin/blogs');
     } catch (err: any) {
-      setError(err.message || 'حدث خطأ غير متوقع');
+      setError(err.message || 'Error saving');
     } finally {
       setLoading(false);
     }
@@ -122,10 +124,10 @@ export default function AdminBlogForm() {
           onClick={() => navigate('/admin/blogs')}
           className="p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
         >
-          → عودة
+          {i18n.language === 'ar' ? '→' : '←'} {t('admin.forms.back')}
         </button>
         <h1 className="text-2xl font-bold text-white">
-          {isEdit ? 'تعديل المقال' : 'مقال جديد'}
+          {isEdit ? t('admin.forms.edit') : t('admin.blogs.add_blog')}
         </h1>
       </div>
 
@@ -159,7 +161,7 @@ export default function AdminBlogForm() {
               <div className="p-6 space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    العنوان <span className="text-gray-500">({activeLocale})</span>
+                    {t('admin.forms.blog.title_label')} <span className="text-gray-500">({activeLocale})</span>
                   </label>
                   <input
                     type="text"
@@ -169,20 +171,20 @@ export default function AdminBlogForm() {
                         ? handleTitleChange(e.target.value)
                         : updateTranslation(activeLocale, 'title', e.target.value)
                     }
-                    placeholder={`عنوان المقال باللغة ${LOCALES.find((l) => l.code === activeLocale)?.label}`}
+                    placeholder={t('admin.forms.blog.title_placeholder')}
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                     dir={['ar', 'fa'].includes(activeLocale) ? 'rtl' : 'ltr'}
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-300 mb-2">
-                    المحتوى <span className="text-gray-500">({activeLocale})</span>
+                    {t('admin.forms.blog.content_label')} <span className="text-gray-500">({activeLocale})</span>
                   </label>
                   <textarea
                     value={activeTrans.content}
                     onChange={(e) => updateTranslation(activeLocale, 'content', e.target.value)}
                     rows={12}
-                    placeholder={`اكتب محتوى المقال هنا...`}
+                    placeholder={t('admin.forms.blog.content_placeholder')}
                     dir={['ar', 'fa'].includes(activeLocale) ? 'rtl' : 'ltr'}
                     className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none font-mono text-sm"
                   />
@@ -195,7 +197,7 @@ export default function AdminBlogForm() {
           <div className="space-y-5">
             {/* Publish */}
             <div className="bg-gray-900 rounded-2xl border border-gray-800 p-5">
-              <h3 className="text-sm font-semibold text-white mb-4">حالة النشر</h3>
+              <h3 className="text-sm font-semibold text-white mb-4">{t('admin.forms.publish_status')}</h3>
               <label className="flex items-center gap-3 cursor-pointer">
                 <div className="relative">
                   <input
@@ -208,13 +210,13 @@ export default function AdminBlogForm() {
                     <div className={`absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-white transition-transform ${published ? '-translate-x-5' : 'translate-x-0'}`}></div>
                   </div>
                 </div>
-                <span className="text-sm text-gray-300">{published ? 'منشور' : 'مسودة'}</span>
+                <span className="text-sm text-gray-300">{published ? t('admin.forms.published') : t('admin.forms.draft')}</span>
               </label>
             </div>
 
             {/* Slug */}
             <div className="bg-gray-900 rounded-2xl border border-gray-800 p-5">
-              <label className="block text-sm font-semibold text-white mb-3">رابط المقال (Slug)</label>
+              <label className="block text-sm font-semibold text-white mb-3">{t('admin.forms.slug_label')}</label>
               <input
                 type="text"
                 value={slug}
@@ -229,7 +231,7 @@ export default function AdminBlogForm() {
 
             {/* Cover Image */}
             <div className="bg-gray-900 rounded-2xl border border-gray-800 p-5">
-              <h3 className="text-sm font-semibold text-white mb-3">صورة الغلاف</h3>
+              <h3 className="text-sm font-semibold text-white mb-3">{t('admin.forms.cover_image')}</h3>
               {imagePreview ? (
                 <div className="relative group">
                   <img src={imagePreview} alt="" className="w-full h-40 object-cover rounded-xl" />
@@ -244,14 +246,14 @@ export default function AdminBlogForm() {
               ) : (
                 <label className="flex flex-col items-center justify-center h-32 border-2 border-dashed border-gray-700 rounded-xl cursor-pointer hover:border-blue-500 hover:bg-blue-600/5 transition-all">
                   <span className="text-2xl mb-1">🖼️</span>
-                  <span className="text-xs text-gray-400">اضغط لرفع صورة</span>
-                  <span className="text-xs text-gray-600 mt-1">PNG, JPG, WebP لغاية 5MB</span>
+                  <span className="text-xs text-gray-400">{t('admin.forms.click_to_upload')}</span>
+                  <span className="text-xs text-gray-600 mt-1">{t('admin.forms.image_format')}</span>
                 </label>
               )}
               <input ref={fileRef} type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
               {!imagePreview && (
                 <button type="button" onClick={() => fileRef.current?.click()} className="mt-3 w-full py-2 text-xs text-gray-400 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
-                  اختر ملفاً
+                  {t('admin.forms.upload_image')}
                 </button>
               )}
             </div>
@@ -267,7 +269,7 @@ export default function AdminBlogForm() {
               disabled={loading}
               className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 disabled:opacity-50 text-white font-semibold rounded-xl transition-all shadow-lg shadow-blue-600/20"
             >
-              {loading ? 'جاري الحفظ...' : isEdit ? 'حفظ التعديلات' : 'نشر المقال'}
+              {loading ? t('admin.forms.saving') : isEdit ? t('admin.forms.save_changes') : t('admin.forms.blog.publish_btn')}
             </button>
           </div>
         </div>

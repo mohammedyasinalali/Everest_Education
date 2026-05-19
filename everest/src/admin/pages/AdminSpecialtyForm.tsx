@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { specialtyService } from '../services/api';
 
 // Helper: auto-generate slug from name
@@ -16,6 +17,7 @@ const generateSlug = (text: string): string => {
 export const AdminSpecialtyForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   const isEditing = Boolean(id);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -61,7 +63,7 @@ export const AdminSpecialtyForm = () => {
         }
       }
     } catch (err) {
-      setError('فشل في جلب التخصص');
+      setError(t('admin.common.no_data')); // fallback
     } finally {
       setLoading(false);
     }
@@ -108,13 +110,13 @@ export const AdminSpecialtyForm = () => {
       }
       navigate('/admin/specialties');
     } catch (err: any) {
-      setError(err.message || 'حدث خطأ أثناء الحفظ');
+      setError(err.message || 'Error saving');
     } finally {
       setLoading(false);
     }
   };
 
-  if (loading && isEditing) return <div className="p-8 text-center">جاري التحميل...</div>;
+  if (loading && isEditing) return <div className="p-8 text-center">{t('admin.common.loading')}</div>;
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
@@ -123,7 +125,7 @@ export const AdminSpecialtyForm = () => {
           <i className="fas fa-arrow-right"></i>
         </button>
         <h1 className="text-3xl font-bold font-['Tajawal'] text-gray-800">
-          {isEditing ? 'تعديل التخصص' : 'إضافة تخصص جديد'}
+          {isEditing ? t('admin.forms.edit') : t('admin.specialties.add_specialty')}
         </h1>
       </div>
 
@@ -136,7 +138,7 @@ export const AdminSpecialtyForm = () => {
       <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border p-6 space-y-6 font-['Tajawal']">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">لغة التخصص *</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.specialty.language_label')}</label>
             <select
               name="locale"
               value={formData.locale}
@@ -150,41 +152,41 @@ export const AdminSpecialtyForm = () => {
               <option value="fa">فارسی</option>
               <option value="ru">Русский</option>
             </select>
-            {!isEditing && <p className="text-xs text-gray-500">ملاحظة: هذا التخصص سيظهر فقط في هذه اللغة.</p>}
+            {!isEditing && <p className="text-xs text-gray-500">{t('admin.forms.specialty.language_note')}</p>}
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">اسم التخصص *</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.specialty.name_label')}</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="مثال: الطب البشري"
+              placeholder={t('admin.forms.specialty.name_placeholder')}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">المعرّف في الرابط (Slug) *</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.slug_label')} *</label>
             <input
               type="text"
               name="slug"
               value={formData.slug}
               onChange={handleChange}
-              placeholder="يتم توليده تلقائياً من اسم التخصص"
+              placeholder={t('admin.forms.slug_placeholder')}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
               dir="ltr"
               required
             />
             <p className="text-xs text-gray-500">
-              هذا هو الجزء الذي يظهر في رابط الصفحة. مثال: <span dir="ltr" className="text-blue-600">eversteducation.org/specialties/<strong>{formData.slug || 'medicine'}</strong></span>
+              {t('admin.forms.slug_note')} <span dir="ltr" className="text-blue-600">eversteducation.org/specialties/<strong>{formData.slug || 'medicine'}</strong></span>
             </p>
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">الدرجة الأكاديمية *</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.specialty.degree_label')}</label>
             <select
               name="category"
               value={formData.category}
@@ -192,39 +194,39 @@ export const AdminSpecialtyForm = () => {
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
               required
             >
-              <option value="bachelor">بكالوريوس</option>
-              <option value="master">ماجستير</option>
-              <option value="phd">دكتوراه</option>
-              <option value="diploma">دبلوم</option>
+              <option value="bachelor">{t('admin.specialties.degrees.bachelor')}</option>
+              <option value="master">{t('admin.specialties.degrees.master')}</option>
+              <option value="phd">{t('admin.specialties.degrees.phd')}</option>
+              <option value="diploma">{t('admin.specialties.degrees.diploma')}</option>
             </select>
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">المدة الدراسية</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.specialty.duration_label')}</label>
             <input
               type="text"
               name="duration"
               value={formData.duration}
               onChange={handleChange}
-              placeholder="مثال: 4 سنوات"
+              placeholder={t('admin.forms.specialty.duration_placeholder')}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">لغة الدراسة</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.specialty.study_language_label')}</label>
             <input
               type="text"
               name="language"
               value={formData.language}
               onChange={handleChange}
-              placeholder="مثال: إنجليزي / تركي"
+              placeholder={t('admin.forms.specialty.study_language_placeholder')}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">أيقونة (Font Awesome)</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.specialty.icon_label')}</label>
             <div className="flex gap-3 items-center">
               <input
                 type="text"
@@ -245,7 +247,7 @@ export const AdminSpecialtyForm = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">لون الأيقونة</label>
+            <label className="font-bold text-gray-700">{t('admin.forms.specialty.icon_color_label')}</label>
             <input
               type="color"
               name="color"
@@ -258,7 +260,7 @@ export const AdminSpecialtyForm = () => {
 
         {/* ── Image Section ── */}
         <div className="space-y-3 border-t pt-6">
-          <label className="font-bold text-gray-700 block">صورة الغلاف</label>
+          <label className="font-bold text-gray-700 block">{t('admin.forms.cover_image')}</label>
           
           {/* Toggle */}
           <div className="flex gap-2 mb-4">
@@ -269,8 +271,8 @@ export const AdminSpecialtyForm = () => {
                 imageMode === 'upload' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              <i className="fas fa-upload ml-2"></i>
-              رفع صورة من الجهاز
+              <i className="fas fa-upload mx-2"></i>
+              {t('admin.forms.upload_image')}
             </button>
             <button 
               type="button"
@@ -279,8 +281,8 @@ export const AdminSpecialtyForm = () => {
                 imageMode === 'url' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
-              <i className="fas fa-link ml-2"></i>
-              لصق رابط صورة
+              <i className="fas fa-link mx-2"></i>
+              {t('admin.forms.paste_url')}
             </button>
           </div>
 
@@ -295,8 +297,8 @@ export const AdminSpecialtyForm = () => {
                 ) : (
                   <div className="text-gray-400">
                     <i className="fas fa-cloud-upload-alt text-4xl mb-3 block"></i>
-                    <p className="font-bold">اضغط هنا لاختيار صورة</p>
-                    <p className="text-xs mt-1">JPG, PNG, WEBP - حتى 5MB</p>
+                    <p className="font-bold">{t('admin.forms.click_to_upload')}</p>
+                    <p className="text-xs mt-1">{t('admin.forms.image_format')}</p>
                   </div>
                 )}
               </div>
@@ -330,41 +332,41 @@ export const AdminSpecialtyForm = () => {
         </div>
 
         <div className="space-y-2">
-          <label className="font-bold text-gray-700">الوصف الترويجي القصير *</label>
+          <label className="font-bold text-gray-700">{t('admin.forms.specialty.short_desc_label')}</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            placeholder="وصف مختصر عن التخصص يظهر في بطاقة التخصص..."
+            placeholder={t('admin.forms.specialty.short_desc_placeholder')}
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none min-h-[100px]"
             required
           />
         </div>
 
         <div className="space-y-2">
-          <label className="font-bold text-gray-700">لماذا دراسة هذا التخصص؟ (المزايا)</label>
+          <label className="font-bold text-gray-700">{t('admin.forms.specialty.advantages_label')}</label>
           <textarea
             name="advantages"
             value={(formData as any).advantages || ''}
             onChange={handleChange}
-            placeholder="اكتب كل ميزة في سطر منفصل (اضغط Enter للسطر الجديد)"
+            placeholder={t('admin.forms.specialty.advantages_placeholder')}
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none min-h-[120px]"
           />
-          <p className="text-xs text-gray-500">هذه النقاط ستظهر كقائمة مزايا في صفحة تفاصيل التخصص.</p>
+          <p className="text-xs text-gray-500">{t('admin.forms.specialty.advantages_note')}</p>
         </div>
 
         <div className="space-y-2">
-          <label className="font-bold text-gray-700">كلمات دلالية (Tags)</label>
+          <label className="font-bold text-gray-700">{t('admin.forms.specialty.tags_label')}</label>
           <input
             type="text"
             name="tags"
             value={formData.tags}
             onChange={handleChange}
-            placeholder="مثال: medical,engineering  (افصل بين الكلمات بفاصلة)"
+            placeholder={t('admin.forms.specialty.tags_placeholder')}
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
             dir="ltr"
           />
-          <p className="text-xs text-gray-500">تساعد في فلترة التخصصات (مثال: medical للتخصصات الطبية، engineering للهندسية)</p>
+          <p className="text-xs text-gray-500">{t('admin.forms.specialty.tags_note')}</p>
         </div>
 
         <div className="flex items-center gap-2 mt-4 p-4 bg-gray-50 rounded-lg">
@@ -377,7 +379,7 @@ export const AdminSpecialtyForm = () => {
             className="w-5 h-5 text-blue-600 rounded"
           />
           <label htmlFor="published" className="font-bold text-gray-700 cursor-pointer">
-            نشر التخصص للمستخدمين
+            {t('admin.forms.specialty.publish_label')}
           </label>
         </div>
 
@@ -387,7 +389,7 @@ export const AdminSpecialtyForm = () => {
             disabled={loading}
             className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-bold disabled:opacity-50"
           >
-            {loading ? 'جاري الحفظ...' : isEditing ? 'حفظ التعديلات' : 'إضافة التخصص'}
+            {loading ? t('admin.forms.saving') : isEditing ? t('admin.forms.save_changes') : t('admin.specialties.add_specialty')}
           </button>
         </div>
       </form>

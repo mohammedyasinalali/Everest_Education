@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { universityService } from '../services/api';
+import { universityService, authService } from '../services/api';
 
 interface University {
   id: number;
@@ -58,6 +58,18 @@ export default function AdminUniversities() {
 
   const isRTL = i18n.language === 'ar';
 
+  const adminUser = authService.getCurrentAdmin();
+  const allowedLanguages = adminUser?.role === 'SUPER_ADMIN' 
+    ? null 
+    : adminUser?.languages ? adminUser.languages.split(',') : [];
+
+  const displayUniversities = universities.filter(u => {
+    if (allowedLanguages && !u.translations.some(t => allowedLanguages.includes(t.locale))) {
+      return false;
+    }
+    return true;
+  });
+
   return (
     <div className={`space-y-6 font-['Tajawal'] ${isRTL ? 'text-right' : 'text-left'}`}>
       <div className="flex items-center justify-between">
@@ -101,7 +113,7 @@ export default function AdminUniversities() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {universities.map((univ) => (
+                {displayUniversities.map((univ) => (
                   <tr key={univ.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">

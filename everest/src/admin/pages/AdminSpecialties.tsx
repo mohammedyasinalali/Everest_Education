@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { specialtyService } from '../services/api';
+import { specialtyService, authService } from '../services/api';
 
 interface Specialty {
   id: number;
@@ -21,6 +21,11 @@ export const AdminSpecialties = () => {
   const [langFilter, setLangFilter] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const adminUser = authService.getCurrentAdmin();
+  const allowedLanguages = adminUser?.role === 'SUPER_ADMIN' 
+    ? null 
+    : adminUser?.languages ? adminUser.languages.split(',') : [];
 
   const fetchSpecialties = async () => {
     setLoading(true);
@@ -79,6 +84,13 @@ export const AdminSpecialties = () => {
     ru: 'Русский'
   };
 
+  const availableLanguages = [
+    { value: 'ar', label: 'العربية' },
+    { value: 'en', label: 'English' },
+    { value: 'fa', label: 'فارسی' },
+    { value: 'ru', label: 'Русский' },
+  ].filter(lang => !allowedLanguages || allowedLanguages.includes(lang.value));
+
   return (
     <div className={`space-y-6 font-['Tajawal'] ${isRTL ? 'text-right' : 'text-left'}`}>
       
@@ -96,17 +108,18 @@ export const AdminSpecialties = () => {
 
       {/* Filters */}
       <div className="flex gap-4 mb-4">
-        <select 
-          value={langFilter} 
-          onChange={(e) => { setLangFilter(e.target.value); setPage(1); }}
-          className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
-        >
-          <option value="">{t('admin.common.all_languages')}</option>
-          <option value="ar">العربية</option>
-          <option value="en">English</option>
-          <option value="fa">فارسی</option>
-          <option value="ru">Русский</option>
-        </select>
+        {availableLanguages.length > 0 && (
+          <select 
+            value={langFilter} 
+            onChange={(e) => { setLangFilter(e.target.value); setPage(1); }}
+            className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
+          >
+            <option value="">{t('admin.common.all_languages')}</option>
+            {availableLanguages.map(lang => (
+              <option key={lang.value} value={lang.value}>{lang.label}</option>
+            ))}
+          </select>
+        )}
 
         <select 
           value={categoryFilter} 

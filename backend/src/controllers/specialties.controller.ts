@@ -51,14 +51,43 @@ export const getSpecialtyBySlug = async (req: Request, res: Response): Promise<v
 };
 
 // ─── Admin API ───────────────────────────────────────────────────────────────
-export const adminGetSpecialties = async (req: Request, res: Response): Promise<void> => {
+export const adminGetSpecialties = async (req: Request & { adminId?: number }, res: Response): Promise<void> => {
   try {
     const { page = '1', limit = '10', category, locale } = req.query;
     const skip = (Number(page) - 1) * Number(limit);
 
     const where: any = {};
     if (category) where.category = String(category);
-    if (locale) where.locale = String(locale);
+
+    // Enforce Admin RBAC Language Restrictions
+    if (req.adminId) {
+      const adminUser = await prisma.admin.findUnique({ where: { id: req.adminId } });
+      if (adminUser && adminUser.role !== 'SUPER_ADMIN' && adminUser.languages) {
+        const allowedLanguages = adminUser.languages.split(',').filter(Boolean);
+        if (allowedLanguages.length > 0) {
+          if (locale) {
+             // If user requested a specific locale, verify they are allowed
+             if (allowedLanguages.includes(String(locale))) {
+               where.locale = String(locale);
+             } else {
+               // If not allowed, return nothing
+               where.locale = 'UNAUTHORIZED';
+             }
+          } else {
+             // If no locale requested, restrict to all allowed languages
+             where.locale = { in: allowedLanguages };
+          }
+        } else {
+          // If sub admin has no languages assigned, return nothing
+          where.locale = 'UNAUTHORIZED';
+        }
+      } else {
+         // Super admin or sub admin with ALL languages
+         if (locale) where.locale = String(locale);
+      }
+    } else {
+       if (locale) where.locale = String(locale);
+    }
 
     const [specialties, total] = await Promise.all([
       prisma.specialty.findMany({

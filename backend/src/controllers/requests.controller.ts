@@ -30,14 +30,38 @@ export const createRequest = async (req: Request, res: Response): Promise<void> 
 };
 
 // GET all requests (Admin)
-export const getRequests = async (req: Request, res: Response): Promise<void> => {
+export const getRequests = async (req: Request & { adminId?: number }, res: Response): Promise<void> => {
   try {
     const { page = '1', limit = '20', status, language } = req.query;
     const skip = (Number(page) - 1) * Number(limit);
 
     const where: any = {};
     if (status) where.status = String(status);
-    if (language) where.language = String(language);
+
+    // Enforce Admin RBAC Language Restrictions
+    if (req.adminId) {
+      const adminUser = await prisma.admin.findUnique({ where: { id: req.adminId } });
+      if (adminUser && adminUser.role !== 'SUPER_ADMIN' && adminUser.languages) {
+        const allowedLanguages = adminUser.languages.split(',').filter(Boolean);
+        if (allowedLanguages.length > 0) {
+          if (language) {
+             if (allowedLanguages.includes(String(language))) {
+               where.language = String(language);
+             } else {
+               where.language = 'UNAUTHORIZED';
+             }
+          } else {
+             where.language = { in: allowedLanguages };
+          }
+        } else {
+          where.language = 'UNAUTHORIZED';
+        }
+      } else {
+         if (language) where.language = String(language);
+      }
+    } else {
+       if (language) where.language = String(language);
+    }
 
     const [requests, total] = await Promise.all([
       prisma.studentRequest.findMany({

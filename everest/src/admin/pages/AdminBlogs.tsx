@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { blogService } from '../services/api';
+import { blogService, authService } from '../services/api';
 
 interface Blog {
   id: number;
@@ -57,9 +57,29 @@ export default function AdminBlogs() {
 
   const isRTL = i18n.language === 'ar';
 
-  const filteredBlogs = langFilter 
-    ? blogs.filter(b => b.translations.some(t => t.locale === langFilter))
-    : blogs;
+  const adminUser = authService.getCurrentAdmin();
+  const allowedLanguages = adminUser?.role === 'SUPER_ADMIN' 
+    ? null 
+    : adminUser?.languages ? adminUser.languages.split(',') : [];
+
+  const displayBlogs = blogs.filter(b => {
+    // If admin is restricted, blog must have at least one translation in allowed languages
+    if (allowedLanguages && !b.translations.some(t => allowedLanguages.includes(t.locale))) {
+      return false;
+    }
+    // Then apply the explicit language filter
+    if (langFilter && !b.translations.some(t => t.locale === langFilter)) {
+      return false;
+    }
+    return true;
+  });
+  
+  const availableLanguages = [
+    { value: 'ar', label: 'العربية' },
+    { value: 'en', label: 'English' },
+    { value: 'fa', label: 'فارسی' },
+    { value: 'ru', label: 'Русский' },
+  ].filter(lang => !allowedLanguages || allowedLanguages.includes(lang.value));
 
   return (
     <div className={`space-y-6 font-['Tajawal'] ${isRTL ? 'text-right' : 'text-left'}`}>
@@ -69,17 +89,18 @@ export default function AdminBlogs() {
           <p className="text-gray-500 text-sm mt-1 font-bold">{total} {t('admin.blogs.total_blogs')}</p>
         </div>
         <div className="flex gap-4">
-          <select 
-            value={langFilter} 
-            onChange={(e) => setLangFilter(e.target.value)}
-            className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
-          >
-            <option value="">{t('admin.common.all_languages')}</option>
-            <option value="ar">العربية</option>
-            <option value="en">English</option>
-            <option value="fa">فارسی</option>
-            <option value="ru">Русский</option>
-          </select>
+          {availableLanguages.length > 1 && (
+            <select 
+              value={langFilter} 
+              onChange={(e) => setLangFilter(e.target.value)}
+              className={`bg-white border border-gray-200 rounded-lg px-4 py-2 font-bold text-[#203252] outline-none focus:ring-2 focus:ring-[#0859BC]`}
+            >
+              <option value="">{t('admin.common.all_languages')}</option>
+              {availableLanguages.map(lang => (
+                <option key={lang.value} value={lang.value}>{lang.label}</option>
+              ))}
+            </select>
+          )}
           <Link
             to="/admin/blogs/new"
             className="bg-[#0859BC] text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition-colors font-bold flex items-center gap-2"
@@ -117,7 +138,7 @@ export default function AdminBlogs() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {filteredBlogs.map((blog) => (
+                {displayBlogs.map((blog) => (
                   <tr key={blog.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">

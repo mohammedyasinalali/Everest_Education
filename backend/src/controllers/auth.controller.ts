@@ -34,7 +34,13 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
     res.json({
       token,
-      admin: { id: admin.id, email: admin.email },
+      admin: { 
+        id: admin.id, 
+        email: admin.email,
+        role: admin.role,
+        permissions: admin.permissions,
+        languages: admin.languages
+      },
     });
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
@@ -45,7 +51,7 @@ export const getMe = async (req: Request & { adminId?: number }, res: Response):
   try {
     const admin = await prisma.admin.findUnique({
       where: { id: req.adminId },
-      select: { id: true, email: true, createdAt: true },
+      select: { id: true, email: true, role: true, permissions: true, languages: true, createdAt: true },
     });
 
     if (!admin) {

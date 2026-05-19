@@ -8,6 +8,7 @@ import blogRoutes from './routes/blogs.routes';
 import universityRoutes from './routes/universities.routes';
 import requestRoutes from './routes/requests.routes';
 import specialtyRoutes from './routes/specialties.routes';
+import adminRoutes from './routes/admin.routes';
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use('/api/blogs', blogRoutes);
 app.use('/api/universities', universityRoutes);
 app.use('/api/requests', requestRoutes);
 app.use('/api/specialties', specialtyRoutes);
+app.use('/api/admins', adminRoutes);
 
 // Health check
 app.get('/api/health', (_, res) => {

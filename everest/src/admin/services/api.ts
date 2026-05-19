@@ -9,7 +9,7 @@ export const authService = {
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || 'Login failed');
-    return data as { token: string; admin: { id: number; email: string } };
+    return data as { token: string; admin: { id: number; email: string; role: string; permissions: string | null; languages: string | null } };
   },
 
   logout: () => {
@@ -21,15 +21,57 @@ export const authService = {
 
   isAuthenticated: () => !!localStorage.getItem('adminToken'),
 
-  saveSession: (token: string, admin: { id: number; email: string }) => {
+  saveSession: (token: string, admin: { id: number; email: string; role: string; permissions: string | null; languages: string | null }) => {
     localStorage.setItem('adminToken', token);
     localStorage.setItem('adminUser', JSON.stringify(admin));
+  },
+
+  getCurrentAdmin: () => {
+    const user = localStorage.getItem('adminUser');
+    return user ? JSON.parse(user) : null;
   },
 };
 
 const authHeaders = () => ({
   Authorization: `Bearer ${authService.getToken()}`,
 });
+
+// ─── Admins (RBAC) ────────────────────────────────────────────────────────────
+export const adminService = {
+  getAll: async () => {
+    const res = await fetch(`${API_URL}/admins`, { headers: authHeaders() });
+    return res.json();
+  },
+  create: async (data: any) => {
+    const res = await fetch(`${API_URL}/admins`, {
+      method: 'POST',
+      headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.message || 'Failed to create admin');
+    return result;
+  },
+  update: async (id: number, data: any) => {
+    const res = await fetch(`${API_URL}/admins/${id}`, {
+      method: 'PUT',
+      headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.message || 'Failed to update admin');
+    return result;
+  },
+  delete: async (id: number) => {
+    const res = await fetch(`${API_URL}/admins/${id}`, {
+      method: 'DELETE',
+      headers: authHeaders(),
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.message || 'Failed to delete admin');
+    return result;
+  },
+};
 
 // ─── Blogs ────────────────────────────────────────────────────────────────────
 export const blogService = {

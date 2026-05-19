@@ -21,6 +21,7 @@ import AdminUniversityForm from './admin/pages/AdminUniversityForm';
 import { AdminSpecialties } from './admin/pages/AdminSpecialties';
 import { AdminSpecialtyForm } from './admin/pages/AdminSpecialtyForm';
 import { AdminRequests } from './admin/pages/AdminRequests';
+import AdminUsers from './admin/pages/AdminUsers';
 import AdminLayout from './admin/components/AdminLayout';
 import ProtectedRoute from './admin/components/ProtectedRoute';
 
@@ -59,6 +60,7 @@ function App() {
           <Route path="specialties" element={<AdminSpecialties />} />
           <Route path="specialties/new" element={<AdminSpecialtyForm />} />
           <Route path="specialties/edit/:id" element={<AdminSpecialtyForm />} />
+          <Route path="users" element={<AdminUsers />} />
           <Route path="requests" element={<AdminRequests />} />
         </Route>
 
