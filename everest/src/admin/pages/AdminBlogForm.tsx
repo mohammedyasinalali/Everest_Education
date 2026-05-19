@@ -1,4 +1,4 @@
-import { useEffect, useState, FormEvent, useRef } from 'react';
+import { useEffect, useState, useRef, type FormEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { blogService } from '../services/api';
 import { LOCALES } from '../constants';

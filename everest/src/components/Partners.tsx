@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Container } from './ui';
-import { partnersRow1, partnersRow2 } from '../constants';
+import { partnersRow1, partnersRow2, type Partner } from '../constants';
 
 const Partners = () => {
     const { t } = useTranslation();
@@ -16,7 +16,7 @@ const Partners = () => {
     ];
 
     // Partner Logo Component
-    const PartnerLogo = ({ partner, index }: { partner: string; index: number }) => {
+    const PartnerLogo = ({ partner, index }: { partner: Partner; index: number }) => {
         const borderColor = borderColors[index % borderColors.length];
         return (
             <div className="inline-flex justify-center px-1 flex-shrink-0">
@@ -25,8 +25,8 @@ const Partners = () => {
                         className={`relative w-32 h-32 rounded-full bg-white shadow-lg border-4 ${borderColor} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:z-10 overflow-hidden`}
                     >
                         <img
-                            src={`https://placehold.co/100x100/white/333?text=${partner}`}
-                            alt={partner}
+                            src={partner.logo}
+                            alt={partner.name}
                             className="w-20 h-20 object-contain"
                         />
                         <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-gray-200 to-gray-300 rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">

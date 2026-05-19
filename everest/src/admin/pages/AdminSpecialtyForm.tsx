@@ -17,7 +17,7 @@ const generateSlug = (text: string): string => {
 export const AdminSpecialtyForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const isEditing = Boolean(id);
   const fileInputRef = useRef<HTMLInputElement>(null);
 

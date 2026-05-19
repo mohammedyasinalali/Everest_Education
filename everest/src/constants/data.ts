@@ -130,8 +130,37 @@ export const faqData: FAQItem[] = [
 ];
 
 // Partners Data
-export const partnersRow1 = ['Medipol', 'Aydin', 'Okan', 'Nisantasi', 'Atlas', 'BAU', 'Bilgi'];
-export const partnersRow2 = ['Gelisim', 'Istinye', 'Uskudar', 'Yeditepe', 'Koc', 'Sabanci'];
+export interface Partner {
+    name: string;
+    logo: string;
+}
+
+export const partnersRow1: Partner[] = [
+    { name: 'Medipol', logo: '/images/university-logos/Medipol.png' },
+    { name: 'Aydin', logo: '/images/university-logos/Aydin.png' },
+    { name: 'Okan', logo: '/images/university-logos/okan.png' },
+    { name: 'Nisantasi', logo: '/images/university-logos/nisantasi.png' },
+    { name: 'Atlas', logo: '/images/university-logos/atlas university.png' },
+    { name: 'BAU', logo: '/images/university-logos/Bau.png' },
+    { name: 'Bilgi', logo: '/images/university-logos/Istanbul Bilgi.png' },
+    { name: 'Altinbas', logo: '/images/university-logos/Altinbas.png' },
+    { name: 'Atilim', logo: '/images/university-logos/Atilim University.png' },
+    { name: 'Beykent', logo: '/images/university-logos/Beykent_Universitesi_Logo_Yeni.png' },
+    { name: 'Toros', logo: '/images/university-logos/Toros.png' }
+];
+
+export const partnersRow2: Partner[] = [
+    { name: 'Gelisim', logo: '/images/university-logos/gelisim.png' },
+    { name: 'Istinye', logo: '/images/university-logos/Istinye.png' },
+    { name: 'Uskudar', logo: '/images/university-logos/uskudar.png' },
+    { name: 'Bilkent', logo: '/images/university-logos/bilkent.png' },
+    { name: 'Halic', logo: '/images/university-logos/halic.png' },
+    { name: 'Dogus', logo: '/images/university-logos/dogus.png' },
+    { name: 'Arel', logo: '/images/university-logos/istanbul arel.png' },
+    { name: 'Yeni Yuzyil', logo: '/images/university-logos/yeni yuzyil.png' },
+    { name: 'Ozyegin', logo: '/images/university-logos/Özyeğin university.png' },
+    { name: 'Piri Reis', logo: '/images/university-logos/Piri reis.png' }
+];
 
 // Contact Info
 export interface ContactInfo {

@@ -25,7 +25,7 @@ export const publicApi = {
                 return {
                     id: String(b.id),
                     slug: b.slug,
-                    lang: locale,
+                    lang: locale as "ar" | "en" | "fa" | "ru",
                     title: t.title || 'بدون عنوان',
                     excerpt: t.content ? t.content.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...' : '',
                     content: t.content || '',
@@ -53,7 +53,7 @@ export const publicApi = {
             return {
                 id: String(b.id),
                 slug: b.slug,
-                lang: locale,
+                lang: locale as "ar" | "en" | "fa" | "ru",
                 title: t.title || 'بدون عنوان',
                 excerpt: t.content ? t.content.replace(/<[^>]*>?/gm, '').substring(0, 150) + '...' : '',
                 content: t.content || '',
@@ -69,7 +69,7 @@ export const publicApi = {
         }
     },
 
-    getUniversities: async (locale: string): Promise<University[]> => {
+    getUniversities: async (_locale: string): Promise<University[]> => {
         try {
             const res = await fetch(`${API_URL}/universities?page=1&limit=100&published=true`);
             if (!res.ok) return [];
