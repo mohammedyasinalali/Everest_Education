@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { useTranslation } from 'react-i18next';
 
 interface PackageFeature {
     text: string;
@@ -7,7 +7,7 @@ interface PackageFeature {
 }
 
 interface Package {
-    name: string;
+    nameKey: string;
     icon: string;
     price: string;
     oldPrice: string;
@@ -22,7 +22,7 @@ interface Package {
 
 const packages: Package[] = [
     {
-        name: 'الباقة البرونزية',
+        nameKey: 'services_section.packages.bronze',
         icon: 'fas fa-medal',
         price: '$249',
         oldPrice: '$350',
@@ -48,7 +48,7 @@ const packages: Package[] = [
         ],
     },
     {
-        name: 'الباقة الفضية',
+        nameKey: 'services_section.packages.silver',
         icon: 'fas fa-gem',
         price: '$399',
         oldPrice: '$520',
@@ -74,7 +74,7 @@ const packages: Package[] = [
         ],
     },
     {
-        name: 'الباقة الذهبية',
+        nameKey: 'services_section.packages.gold',
         icon: 'fas fa-crown',
         price: '$599',
         oldPrice: '$800',
@@ -104,6 +104,13 @@ const packages: Package[] = [
 
 const PricingPackages = () => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const { t } = useTranslation();
+
+    const handlePackageClick = (pkgName: string) => {
+        const message = t('services_section.packages.whatsapp_msg', { package: pkgName });
+        const phone = '905451365495';
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    };
 
     return (
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
@@ -146,7 +153,7 @@ const PricingPackages = () => {
                             </div>
 
                             <h3 className="text-2xl font-black text-[#203252] mb-4 font-['Tajawal']">
-                                {pkg.name}
+                                {t(pkg.nameKey)}
                             </h3>
 
                             {/* Price */}
@@ -202,6 +209,7 @@ const PricingPackages = () => {
 
                             {/* CTA */}
                             <button
+                                onClick={() => handlePackageClick(t(pkg.nameKey))}
                                 className="w-full mt-auto py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:-translate-y-1 font-['Tajawal']"
                                 style={{
                                     background: isPopular
@@ -212,7 +220,7 @@ const PricingPackages = () => {
                                     boxShadow: isPopular ? `0 8px 25px ${pkg.color}40` : 'none',
                                 }}
                             >
-                                اختر الباقة
+                                {t('services_section.packages.choose')}
                             </button>
                         </div>
                     </div>

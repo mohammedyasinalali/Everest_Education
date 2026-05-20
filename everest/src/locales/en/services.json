@@ -53,6 +53,11 @@
     "packages": {
         "badge": "Choose the right package for you",
         "title": "Our Packages",
-        "desc": "The Everest team always strives for your comfort, providing a lot of planning and assistance before you arrive and starting registration steps until you begin your studies. Choose the package that meets your needs."
+        "desc": "The Everest team always strives for your comfort, providing a lot of planning and assistance before you arrive and starting registration steps until you begin your studies. Choose the package that meets your needs.",
+        "bronze": "Bronze Package",
+        "silver": "Silver Package",
+        "gold": "Gold Package",
+        "choose": "Choose Package",
+        "whatsapp_msg": "Hello, I would like to book the {{package}} please."
     }
 }
