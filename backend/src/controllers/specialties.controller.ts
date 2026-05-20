@@ -124,7 +124,7 @@ export const adminGetSpecialtyById = async (req: Request, res: Response): Promis
 
 export const createSpecialty = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { slug, locale, name, category, icon, color, image, duration, language, description, advantages, tags, published } = req.body;
+    const { slug, locale, name, category, icon, color, image, duration, language, description, advantages, stages, careers, tags, published } = req.body;
 
     // Use uploaded file if present, otherwise use URL from body
     const imageValue = req.file ? `/uploads/specialties/${req.file.filename}` : (image || null);
@@ -151,6 +151,8 @@ export const createSpecialty = async (req: Request, res: Response): Promise<void
         language,
         description,
         advantages: advantages || '',
+        stages: stages || '[]',
+        careers: careers || '[]',
         tags,
         published: published === 'true' || published === true,
       },
@@ -165,7 +167,7 @@ export const createSpecialty = async (req: Request, res: Response): Promise<void
 export const updateSpecialty = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
-    const { slug, locale, name, category, icon, color, image, duration, language, description, advantages, tags, published } = req.body;
+    const { slug, locale, name, category, icon, color, image, duration, language, description, advantages, stages, careers, tags, published } = req.body;
 
     // Use uploaded file if present, otherwise use URL from body
     const imageValue = req.file ? `/uploads/specialties/${req.file.filename}` : image;
@@ -184,6 +186,8 @@ export const updateSpecialty = async (req: Request, res: Response): Promise<void
         language,
         description,
         advantages: advantages || '',
+        stages: stages || '[]',
+        careers: careers || '[]',
         tags,
         published: published === 'true' || published === true,
       },

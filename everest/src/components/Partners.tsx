@@ -46,33 +46,40 @@ const Partners = () => {
                 </h2>
 
                 {/* Infinite Scroll Row 1 - Left to Right */}
-                <div className="mt-10 mb-2 relative w-full overflow-hidden">
-                    <div className="flex flex-nowrap animate-scroll-left">
-                        {/* Triple the content for truly seamless scroll */}
-                        {[...Array(3)].map((_, setIndex) => (
-                            partnersRow1.map((partner, index) => (
-                                <PartnerLogo
-                                    key={`row1-set${setIndex}-${index}`}
-                                    partner={partner}
-                                    index={index}
-                                />
-                            ))
+                <div className="mt-10 mb-2 relative w-full overflow-hidden" dir="ltr">
+                    <div className="flex w-max animate-scroll-left">
+                        {/* Two identical blocks for perfect seamless scroll. Each block has multiple copies of logos to ensure it's wider than any screen. */}
+                        {[1, 2].map((blockId) => (
+                            <div key={`block1-${blockId}`} className="flex flex-nowrap shrink-0">
+                                {[...Array(4)].map((_, setIndex) => (
+                                    partnersRow1.map((partner, index) => (
+                                        <PartnerLogo
+                                            key={`row1-b${blockId}-s${setIndex}-${index}`}
+                                            partner={partner}
+                                            index={index}
+                                        />
+                                    ))
+                                ))}
+                            </div>
                         ))}
                     </div>
                 </div>
 
                 {/* Infinite Scroll Row 2 - Right to Left */}
-                <div className="mb-2 relative w-full overflow-hidden">
-                    <div className="flex flex-nowrap animate-scroll-right">
-                        {/* Triple the content for truly seamless scroll */}
-                        {[...Array(3)].map((_, setIndex) => (
-                            partnersRow2.map((partner, index) => (
-                                <PartnerLogo
-                                    key={`row2-set${setIndex}-${index}`}
-                                    partner={partner}
-                                    index={(index + partnersRow1.length) % borderColors.length}
-                                />
-                            ))
+                <div className="mb-2 relative w-full overflow-hidden" dir="ltr">
+                    <div className="flex w-max animate-scroll-right">
+                        {[1, 2].map((blockId) => (
+                            <div key={`block2-${blockId}`} className="flex flex-nowrap shrink-0">
+                                {[...Array(4)].map((_, setIndex) => (
+                                    partnersRow2.map((partner, index) => (
+                                        <PartnerLogo
+                                            key={`row2-b${blockId}-s${setIndex}-${index}`}
+                                            partner={partner}
+                                            index={(index + partnersRow1.length) % borderColors.length}
+                                        />
+                                    ))
+                                ))}
+                            </div>
                         ))}
                     </div>
                 </div>

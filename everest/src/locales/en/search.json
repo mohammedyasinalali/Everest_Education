@@ -160,6 +160,97 @@
                     "Academic specialization and working as a faculty member in universities.",
                     "Completing postgraduate studies and specializing in specific fields such as: Orthodontics, Maxillofacial Surgery, Dental Implants, or Pediatric Dentistry."
                 ]
+            },
+            "pharmacy": {
+                "about_desc": "Pharmacy is a vital medical specialty that represents the essential link between diagnosis and treatment. This specialty aims to study drugs, their composition methods, and their biological effects on the human body, to ensure the safe and effective use of treatments. Pharmacy is characterized by combining chemistry, biology, and modern medical technology, making the pharmacist the primary expert in medication and the trusted consultant for both patient and doctor.",
+                "why_study_here": "Why Study Pharmacy?",
+                "advantages": [
+                    "Combining science and practice: The specialty integrates biochemical theories with clinical applications, providing a rich and stimulating educational environment.",
+                    "Diversity of career paths: The pharmacist's work is not limited to dispensing medicines, but extends to clinical pharmacy, pharmaceutical industries, and research and development.",
+                    "Job security and financial return: Pharmacy graduates enjoy stable job opportunities at all times and places, with excellent financial returns reflecting the importance of their health role.",
+                    "Contributing to drug innovation: This specialty allows you to be part of scientific teams that develop new treatments that save the lives of millions."
+                ],
+                "stages_title": "Study Stages During the Five Years",
+                "stages": [
+                    "First and Second Years (Basic Sciences): Focus on organic and analytical chemistry, physiology, and microbiology to establish a solid scientific base.",
+                    "Third and Fourth Years (Pharmaceutical Sciences): Deepening in pharmacology, pharmaceutics, pharmacokinetics, and pharmacognosy, with the start of intensive laboratory training.",
+                    "Fifth Year (Clinical and Field Training): Practical training in community and hospital pharmacies (clinical pharmacy), in addition to medical rounds with doctors to closely monitor patient cases."
+                ],
+                "careers": [
+                    "Clinical pharmacist in private and public hospitals.",
+                    "Medicine production and management in major pharmaceutical companies.",
+                    "Working in medical marketing (Medical Rep) for global companies.",
+                    "Academic research and development in drug discovery laboratories."
+                ]
+            },
+            "software-engineering": {
+                "about_desc": "Software engineering is the engineering discipline that focuses on the systematic design and development of software systems to be high-quality, reliable, and scalable. In our era of digital transformation, software has become the main nerve that runs everything; from smartphone applications and banking platforms to artificial intelligence systems and spacecraft. This specialty gives students deep logical thinking and complex problem-solving skills using the latest programming languages and technologies.",
+                "why_study_here": "Why Study Software Engineering?",
+                "advantages": [
+                    "Increasing global demand: Software engineers are among the most sought-after talents in the global labor market, with job offers competed for by major tech companies.",
+                    "Geographic work flexibility: The specialty allows you to work remotely with companies from different continents without having to move from your country.",
+                    "Innovation and creativity: A renewed work environment that allows you to transform abstract ideas into real digital products used by millions of people worldwide.",
+                    "Exceptional salaries and returns: Due to the importance of the tech sector, software engineering features a salary scale that is among the highest of all engineering disciplines."
+                ],
+                "stages_title": "Study Stages During the Four Years",
+                "stages": [
+                    "First Year (Basics and Logic): Studying mathematics, engineering, algorithm principles, and starting to learn basic programming languages like C++ or Java.",
+                    "Second Year (System Architecture): Deepening in Data Structures, database design, and Object-Oriented Programming (OOP) concepts.",
+                    "Third Year (Advanced Technologies): Studying User Interface design (UI/UX), developing web and smartphone applications, information security, and cloud system architecture.",
+                    "Fourth Year (Projects and Training): Focusing on Artificial Intelligence, software project management (Agile/Scrum), and implementing the final graduation project with field training periods."
+                ],
+                "careers": [
+                    "Web and smartphone application developer (Full-Stack Developer).",
+                    "Software and systems engineer in major tech companies (like Google, Microsoft).",
+                    "Expert in cybersecurity and database management.",
+                    "Software project manager (Scrum Master) or systems analyst."
+                ]
+            },
+            "architecture": {
+                "about_desc": "Architecture is the art that wears the robe of science, a specialty concerned with designing buildings and urban spaces to be functional, safe, and aesthetically attractive. This unique specialty blends creative artistic imagination with mathematical engineering precision to shape the built environment that surrounds us. Students learn how to consider cultural, environmental, and societal aspects while designing sustainable and smart buildings that leave an immortal mark on the history of cities.",
+                "why_study_here": "Why Study Architecture?",
+                "advantages": [
+                    "An immortal mark: The specialty gives you the chance to see your ideas and paper blueprints turn into real architectural monuments standing tall for many years.",
+                    "Diversity of creative fields: It allows you to work in multiple tracks such as interior design, urban planning, or landscape design.",
+                    "Continuous technical development: Using the latest engineering software (AutoCAD, Revit, 3D Max) and virtual reality techniques in presenting designs.",
+                    "Independence and business establishment: The ability to open your own consulting office or work as a freelancer to provide innovative designs to clients from different countries."
+                ],
+                "stages_title": "Study Stages During the Four Years",
+                "stages": [
+                    "First Year (Basics and Drawing): Learning the principles of freehand architectural drawing, history of architecture, and an introduction to engineering design to understand formations and volumes.",
+                    "Second Year (Design and Implementation): Starting to use Computer-Aided Design (CAD) software, studying building materials and their effects, and designing medium residential projects.",
+                    "Third Year (Sustainability and Planning): Focusing on green and sustainable architecture, interior design, and neighborhood urban planning, along with designing complex projects like hospitals or museums.",
+                    "Fourth Year (Professional Projects): Managing engineering projects, calculating quantities and specifications, and implementing a graduation project that represents an integrated design reflecting the architect's identity."
+                ],
+                "careers": [
+                    "Architectural design engineer in consulting offices and engineering companies.",
+                    "Interior design, decoration, and landscaping engineer.",
+                    "Project manager and engineering supervisor on construction sites.",
+                    "Expert in urban planning and real estate development in government or private sectors."
+                ]
+            },
+            "business-admin": {
+                "about_desc": "Business Administration is the nerve of the modern economy and the foundation upon which all institutions and companies rely for success and growth. This specialty aims to provide students with comprehensive knowledge on how to plan, organize, direct, and control resources (human, financial, and material) to achieve institutional goals efficiently and effectively. It combines administrative, economic, and accounting concepts, producing leaders and entrepreneurs capable of making crucial strategic decisions in a rapidly changing business environment.",
+                "why_study_here": "Why Study Business Administration?",
+                "advantages": [
+                    "Endless job opportunities: Every institution, whether a hospital, school, bank, or tech company, necessarily needs managers and business administration specialists to ensure its continuity.",
+                    "Diversity of sub-specialties: It provides immense flexibility to choose your preferred path, such as marketing, human resources, financial management, or entrepreneurship.",
+                    "Developing leadership skills: It develops your negotiation, crisis management, and critical thinking skills, qualifying you to hold senior leadership and administrative positions.",
+                    "Ability to establish private projects: Gives you the tools and knowledge needed to establish your own startup and turn your idea into a successful and profitable commercial project."
+                ],
+                "stages_title": "Study Stages During the Four Years",
+                "stages": [
+                    "First Year (Basics and Principles): Studying principles of management, macro and microeconomics, and an introduction to accounting and statistics to understand the business environment.",
+                    "Second Year (Administrative Functions): Deepening in organizational behavior, human resources management, marketing principles, and finance to learn how different departments work together.",
+                    "Third Year (Planning and Analysis): Focusing on strategic management, operations and production management, scientific research methods in business, and supply chain management.",
+                    "Fourth Year (Implementation and Leadership): Studying entrepreneurship, risk and crisis management, and implementing a graduation project representing a feasibility study or integrated business plan for a real project."
+                ],
+                "careers": [
+                    "Human resources manager or marketing manager in local and global companies.",
+                    "Financial analyst or management consultant providing strategic development plans.",
+                    "Project manager or business development manager in major institutions.",
+                    "Entrepreneur and startup founder."
+                ]
             }
         },
         "quick_info": "Quick Info",

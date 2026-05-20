@@ -42,6 +42,9 @@ export const AdminSpecialtyForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  const [stages, setStages] = useState<string[]>([]);
+  const [careers, setCareers] = useState<string[]>([]);
+
   useEffect(() => {
     if (isEditing) {
       fetchSpecialty();
@@ -53,6 +56,12 @@ export const AdminSpecialtyForm = () => {
       setLoading(true);
       const data = await specialtyService.getById(Number(id));
       setFormData({ ...data });
+      try {
+        if (data.stages) setStages(JSON.parse(data.stages));
+      } catch (e) {}
+      try {
+        if (data.careers) setCareers(JSON.parse(data.careers));
+      } catch (e) {}
       if (data.image) {
         if (data.image.startsWith('/uploads')) {
           setImageMode('upload');
@@ -97,10 +106,18 @@ export const AdminSpecialtyForm = () => {
     setLoading(true);
 
     try {
-      const dataToSend = { ...formData };
+      const dataToSend = { 
+        ...formData,
+        stages: JSON.stringify(stages.filter(s => s.trim() !== '')),
+        careers: JSON.stringify(careers.filter(c => c.trim() !== ''))
+      };
       // If uploading a file, clear the image URL field so the server uses the file
       if (imageMode === 'upload' && imageFile) {
         dataToSend.image = '';
+      }
+
+      if (!formData.name || !formData.slug || !formData.description) {
+        throw new Error('الرجاء تعبئة جميع الحقول المطلوبة (الاسم، الرابط، النبذة)');
       }
 
       if (isEditing) {
@@ -111,6 +128,8 @@ export const AdminSpecialtyForm = () => {
       navigate('/admin/specialties');
     } catch (err: any) {
       setError(err.message || 'Error saving');
+      alert('حدث خطأ: ' + (err.message || 'Error saving'));
+      window.scrollTo(0, 0);
     } finally {
       setLoading(false);
     }
@@ -164,7 +183,6 @@ export const AdminSpecialtyForm = () => {
               onChange={handleChange}
               placeholder={t('admin.forms.specialty.name_placeholder')}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
-              required
             />
           </div>
 
@@ -178,7 +196,6 @@ export const AdminSpecialtyForm = () => {
               placeholder={t('admin.forms.slug_placeholder')}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
               dir="ltr"
-              required
             />
             <p className="text-xs text-gray-500">
               {t('admin.forms.slug_note')} <span dir="ltr" className="text-blue-600">eversteducation.org/specialties/<strong>{formData.slug || 'medicine'}</strong></span>
@@ -192,7 +209,6 @@ export const AdminSpecialtyForm = () => {
               value={formData.category}
               onChange={handleChange}
               className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
-              required
             >
               <option value="bachelor">{t('admin.specialties.degrees.bachelor')}</option>
               <option value="master">{t('admin.specialties.degrees.master')}</option>
@@ -214,15 +230,18 @@ export const AdminSpecialtyForm = () => {
           </div>
 
           <div className="space-y-2">
-            <label className="font-bold text-gray-700">{t('admin.forms.specialty.study_language_label')}</label>
-            <input
-              type="text"
+            <label className="font-bold text-gray-700">لغة الدراسة</label>
+            <select
               name="language"
               value={formData.language}
               onChange={handleChange}
-              placeholder={t('admin.forms.specialty.study_language_placeholder')}
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none"
-            />
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none bg-gray-50"
+            >
+              <option value="">غير محدد</option>
+              <option value="التركية">التركية</option>
+              <option value="الإنجليزية">الإنجليزية</option>
+              <option value="التركية والإنجليزية">التركية والإنجليزية</option>
+            </select>
           </div>
 
           <div className="space-y-2">
@@ -339,12 +358,11 @@ export const AdminSpecialtyForm = () => {
             onChange={handleChange}
             placeholder={t('admin.forms.specialty.short_desc_placeholder')}
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none min-h-[100px]"
-            required
           />
         </div>
 
         <div className="space-y-2">
-          <label className="font-bold text-gray-700">{t('admin.forms.specialty.advantages_label')}</label>
+          <label className="font-bold text-gray-700">لماذا دراسة هذا التخصص؟</label>
           <textarea
             name="advantages"
             value={(formData as any).advantages || ''}
@@ -353,6 +371,64 @@ export const AdminSpecialtyForm = () => {
             className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#FF822E] outline-none min-h-[120px]"
           />
           <p className="text-xs text-gray-500">{t('admin.forms.specialty.advantages_note')}</p>
+        </div>
+
+        {/* Dynamic Stages Section */}
+        <div className="space-y-4 border p-4 rounded-lg bg-gray-50">
+          <div className="flex justify-between items-center">
+            <label className="font-bold text-gray-700">المراحل الدراسية خلال السنوات</label>
+            <button type="button" onClick={() => setStages([...stages, ''])} className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">
+              + إضافة مرحلة
+            </button>
+          </div>
+          {stages.map((stage, index) => (
+            <div key={index} className="flex gap-2">
+              <input 
+                type="text" 
+                value={stage}
+                onChange={(e) => {
+                  const newStages = [...stages];
+                  newStages[index] = e.target.value;
+                  setStages(newStages);
+                }}
+                placeholder={`المرحلة ${index + 1}`}
+                className="flex-1 p-2 border rounded outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button type="button" onClick={() => setStages(stages.filter((_, i) => i !== index))} className="bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600 transition">
+                <i className="fas fa-trash"></i>
+              </button>
+            </div>
+          ))}
+          {stages.length === 0 && <p className="text-sm text-gray-500 text-center">لم يتم إضافة أي مراحل. (لن يتم عرض هذا القسم للمستخدم)</p>}
+        </div>
+
+        {/* Dynamic Careers Section */}
+        <div className="space-y-4 border p-4 rounded-lg bg-gray-50">
+          <div className="flex justify-between items-center">
+            <label className="font-bold text-gray-700">مجالات العمل بعد التخرج</label>
+            <button type="button" onClick={() => setCareers([...careers, ''])} className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">
+              + إضافة مجال
+            </button>
+          </div>
+          {careers.map((career, index) => (
+            <div key={index} className="flex gap-2">
+              <input 
+                type="text" 
+                value={career}
+                onChange={(e) => {
+                  const newCareers = [...careers];
+                  newCareers[index] = e.target.value;
+                  setCareers(newCareers);
+                }}
+                placeholder={`مجال العمل ${index + 1}`}
+                className="flex-1 p-2 border rounded outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button type="button" onClick={() => setCareers(careers.filter((_, i) => i !== index))} className="bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600 transition">
+                <i className="fas fa-trash"></i>
+              </button>
+            </div>
+          ))}
+          {careers.length === 0 && <p className="text-sm text-gray-500 text-center">لم يتم إضافة أي مجالات. (لن يتم عرض هذا القسم للمستخدم)</p>}
         </div>
 
         <div className="space-y-2">

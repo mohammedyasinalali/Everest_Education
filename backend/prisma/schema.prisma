@@ -89,6 +89,8 @@ model Specialty {
   language    String?
   description String
   advantages  String   @default("") // Newline separated bullet points
+  stages      String   @default("[]") // JSON array of strings
+  careers     String   @default("[]") // JSON array of strings
   tags        String   // comma separated tags, e.g. "medical,engineering"
   published   Boolean  @default(false)
   createdAt   DateTime @default(now())

@@ -17,6 +17,17 @@ const SpecialtyDetail = () => {
     const [specialty, setSpecialty] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 
+    const parseList = (data: string | undefined): string[] => {
+        if (!data || data.trim() === '' || data === '[]') return [];
+        try {
+            const parsed = JSON.parse(data);
+            if (Array.isArray(parsed)) return parsed.filter((i: string) => i.trim() !== '');
+        } catch (e) {
+            // fallback
+        }
+        return data.split('\n').filter((i: string) => i.trim() !== '');
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
         const fetchSpecialty = async () => {
@@ -41,8 +52,9 @@ const SpecialtyDetail = () => {
         };
 
         const handleStaticFallback = () => {
-            const staticItem = specialtiesData.find(s => s.id === id);
+            const staticItem = specialtiesData.find(s => s.id.toUpperCase() === slug?.toUpperCase() || s.id === slug);
             if (staticItem) {
+                const translatedName = t(staticItem.title);
                 // Fetch specific or generic descriptions
                 const specificAbout = t(`search_filter.specialty_detail.specialties.${staticItem.id}.about_desc`, { defaultValue: '' });
                 const description = specificAbout || t('search_filter.specialty_detail.about_desc', { name: translatedName });
@@ -224,13 +236,13 @@ const SpecialtyDetail = () => {
                             )}
 
                             {/* Stages (If Available) */}
-                            {specialty.stages && specialty.stages.trim() !== '' && (
+                            {parseList(specialty.stages).length > 0 && (
                                 <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
                                     <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4 rtl:text-right ltr:text-left">
-                                        {specialty.stages_title}
+                                        {specialty.stages_title || t('search_filter.specialty_detail.stages_title', { defaultValue: 'المراحل الدراسية' })}
                                     </h3>
                                     <ul className="space-y-6 font-['Tajawal']">
-                                        {specialty.stages.split('\n').filter((item: string) => item.trim() !== '').map((item: string, idx: number) => (
+                                        {parseList(specialty.stages).map((item: string, idx: number) => (
                                             <li key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-50">
                                                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#0859BC] flex items-center justify-center text-white font-bold text-sm">
                                                     {idx + 1}
@@ -243,13 +255,13 @@ const SpecialtyDetail = () => {
                             )}
 
                             {/* Careers */}
-                            {specialty.careers && specialty.careers.trim() !== '' && (
+                            {parseList(specialty.careers).length > 0 && (
                                 <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
                                     <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4 rtl:text-right ltr:text-left">
                                         {t('search_filter.specialty_detail.career_title')}
                                     </h3>
                                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 font-['Tajawal']">
-                                        {specialty.careers.split('\n').filter((item: string) => item.trim() !== '').map((item: string, idx: number) => (
+                                        {parseList(specialty.careers).map((item: string, idx: number) => (
                                             <li key={idx} className="flex items-start gap-3">
                                                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#FF822E]/10 flex items-center justify-center mt-1">
                                                     <i className="fas fa-briefcase text-[#FF822E] text-xs"></i>
