@@ -218,7 +218,7 @@ const TopSpecialties = () => {
 
                                     {/* Link CTA */}
                                     <Link
-                                        to={`/specialties/${spec.id}`}
+                                        to={`/specialties/${spec.slug}`}
                                         className="w-full py-3 rounded-xl font-bold text-sm transition-all duration-300 font-['Tajawal'] bg-gray-50 text-[#0859BC] group-hover:bg-[#0859BC] group-hover:text-white group-hover:shadow-lg text-center block"
                                     >
                                         {t('search_filter.view_details')}

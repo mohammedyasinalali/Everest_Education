@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+
 import { Container, Card } from './ui';
 import { specialtiesData } from '../constants';
 
@@ -14,7 +15,7 @@ const Specialties = () => {
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {specialtiesData.map((specialty, index) => (
-                        <Link key={index} to={`/specialties/${specialty.id}`} className="no-underline">
+                        <Link key={index} to={`/specialties/${specialty.slug}`} className="no-underline">
                             <Card
                                 padding="none"
                                 className="text-center pb-5 group overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"

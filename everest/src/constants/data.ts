@@ -93,9 +93,9 @@ export const specialtiesData: Specialty[] = [
         category: 'header.specialties',
     },
     {
-        id: 'dentistry',
+        id: 'architecture',
         image: 'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1974&auto=format&fit=crop',
-        title: 'search_filter.specialties.dentistry',
+        title: 'search_filter.specialties.architecture',
         category: 'header.specialties',
     },
     {

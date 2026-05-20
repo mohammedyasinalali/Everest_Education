@@ -38,7 +38,8 @@
         "medicine": "Medicine",
         "dentistry": "Dentistry",
         "pharmacy": "Pharmacy",
-        "software_eng": "Software Engineering"
+        "software_eng": "Software Engineering",
+        "architecture": "Architecture"
     },
     "categories": {
         "all": "All",
@@ -98,22 +99,76 @@
         "back": "Back to specialties list",
         "register_now": "Register Now",
         "about": "About the Specialty",
-        "about_desc": "The {name} specialty is one of the vital and in-demand specialties in the labor market. Turkish universities provide distinguished study programs in this field that combine theory and practical application.",
-        "why_study_here": "Why study {name} in Turkey?",
+        "about_desc": "The {{name}} specialty is one of the vital and highly demanded fields in the local and global labor market. Private Turkish universities provide outstanding study programs in {{name}}, carefully designed to keep pace with the latest developments. This field combines in-depth theoretical study with precise practical application, qualifying students to acquire high analytical and scientific skills, and giving them the ability to compete strongly in their professional lives to build a bright future in this sector.",
+        "why_study_here": "Why study {{name}} in Turkey?",
         "advantages": [
-            "Advanced infrastructure and modern laboratories simulating the real work environment.",
-            "Experienced faculty members with high academic competence.",
-            "Opportunities for practical training and partnerships with major institutions.",
-            "Internationally accredited certificates opening wide horizons for work worldwide.",
-            "Suitable study and living costs compared to European countries."
+            "Advanced infrastructure: Turkish universities feature modern laboratories equipped with the latest technologies simulating real work environments, ensuring an integrated educational experience.",
+            "Distinguished academic staff: Programs are supervised by elite faculty members with vast experience and high academic competence, ensuring knowledge transfer in the best scientific ways.",
+            "Practical training opportunities: Universities offer strong partnerships with major institutions and companies, giving students real opportunities for practical and clinical training before graduation.",
+            "Globally accredited certificates: Graduates receive internationally recognized certificates, facilitating postgraduate studies or entering the job market in various countries.",
+            "Appropriate tuition fees: The tuition fees for studying {{name}} in private Turkish universities are very reasonable and competitive compared to the quality of education and other European universities."
         ],
+        "career_title": "Career Fields After Graduation",
+        "careers": [
+            "Working in hospitals and health centers (clinical pharmacy).",
+            "Quality management of medicines in pharmaceutical companies.",
+            "Academic research and development to discover new drugs.",
+            "Working in regulatory institutions and Food and Drug Administrations."
+        ],
+        "specialties": {
+            "medicine": {
+                "about_desc": "Human medicine is considered one of the highest and most prestigious scientific disciplines ever. It is the fundamental pillar of the healthcare system and humanity's refuge for healing diseases and alleviating pain. This specialty aims to prepare and qualify doctors capable of diagnosing diseases, providing therapeutic and preventive care, and conducting medical research that contributes to the development of humanity. Studying human medicine combines human passion with precise applied sciences, giving the student a prestigious social status and a stable, sustainable professional future.",
+                "why_study_here": "Why Study Human Medicine?",
+                "advantages": [
+                    "Practice-based learning: Contemporary medical schools offer massive university hospitals and advanced research centers, allowing students direct interaction with real cases under the supervision of top doctors and scientists.",
+                    "Continuous development and scientific research: This field gives you the opportunity to participate in medical conferences and scientific research that contribute to discovering new treatments, keeping you always up to date with the latest scientific findings.",
+                    "International recognition and accreditation: Medical schools hold local and international accreditations (such as TEPDAD accreditation), making it easier for graduates to equalize their degrees and work or complete their specialization in various countries around the world (America, Europe, and the Arabian Gulf).",
+                    "Great diversity of specializations: After completing general studies, human medicine gives you hundreds of options for sub-specialization based on your passion, whether in surgery, pediatrics, internal medicine, neurology, or others."
+                ],
+                "stages_title": "Study Stages During the Six Years",
+                "stages": [
+                    "First, Second, and Third Years: Focus on vital and basic medical sciences such as Anatomy, Physiology, and Pathology inside laboratories and lecture halls.",
+                    "Fourth and Fifth Years: Students move to university hospitals to begin \"stages\" or clinical training in major departments (Surgery, Internal Medicine, Pediatrics, Obstetrics and Gynecology).",
+                    "Sixth Year (Internship Year): The student works as an Intern inside the hospital, bearing direct practical responsibilities under the supervision of specialist doctors to fully prepare them for the labor market."
+                ],
+                "careers": [
+                    "Working as a general practitioner in public and private hospitals and health centers.",
+                    "Starting residency and fellowship programs to obtain a \"Specialist Doctor\" degree.",
+                    "Working in medical research centers and genetic laboratories.",
+                    "Academic teaching in colleges of medicine and health sciences.",
+                    "Managing international health organizations and humanitarian medical associations."
+                ]
+            },
+            "dentistry": {
+                "about_desc": "Dentistry is considered one of the finest medical specialties that combines precise scientific knowledge, technical skill, and aesthetic sense. The role of the dentist is not limited to treating oral pain and diseases only, but extends to beautifying the smile that enhances a person's self-confidence. Universities provide their students with an educational environment that combines advanced medical theories and intensive practical application, qualifying graduates to provide comprehensive healthcare for the mouth, teeth, face, and jaws, making this specialty one of the most demanded and stable fields in the labor market.",
+                "why_study_here": "Why Study Dentistry?",
+                "advantages": [
+                    "Early practical training: Unlike some other medical specialties, a dental student begins their practical training at early stages inside simulation laboratories (Phantom Labs), which accelerates the acquisition of manual skills.",
+                    "Professional independence: This specialty gives you high flexibility in your professional path, where you can open your own clinic immediately after graduation and start your independent work, or join major medical complexes.",
+                    "Continuous technological development: Dentistry is witnessing a continuous technical revolution (such as 3D printing and digital smile design), making the work environment renewed and interesting.",
+                    "Excellent financial return: Dentists are classified among the highest-earning professions globally, due to the continuous and permanent need for oral and cosmetic care services."
+                ],
+                "stages_title": "Study Stages During the Five Years",
+                "stages": [
+                    "First and Second Years (Basic and Pre-Clinical Sciences): The student studies basic medical subjects (such as anatomy and physiology), in addition to dental anatomy and dental materials, and begins training in simulation laboratories to refine manual skills.",
+                    "Third Year (Moving to Clinics): Considered a transitional stage, where the intensity of practical training increases and students begin to familiarize themselves with clinics, tools, and initial dealing with patients under the supervision of professors.",
+                    "Fourth and Fifth Years (Clinical Training): The student fully moves to university hospitals and clinics, where they provide actual treatment to patients in various departments (Extraction, Fillings, Endodontic treatments, Prosthetics, and Pediatric Dentistry), to become fully ready to practice the profession."
+                ],
+                "careers": [
+                    "Opening a private clinic to provide dental and cosmetic services.",
+                    "Working in public or private hospitals and comprehensive health centers.",
+                    "Academic specialization and working as a faculty member in universities.",
+                    "Completing postgraduate studies and specializing in specific fields such as: Orthodontics, Maxillofacial Surgery, Dental Implants, or Pediatric Dentistry."
+                ]
+            }
+        },
         "quick_info": "Quick Info",
         "degree": "Degree Level",
         "duration": "Duration of Study",
         "language_study": "Language of Study",
         "have_question": "Do you have an inquiry about this specialty?",
         "whatsapp_contact": "Contact via WhatsApp",
-        "start_journey": "Start your {name} journey now",
+        "start_journey": "Start your {{name}} journey now",
         "journey_desc": "Don't hesitate to contact us to get your university admission for free and start your academic career.",
         "apply_now": "Apply Now",
         "talk_consultant": "Talk to a Consultant"

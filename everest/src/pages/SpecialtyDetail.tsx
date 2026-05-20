@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Container } from '../components/ui';
 import ContactForm from '../components/ContactForm';
 import SEO from '../components/SEO';
+import { specialtiesData } from '../constants';
 
 const API_URL = 'http://localhost:5000/api';
 
 const SpecialtyDetail = () => {
-    const { id } = useParams();
+    const { slug } = useParams();
+    const navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const currentLang = i18n.language;
 
@@ -20,7 +22,7 @@ const SpecialtyDetail = () => {
         const fetchSpecialty = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`${API_URL}/specialties/${id}?locale=${currentLang}`);
+                const res = await fetch(`${API_URL}/specialties/${slug}?locale=${currentLang}`);
                 if (res.ok) {
                     const data = await res.json();
                     // Fix image URL if it's a local upload
@@ -29,16 +31,69 @@ const SpecialtyDetail = () => {
                     }
                     setSpecialty(data);
                 } else {
-                    setSpecialty(null);
+                    handleStaticFallback();
                 }
             } catch {
-                setSpecialty(null);
+                handleStaticFallback();
             } finally {
                 setLoading(false);
             }
         };
+
+        const handleStaticFallback = () => {
+            const staticItem = specialtiesData.find(s => s.id === id);
+            if (staticItem) {
+                // Fetch specific or generic descriptions
+                const specificAbout = t(`search_filter.specialty_detail.specialties.${staticItem.id}.about_desc`, { defaultValue: '' });
+                const description = specificAbout || t('search_filter.specialty_detail.about_desc', { name: translatedName });
+
+                const specificAdvantages = t(`search_filter.specialty_detail.specialties.${staticItem.id}.advantages`, { returnObjects: true, defaultValue: '' });
+                const advantagesTrans = Array.isArray(specificAdvantages) && specificAdvantages.length > 0 ? specificAdvantages : t('search_filter.specialty_detail.advantages', { returnObjects: true, name: translatedName });
+                const advantagesStr = Array.isArray(advantagesTrans) ? advantagesTrans.join('\n') : "";
+
+                const specificCareers = t(`search_filter.specialty_detail.specialties.${staticItem.id}.careers`, { returnObjects: true, defaultValue: '' });
+                const careersTrans = Array.isArray(specificCareers) && specificCareers.length > 0 ? specificCareers : t('search_filter.specialty_detail.careers', { returnObjects: true, name: translatedName });
+                const careersStr = Array.isArray(careersTrans) ? careersTrans.join('\n') : "";
+
+                const specificStagesTitle = t(`search_filter.specialty_detail.specialties.${staticItem.id}.stages_title`, { defaultValue: '' });
+                const specificStages = t(`search_filter.specialty_detail.specialties.${staticItem.id}.stages`, { returnObjects: true, defaultValue: '' });
+                const stagesStr = Array.isArray(specificStages) && specificStages.length > 0 ? specificStages.join('\n') : "";
+
+                let durationYears = 4;
+                if (staticItem.id === 'medicine') {
+                    durationYears = 6;
+                } else if (staticItem.id === 'pharmacy' || staticItem.id === 'dentistry') {
+                    durationYears = 5;
+                }
+
+                let durationStr = `${durationYears} Years`;
+                if (currentLang === 'ar') durationStr = `${durationYears} سنوات`;
+                else if (currentLang === 'ru') durationStr = durationYears === 4 ? `4 года` : `${durationYears} лет`;
+                else if (currentLang === 'fa') durationStr = `${durationYears} سال`;
+
+                setSpecialty({
+                    id: staticItem.id,
+                    name: translatedName,
+                    slug: staticItem.id.toUpperCase(),
+                    category: 'bachelor',
+                    image: staticItem.image,
+                    color: '#0859BC',
+                    icon: 'fas fa-graduation-cap',
+                    duration: durationStr,
+                    language: 'English / Turkish',
+                    description: description,
+                    advantages: advantagesStr,
+                    careers: careersStr,
+                    stages: stagesStr,
+                    stages_title: specificStagesTitle
+                });
+            } else {
+                setSpecialty(null);
+            }
+        };
+
         fetchSpecialty();
-    }, [id, currentLang]);
+    }, [slug, currentLang, navigate]);
 
     if (loading) {
         return (
@@ -140,8 +195,8 @@ const SpecialtyDetail = () => {
                         <div className="lg:col-span-2 space-y-12">
                             {/* Overview */}
                             <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
-                                <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4">
-                                    نبذة عن التخصص
+                                <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4 rtl:text-right ltr:text-left">
+                                    {t('search_filter.specialty_detail.about')}
                                 </h3>
                                 <div 
                                     className="text-gray-600 leading-loose font-['Tajawal'] text-lg whitespace-pre-line"
@@ -152,16 +207,54 @@ const SpecialtyDetail = () => {
                             {/* Why Study This */}
                             {specialty.advantages && specialty.advantages.trim() !== '' && (
                                 <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
-                                    <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4">
-                                        {t('search_filter.specialty_detail.why_study_here', { name: specialty.name }).replace('{name}', specialty.name).replace('{{name}}', specialty.name)}
+                                    <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4 rtl:text-right ltr:text-left">
+                                        {t(`search_filter.specialty_detail.specialties.${specialty.id}.why_study_here`, { defaultValue: '' }) || t('search_filter.specialty_detail.why_study_here', { name: specialty.name }).replace('{name}', specialty.name).replace('{{name}}', specialty.name)}
                                     </h3>
                                     <ul className="space-y-4 font-['Tajawal']">
                                         {specialty.advantages.split('\n').filter((item: string) => item.trim() !== '').map((item: string, idx: number) => (
-                                            <li key={idx} className="flex items-start gap-4">
-                                                <div className="min-w-[24px] h-6 rounded-full bg-[#EBF5FF] flex items-center justify-center mt-1">
+                                            <li key={idx} className="flex items-start gap-3">
+                                                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#EBF5FF] flex items-center justify-center mt-1">
                                                     <i className="fas fa-check text-[#0859BC] text-xs"></i>
                                                 </div>
-                                                <span className="text-gray-600 leading-relaxed">{item}</span>
+                                                <div className="flex-1 text-gray-600 leading-relaxed">{item}</div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/* Stages (If Available) */}
+                            {specialty.stages && specialty.stages.trim() !== '' && (
+                                <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
+                                    <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4 rtl:text-right ltr:text-left">
+                                        {specialty.stages_title}
+                                    </h3>
+                                    <ul className="space-y-6 font-['Tajawal']">
+                                        {specialty.stages.split('\n').filter((item: string) => item.trim() !== '').map((item: string, idx: number) => (
+                                            <li key={idx} className="flex items-start gap-4 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-50">
+                                                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#0859BC] flex items-center justify-center text-white font-bold text-sm">
+                                                    {idx + 1}
+                                                </div>
+                                                <div className="flex-1 text-gray-700 leading-relaxed pt-1 font-medium">{item}</div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {/* Careers */}
+                            {specialty.careers && specialty.careers.trim() !== '' && (
+                                <div className="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100">
+                                    <h3 className="text-2xl font-bold text-[#203252] mb-6 font-['Tajawal'] border-b border-gray-100 pb-4 rtl:text-right ltr:text-left">
+                                        {t('search_filter.specialty_detail.career_title')}
+                                    </h3>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 font-['Tajawal']">
+                                        {specialty.careers.split('\n').filter((item: string) => item.trim() !== '').map((item: string, idx: number) => (
+                                            <li key={idx} className="flex items-start gap-3">
+                                                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#FF822E]/10 flex items-center justify-center mt-1">
+                                                    <i className="fas fa-briefcase text-[#FF822E] text-xs"></i>
+                                                </div>
+                                                <div className="flex-1 text-gray-600 leading-relaxed">{item}</div>
                                             </li>
                                         ))}
                                     </ul>

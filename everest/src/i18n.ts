@@ -37,10 +37,15 @@ i18n
     });
 
 // Handle RTL/LTR direction based on language
-i18n.on('languageChanged', (lng) => {
-    const dir = (lng === 'ar' || lng === 'fa') ? 'rtl' : 'ltr';
+const updateDirection = (lng: string) => {
+    const dir = (lng.startsWith('ar') || lng.startsWith('fa')) ? 'rtl' : 'ltr';
     document.documentElement.dir = dir;
     document.documentElement.lang = lng;
-});
+};
+
+i18n.on('languageChanged', updateDirection);
+
+// Set initial direction
+updateDirection(i18n.language || 'ar');
 
 export default i18n;
