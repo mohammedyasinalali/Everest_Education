@@ -25,6 +25,10 @@
   --transition: all 0.3s ease;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Tajawal', sans-serif;
   background-color: var(--background-color);
@@ -232,11 +236,11 @@ body {
 }
 
 .animate-scroll-left {
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 100s linear infinite;
 }
 
 .animate-scroll-right {
-  animation: scroll-right 30s linear infinite;
+  animation: scroll-right 100s linear infinite;
 }
 
 .animate-scroll-left:hover,

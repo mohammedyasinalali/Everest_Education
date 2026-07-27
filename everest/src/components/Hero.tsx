@@ -24,7 +24,14 @@ const Hero = () => {
                 </p>
 
                 <div className="flex justify-center gap-5 flex-wrap">
-                    <Button as="a" href="#" variant="primary" size="lg">
+                    <Button 
+                        as="a" 
+                        href={`https://wa.me/905451365495?text=${encodeURIComponent(t('hero.whatsapp_msg'))}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        variant="primary" 
+                        size="lg"
+                    >
                         {t('hero.get_consultation')}
                     </Button>
                     <Button

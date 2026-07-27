@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+:root {
+  font-family: 'Cairo', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  direction: rtl;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #1a1a2e;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  overflow-x: hidden;
+}
+
+/* Earthquake effect */
+.earthquake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-5px, 2px, 0) rotate(-2deg);
+  }
+  
+  20%, 80% {
+    transform: translate3d(5px, -2px, 0) rotate(2deg);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-10px, 5px, 0) rotate(-4deg);
+  }
+
+  40%, 60% {
+    transform: translate3d(10px, -5px, 0) rotate(4deg);
+  }
+}
